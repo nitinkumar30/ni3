@@ -5,7 +5,7 @@ import { SectionParallax } from "@/components/three/SectionParallax";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Badge } from "@/components/ui/badge";
 import { portfolioData } from "@/lib/portfolio-data";
-import { Code2, Shield, Database, Globe, Award, Briefcase, Languages, Wrench } from "lucide-react";
+import { Code2, Shield, Database, Globe, Award, Briefcase, Languages, Wrench, Bot } from "lucide-react";
 
 const data = portfolioData.about;
 const stats = portfolioData.statistics;
@@ -16,13 +16,14 @@ const statItems = [
   { label: "Experience", value: parseInt(stats.working_years), suffix: "+ Years", icon: Code2, color: "#00FF9D" },
   { label: "Languages", value: parseInt(stats.languages_known), suffix: "+", icon: Languages, color: "#00E5FF" },
   { label: "Tools", value: parseInt(stats.tools_used), suffix: "+", icon: Wrench, color: "#7B61FF" },
+  { label: "AI Tools", value: parseInt(stats.ai_tools), suffix: "+", icon: Bot, color: "#00FF9D" },
 ];
 
 const roleIcons: Record<string, React.ReactNode> = {
-  "Python Developer": <Code2 className="w-4 h-4" />,
-  "Neophyte in Cyber Security": <Shield className="w-4 h-4" />,
   "Senior Automation Engineer": <Database className="w-4 h-4" />,
-  "Web Developer": <Globe className="w-4 h-4" />,
+  "Python Developer": <Code2 className="w-4 h-4" />,
+  "Aspiring Data Scientist": <Globe className="w-4 h-4" />,
+  "Cyber Security Enthusiast": <Shield className="w-4 h-4" />,
 };
 
 export function AboutSection() {
@@ -132,7 +133,7 @@ export function AboutSection() {
         <div className="mt-20">
           <SectionParallax depth={0.02}>
           <ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {statItems.map((stat, i) => (
                 <motion.div
                   key={stat.label}
