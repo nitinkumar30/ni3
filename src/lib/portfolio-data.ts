@@ -94,13 +94,13 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   personal_info: {
-    name: "Nitin Kumar",
-    title: "Python Developer",
+    name: "Nitin S Kumar",
+    title: "Senior Automation Engineer",
     headline:
-      "A passionate Python Developer with interest in Automation and Data Science along with good knowledge of Ethical Hacking.",
+      "Enthusiastic about Python | Aspiring Data Scientist | ⭐⭐⭐⭐ on HackerRank | ex-TCS",
     current_role: "Senior Automation Engineer",
     current_company: "Happiest Minds Technologies",
-    current_location: "Pune, India",
+    current_location: "Pune, Maharashtra, India",
     profile_image: "images/nitin.jpg",
     resume_url:
       "https://drive.google.com/drive/u/3/folders/14u3ywzWiFJjtl09JLlJUJc8eXEgJIkiZ",
@@ -108,27 +108,29 @@ export const portfolioData: PortfolioData = {
   },
   about: {
     roles: [
-      "Python Developer",
-      "Neophyte in Cyber Security",
       "Senior Automation Engineer",
-      "Web Developer",
+      "Python Developer",
+      "Aspiring Data Scientist",
+      "Cyber Security Enthusiast",
     ],
     interests: [
-      "Automation Scripts",
+      "Python Automation",
+      "Selenium Testing",
       "Data Science",
-      "Python",
-      "Cyber Security",
       "Web Development",
+      "Cyber Security",
+      "GCP & Cloud",
+      "Open Source",
     ],
     summary:
-      "I'm a Python Developer and Neophyte in Cyber Security. Currently working as Senior Automation Engineer in Happiest Minds Technologies, Pune. I'm very interested in creating Automation scripts. Also learning Data Science with Python and recent Web Developer.",
+      "Automation Engineer with a focus on meeting quality goals and customer service. Experienced in using JIRA, GCP, Selenium, and other tools to complete tasks before deadlines. Currently serving as Senior Automation Engineer at Happiest Minds Technologies, Pune in the PDES (Product & Digital Engineering Services) department, developing and maintaining robust automation test scripts using Python and Selenium, leading framework migrations, and delivering sessions on GCP automation.",
   },
   statistics: {
-    certifications: "30+",
+    certifications: "5+",
     projects: "70+",
-    working_years: "3+",
-    languages_known: "6+",
-    tools_used: "7+",
+    working_years: "5+",
+    languages_known: "4",
+    tools_used: "15+",
   },
   education: [
     {
@@ -156,65 +158,76 @@ export const portfolioData: PortfolioData = {
     {
       position: "Senior Automation Engineer",
       company: "Happiest Minds Technologies",
-      duration: "03/2024 - Current",
+      duration: "03/2024 - Present",
       description:
-        "Currently working in my organisation as Senior Automation Engineer in Python.",
+        "Department: PDES (Product & Digital Engineering Services). Developed and maintained robust automation test scripts using Python and Selenium. Enhanced existing automation frameworks by integrating new features, optimizing performance, and ensuring scalability. Led the migration of test automation frameworks from legacy systems to modern platforms. Headed an intern's one-month internship in data science. Delivered a comprehensive session on GCP automation for data migration from local SQL Server to Google Cloud Platform.",
     },
     {
       position: "System Engineer",
       company: "Tata Consultancy Services",
-      duration: "10/2023 - 03/2024",
+      duration: "10/2023 - 02/2024",
       description:
-        "Currently serving my organisation as Automation Engineer in Python.",
+        "Investigated system component suitability for specified purposes and made recommendations regarding component use. Developed system engineering, software engineering, system integration, and distributed system architectures. Conducted hardware and software tests. Used manual and automated tools to analyze and predict system performance under different operating conditions. Tested and verified software patches to restore or enhance system performance.",
     },
     {
       position: "Assistant System Engineer",
       company: "Tata Consultancy Services",
       duration: "10/2022 - 09/2023",
-      description: "Served as Assistant System Engineer after getting promoted.",
+      description:
+        "Investigated system component suitability for specified purposes and made recommendations regarding component use. Developed system engineering, software engineering, system integration, and distributed system architectures. Selected hardware and software components required to meet user needs. Tested and verified software patches to restore or enhance system performance.",
     },
     {
-      position: "Programmer",
+      position: "Automation Engineer",
       company: "Tata Consultancy Services",
       duration: "10/2021 - 09/2022",
-      description: "Served as Programmer after getting promoted.",
+      description:
+        "Identifying and selecting automation test cases. Applying various designs and documenting automation test strategy. Configuring Selenium Test Environment (STE). Automating the design of a framework and implementing it per project structure. Creating, enhancing, debugging, and running test cases. Collating and monitoring the defect management process. Managing changes and executing regression tests. Interacting with customers to resolve issues.",
     },
     {
       position: "IT Analyst",
       company: "Tata Consultancy Services",
       duration: "10/2020 - 09/2021",
-      description: "Joined TCS as a fresher.",
+      description:
+        "Worked as a Software Functional Tester. Reviewed software requirements and prepared relevant test scenarios. Executed tests on software usability and demand. Analyzed test results on database impacts, errors or bugs, and usability. Prepared reports on all aspects related to software testing and reported to the design team. Interacted with clients to understand product requirements. Participated in design reviews.",
+    },
+    {
+      position: "Data Science & Business Analytics Intern",
+      company: "The Sparks Foundation",
+      duration: "07/2021 - 07/2021",
+      description:
+        "Virtual internship with The Sparks Foundation on the topic 'Data Science & Business Analytics'.",
     },
     {
       position: "Placement Coordinator",
       company: "Arka Jain University",
-      duration: "2019 - 2020",
-      description: "Helped students with interview preparations.",
+      duration: "09/2019 - 02/2020",
+      description:
+        "Served as Placement Coordinator for BCA students, assisting with participation and preparation for company recruitment drives. Organized workshops on resume building, interview skills, and job application processes. Facilitated communication between students and prospective employers. Provided one-on-one counseling to address individual student concerns.",
     },
     {
-      position: "Web Developer",
-      company: "Freelancing",
-      duration: "2019 - 2020",
-      description: "Worked as a freelancer with local clients.",
+      position: "Internship Trainee",
+      company: "Integrated Software Enterprises",
+      duration: "05/2019 - 07/2019",
+      description:
+        "Worked on a project using ASP.NET framework with SQL Server as backend.",
     },
   ],
   skills: [
-    {
-      name: "Python Development",
-      proficiency: "70%",
-    },
-    {
-      name: "Automation",
-      proficiency: "90%",
-    },
-    {
-      name: "Data Science",
-      proficiency: "60%",
-    },
-    {
-      name: "Web Development",
-      proficiency: "65%",
-    },
+    { name: "Python", proficiency: "90%" },
+    { name: "Selenium", proficiency: "90%" },
+    { name: "Automation Testing", proficiency: "90%" },
+    { name: "Pytest", proficiency: "85%" },
+    { name: "API Testing", proficiency: "80%" },
+    { name: "GCP", proficiency: "75%" },
+    { name: "Java", proficiency: "70%" },
+    { name: "Web Development", proficiency: "70%" },
+    { name: "Data Science", proficiency: "60%" },
+    { name: "MySQL / SQL Server", proficiency: "75%" },
+    { name: "Git", proficiency: "80%" },
+    { name: "JIRA", proficiency: "85%" },
+    { name: "Manual Testing", proficiency: "85%" },
+    { name: "Bootstrap", proficiency: "70%" },
+    { name: "Anaconda", proficiency: "65%" },
   ],
   projects: [
     {
@@ -288,10 +301,9 @@ export const portfolioData: PortfolioData = {
     },
   ],
   contact: {
-    address:
-      "Adityapur-2, Jamshedpur, Saraikela-Kharsawan, Jharkhand, India",
+    address: "Pune, Maharashtra, India",
     phone: "+91 9113797199",
-    email: "nitinkumar30.py@gmail.com",
+    email: "nitinkumarpythonic@gmail.com",
     map_url: "https://goo.gl/maps/zbQ7zrj9UhyXE4yU6",
   },
   social_links: {
@@ -301,7 +313,7 @@ export const portfolioData: PortfolioData = {
     instagram: "https://www.instagram.com/nitinkumar30.py/",
   },
   website_metadata: {
-    title: "Nitin Kumar",
+    title: "Nitin S Kumar",
     language: "en",
     favicon: "/images/favicon-1.png",
     video_background: "videos/2.mp4",
