@@ -1,7 +1,6 @@
 "use client";
 
-import { ParticleField } from "@/components/animations/particle-field";
-import { GradientBg } from "@/components/animations/gradient-bg";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
@@ -13,11 +12,14 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
 
+const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
+  ssr: false,
+});
+
 export default function Home() {
   return (
     <>
-      <ParticleField />
-      <GradientBg />
+      <Scene3D />
       <Navbar />
       <main id="main-content">
         <HeroSection />

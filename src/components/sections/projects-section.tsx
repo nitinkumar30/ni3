@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
+import { SectionParallax } from "@/components/three/SectionParallax";
+import { ProjectCard3D } from "@/components/three/ProjectCard3D";
 import { Badge } from "@/components/ui/badge";
 import { portfolioData } from "@/lib/portfolio-data";
 import { FolderOpen } from "lucide-react";
@@ -73,8 +75,8 @@ export function ProjectsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="group"
                 >
+                  <ProjectCard3D className="group">
                   <div className="relative h-full rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm overflow-hidden hover:border-white/20 transition-all duration-500 hover:shadow-xl hover:shadow-[#00E5FF]/5">
                     {/* Thumbnail area */}
                     <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#050816] via-[#0a0a1a] to-[#050816]">
@@ -132,6 +134,7 @@ export function ProjectsSection() {
                       }}
                     />
                   </div>
+                  </ProjectCard3D>
                 </motion.div>
               );
             })}

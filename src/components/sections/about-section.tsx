@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
+import { SectionParallax } from "@/components/three/SectionParallax";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Badge } from "@/components/ui/badge";
 import { portfolioData } from "@/lib/portfolio-data";
@@ -29,16 +30,18 @@ export function AboutSection() {
   return (
     <section id="about-me" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <Badge variant="default" className="mb-4">About Me</Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] bg-clip-text text-transparent">
-                Who I Am
-              </span>
-            </h2>
-          </div>
-        </ScrollReveal>
+        <SectionParallax depth={0.03}>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <Badge variant="default" className="mb-4">About Me</Badge>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                <span className="bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] bg-clip-text text-transparent">
+                  Who I Am
+                </span>
+              </h2>
+            </div>
+          </ScrollReveal>
+        </SectionParallax>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left - Profile visual */}
@@ -128,6 +131,7 @@ export function AboutSection() {
 
         {/* Statistics */}
         <div className="mt-20">
+          <SectionParallax depth={0.02}>
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {statItems.map((stat, i) => (
@@ -148,6 +152,7 @@ export function AboutSection() {
               ))}
             </div>
           </ScrollReveal>
+          </SectionParallax>
         </div>
       </div>
     </section>
