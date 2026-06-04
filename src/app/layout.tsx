@@ -73,8 +73,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <head>
-          <link rel="icon" href="/images/favicon-1.png" />
-          <link rel="apple-touch-icon" href="/images/favicon-1.png" />
+          <link rel="icon" href="/favicon.svg" />
+          <link rel="apple-touch-icon" href="/favicon.svg" />
           <JsonLd />
         </head>
         <body className="min-h-screen text-white" style={{ background: "var(--background)" }}>

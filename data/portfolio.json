@@ -6,7 +6,7 @@
     "siteUrl": "https://ni3.dev",
     "language": "en",
     "keywords": ["Python Developer", "Automation Engineer", "Cyber Security", "Prompt Engineering", "Data Science", "Nitin Kumar"],
-    "favicon": "/images/favicon-1.png"
+    "favicon": "/favicon.svg"
   },
   "personal_info": {
     "name": "Nitin S Kumar",
@@ -551,10 +551,9 @@
     "cards": ["/images/20260603_221130-IMG_STYLE.jpg", "/images/20260603_214745-IMG_STYLE.jpg", "/images/20260603_214824-IMG_STYLE.jpg", "/images/20260603_220746-IMG_STYLE.jpg", "/images/20260603_220709-IMG_STYLE.jpg"]
   },
   "testimonial_images": [
-    "/images/profile-1.jpg",
-    "/images/profile-2.jpg",
-    "/images/profile-5.jpg",
-    "/images/profile-3.png"
+    "/images/Zeba Bukhtayar.jpg",
+    "/images/Divya Pakairay.jpg",
+    "/images/Naveen Kumar.jpg"
   ],
   "navigation": [
     { "id": "hero", "label": "Home", "icon": "home" },
