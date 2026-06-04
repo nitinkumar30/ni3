@@ -36,8 +36,20 @@ export function ContactSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-          {/* Info */}
+          {/* Portrait */}
           <div className="lg:col-span-2 space-y-4">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative w-full aspect-square rounded-xl overflow-hidden border border-[var(--card-border)] mb-4"
+            >
+              <img
+                src={data.images.contact}
+                alt={data.personal_info.name}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}

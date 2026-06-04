@@ -53,6 +53,17 @@ export function ExperienceSection() {
           </div>
         </ScrollReveal>
 
+        {/* Side image */}
+        <div className="fixed right-4 top-1/3 -translate-y-1/2 hidden xl:block z-30">
+          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[var(--card-border)] opacity-40 hover:opacity-80 transition-all duration-500">
+            <img
+              src={data.images.experience}
+              alt="Experience"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
         <div className="relative max-w-4xl mx-auto">
           <div
             className="absolute left-8 top-0 bottom-0 w-px"

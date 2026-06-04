@@ -157,7 +157,7 @@ export function HeroSection() {
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px]">
                     <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
                       <img
-                        src={data.personal_info.profile_image}
+                        src={data.images.hero}
                         alt={data.personal_info.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />

@@ -26,7 +26,18 @@ export function EducationSection() {
         </ScrollReveal>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00E5FF]/50 via-[#7B61FF]/30 to-transparent" />
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--primary)]/50 via-[var(--secondary)]/30 to-transparent" />
+
+          {/* Timeline image */}
+          <div className="absolute -right-32 top-1/3 -translate-y-1/2 hidden xl:block">
+            <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-[var(--card-border)] opacity-60 hover:opacity-100 transition-opacity">
+              <img
+                src={data.images.timeline}
+                alt="Timeline"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
 
           <div className="space-y-12">
             {education.map((edu, i) => {

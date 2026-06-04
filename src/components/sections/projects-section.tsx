@@ -63,12 +63,19 @@ export function ProjectsSection() {
               Featured
             </h3>
             <div className="space-y-4">
-              {featured.map((project) => (
+              {featured.map((project, pi) => (
                 <ScrollReveal key={project.name}>
                   <a href={project.url || "#"} target="_blank" rel="noopener noreferrer">
                     <Card tilt glow hover className="p-5">
                       <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1 min-w-0">
+                        <div className="flex items-start gap-4 flex-1 min-w-0">
+                          <div className="hidden sm:block w-14 h-14 rounded-lg overflow-hidden shrink-0 border border-[var(--card-border)]">
+                            <img
+                              src={data.images.cards[pi % data.images.cards.length]}
+                              alt=""
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className="text-base font-semibold" style={{ color: "var(--foreground)" }}>
                               {project.name}
