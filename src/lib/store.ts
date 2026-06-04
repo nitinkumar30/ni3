@@ -1,5 +1,7 @@
 import { create } from "zustand"
 
+export type Theme = "matrix" | "aurora" | "ember"
+
 interface AppState {
   activeSection: string
   setActiveSection: (section: string) => void
@@ -7,6 +9,8 @@ interface AppState {
   toggleCyberMode: () => void
   cursorPos: { x: number; y: number }
   setCursorPos: (pos: { x: number; y: number }) => void
+  theme: Theme
+  setTheme: (theme: Theme) => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -16,4 +20,6 @@ export const useAppStore = create<AppState>((set) => ({
   toggleCyberMode: () => set((s) => ({ cyberMode: !s.cyberMode })),
   cursorPos: { x: 0, y: 0 },
   setCursorPos: (pos) => set({ cursorPos: pos }),
+  theme: "matrix",
+  setTheme: (theme) => set({ theme }),
 }))

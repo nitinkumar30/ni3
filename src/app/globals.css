@@ -9,6 +9,39 @@
   --muted: #A1A1AA;
   --danger: #FF4D4D;
   --success: #00FF9D;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(5, 8, 22, 0.8);
+  --scrollbar-track: #050816;
+  --scrollbar-thumb: rgba(0, 229, 255, 0.3);
+}
+
+[data-theme="aurora"] {
+  --background: #0a0a1a;
+  --foreground: #f0e6ff;
+  --primary: #A78BFA;
+  --secondary: #F472B6;
+  --accent: #34D399;
+  --muted: #9CA3AF;
+  --card-bg: rgba(167, 139, 250, 0.05);
+  --card-border: rgba(167, 139, 250, 0.15);
+  --nav-bg: rgba(10, 10, 26, 0.85);
+  --scrollbar-track: #0a0a1a;
+  --scrollbar-thumb: rgba(167, 139, 250, 0.3);
+}
+
+[data-theme="ember"] {
+  --background: #1a0808;
+  --foreground: #fef2e8;
+  --primary: #FB923C;
+  --secondary: #EF4444;
+  --accent: #FBBF24;
+  --muted: #A1A1AA;
+  --card-bg: rgba(251, 146, 60, 0.05);
+  --card-border: rgba(251, 146, 60, 0.15);
+  --nav-bg: rgba(26, 8, 8, 0.85);
+  --scrollbar-track: #1a0808;
+  --scrollbar-thumb: rgba(251, 146, 60, 0.3);
 }
 
 @theme inline {
@@ -32,6 +65,7 @@
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
   --animate-drift: drift 20s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  --animate-logoReveal: logoReveal 2s ease-out forwards;
 }
 
 @keyframes spin-slow {
@@ -67,6 +101,14 @@
   from { opacity: 0.3; transform: translateY(0) scale(1); }
   to { opacity: 0.6; transform: translateY(-20px) scale(1.1); }
 }
+@keyframes logoReveal {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+@keyframes progressPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
 
 html { scroll-behavior: smooth; }
 
@@ -75,19 +117,20 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #050816; }
-::-webkit-scrollbar-thumb { background: rgba(0, 229, 255, 0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.5); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); opacity: 0.5; }
 
 ::selection { background: rgba(0, 229, 255, 0.2); color: #ffffff; }
 
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--card-border);
 }
 
 .glass-strong {
@@ -97,13 +140,12 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #00E5FF, #7B61FF, #00FF9D);
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Aurora background */
 .aurora-bg {
   position: relative;
   overflow: hidden;
@@ -112,13 +154,13 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 229, 255, 0.15), transparent),
-              radial-gradient(ellipse 80% 50% at 30% 120%, rgba(123, 97, 255, 0.1), transparent),
-              radial-gradient(ellipse 60% 40% at 70% 130%, rgba(0, 255, 157, 0.08), transparent);
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, var(--primary), transparent),
+              radial-gradient(ellipse 80% 50% at 30% 120%, var(--secondary), transparent),
+              radial-gradient(ellipse 60% 40% at 70% 130%, var(--accent), transparent);
+  opacity: 0.15;
   pointer-events: none;
 }
 
-/* Holographic shimmer */
 .holographic {
   position: relative;
 }
@@ -126,10 +168,11 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(0, 229, 255, 0.05) 45%, rgba(123, 97, 255, 0.05) 50%, transparent 55%);
+  background: linear-gradient(105deg, transparent 40%, var(--primary) 45%, var(--secondary) 50%, transparent 55%);
   background-size: 200% 100%;
   animation: drift 6s linear infinite;
   pointer-events: none;
+  opacity: 0.1;
 }
 
 @media (hover: none) and (pointer: coarse) {

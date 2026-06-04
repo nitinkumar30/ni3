@@ -20,10 +20,16 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { KonamiEasterEgg } from "@/components/easter-egg";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
   ssr: false,
 });
+
+const EntertainmentSection = dynamic(
+  () => import("@/components/sections/entertainment-section").then((m) => ({ default: m.EntertainmentSection })),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
@@ -45,9 +51,11 @@ export default function Home() {
         <TestimonialsSection />
         <RecommendationsSection />
         <AchievementsSection />
+        <EntertainmentSection />
         <ContactSection />
       </main>
       <Footer />
+      <ThemeSwitcher />
       <CustomCursor />
       <KonamiEasterEgg />
     </>

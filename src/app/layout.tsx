@@ -4,6 +4,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { JsonLd } from "@/components/json-ld";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeInit } from "@/components/theme-init";
+import { LoadingScreen } from "@/components/loading-screen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,14 +77,16 @@ export default function RootLayout({
           <link rel="apple-touch-icon" href="/images/favicon-1.png" />
           <JsonLd />
         </head>
-        <body className="min-h-screen bg-[#050816] text-white">
+        <body className="min-h-screen text-white" style={{ background: "var(--background)" }}>
           <a
             href="#main-content"
             className="fixed -top-40 left-4 z-[100] p-3 bg-[#00E5FF] text-[#050816] font-medium rounded-b-lg transition-all duration-300 focus:top-0 focus:outline-none focus:ring-2 focus:ring-[#00E5FF]"
           >
             Skip to main content
           </a>
+          <LoadingScreen />
           <Providers>
+            <ThemeInit />
             {children}
             <Analytics />
           </Providers>
