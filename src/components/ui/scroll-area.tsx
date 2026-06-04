@@ -1,4 +1,3 @@
-"use client";
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
@@ -18,3 +17,4 @@ const ScrollArea = React.forwardRef<
 ScrollArea.displayName = "ScrollArea";
 
 export { ScrollArea };
+

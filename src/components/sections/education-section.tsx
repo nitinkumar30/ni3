@@ -1,4 +1,3 @@
-"use client";
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
@@ -75,3 +74,4 @@ export function EducationSection() {
     </section>
   );
 }
+

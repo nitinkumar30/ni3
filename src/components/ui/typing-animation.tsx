@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from "react";
 
@@ -39,3 +38,4 @@ export function TypingAnimation({ words, className = "" }: TypingAnimationProps)
     </span>
   );
 }
+

@@ -1,4 +1,3 @@
-"use client";
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -49,3 +48,4 @@ export function ScrollReveal({
     </div>
   );
 }
+

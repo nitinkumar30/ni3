@@ -1,4 +1,3 @@
-"use client";
 
 import { motion } from "framer-motion";
 import { Download, Mail, Sparkles, ChevronDown } from "lucide-react";
@@ -64,7 +63,7 @@ export function HeroSection() {
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <MagneticButton>
                   <a href={data.resume_url} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="group">
+                    <Button size="lg" className="group cursor-pointer">
                       <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                       Download Resume
                     </Button>
@@ -75,7 +74,7 @@ export function HeroSection() {
                     size="lg"
                     variant="outline"
                     onClick={scrollToContact}
-                    className="group"
+                    className="group cursor-pointer"
                   >
                     <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
                     Contact Me
@@ -156,3 +155,4 @@ export function HeroSection() {
     </section>
   );
 }
+

@@ -1,4 +1,3 @@
-"use client";
 
 import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "@/components/ui/social-icons";
 import { portfolioData } from "@/lib/portfolio-data";
@@ -62,3 +61,4 @@ export function Footer() {
     </footer>
   );
 }
+

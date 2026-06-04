@@ -1,4 +1,3 @@
-"use client";
 
 import { portfolioData } from "@/lib/portfolio-data";
 
@@ -44,3 +43,4 @@ export function JsonLd() {
     />
   );
 }
+

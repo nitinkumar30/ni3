@@ -1,4 +1,3 @@
-"use client";
 
 import { useRef } from "react";
 import { Mesh } from "three";
@@ -41,3 +40,4 @@ function TechIcon({ label, color, position }: { label: string; color: string; po
     </Float>
   );
 }
+

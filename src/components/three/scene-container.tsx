@@ -1,4 +1,3 @@
-"use client";
 
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
@@ -27,3 +26,4 @@ export function SceneContainer({ children, className = "" }: SceneContainerProps
     </div>
   );
 }
+

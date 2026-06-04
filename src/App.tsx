@@ -1,5 +1,4 @@
-"use client";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ParticleField } from "@/components/animations/particle-field";
 import { GradientBg } from "@/components/animations/gradient-bg";
 import { Navbar } from "@/components/layout/navbar";
@@ -12,10 +11,13 @@ import { ProjectsSection } from "@/components/sections/projects-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
+import { JsonLd } from "@/components/json-ld";
 
-export default function Home() {
+const queryClient = new QueryClient();
+
+export default function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ParticleField />
       <GradientBg />
       <Navbar />
@@ -30,6 +32,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-    </>
+      <JsonLd />
+    </QueryClientProvider>
   );
 }

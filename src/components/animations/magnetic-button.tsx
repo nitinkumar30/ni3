@@ -1,21 +1,13 @@
-"use client";
-
-import { useRef, useState } from "react";
+import { useRef, useState, cloneElement, isValidElement } from "react";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
   className?: string;
-  as?: "button" | "a";
-  href?: string;
-  onClick?: () => void;
 }
 
 export function MagneticButton({
   children,
   className = "",
-  as = "button",
-  href,
-  onClick,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -31,26 +23,18 @@ export function MagneticButton({
 
   const handleLeave = () => setPosition({ x: 0, y: 0 });
 
-  const Tag = as === "a" ? "a" : "button";
-  const props = as === "a" ? { href } : { onClick };
-
   return (
     <div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
-      className="inline-block"
+      className={`inline-block ${className}`}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        transition: "transform 0.3s cubic-bezier(0.25, 0.4, 0.25, 1)",
+      }}
     >
-      <Tag
-        {...props}
-        className={className}
-        style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          transition: "transform 0.3s cubic-bezier(0.25, 0.4, 0.25, 1)",
-        }}
-      >
-        {children}
-      </Tag>
+      {children}
     </div>
   );
 }

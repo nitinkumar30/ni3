@@ -1,4 +1,3 @@
-"use client";
 
 import { useRef } from "react";
 import { Mesh } from "three";
@@ -30,3 +29,4 @@ export function FloatingCube() {
     </Float>
   );
 }
+
