@@ -2,6 +2,8 @@
 
 > *"It's not a portfolio. It's an operating system for developers."*
 
+**🌐 Live:** [ni3-chi.vercel.app](https://ni3-chi.vercel.app) · **Vercel Dashboard:** [vercel.com/nitinkumar-team/ni3](https://vercel.com/nitinkumar-team/ni3) · **Branch:** `v2.0.0`
+
 ## 🧬 What Even Is This?
 
 Welcome to **NI3** — a portfolio that got so ambitious it stopped being a portfolio and became a **Developer Operating System**. 15 interactive sections, a 3D geometric universe, an AI & Automation Lab, a live terminal in the footer, and a Konami Code easter egg that turns everything into Cyber Mode. Because why wouldn't you?
@@ -168,6 +170,14 @@ npm start
 ```
 
 > **Node 18+ required.** If you're on Node 16, *why*?
+
+### Deploy to Vercel
+
+```bash
+npx vercel deploy --prod --token <token>
+```
+
+Already deployed: [ni3-chi.vercel.app](https://ni3-chi.vercel.app) — Turbopack build, 55s deploy, 8 pages static.
 
 ---
 
