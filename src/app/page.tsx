@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { ParticleField } from "@/components/animations/particle-field";
 import { GradientBg } from "@/components/animations/gradient-bg";
 import { Navbar } from "@/components/layout/navbar";

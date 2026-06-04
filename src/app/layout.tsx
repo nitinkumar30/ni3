@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { JsonLd } from "@/components/json-ld";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://nitinkumar.dev"),
   title: "Nitin Kumar | Python Developer & Automation Engineer",
   description:
     "A passionate Python Developer with interest in Automation and Data Science along with good knowledge of Ethical Hacking. Senior Automation Engineer at Happiest Minds Technologies.",
@@ -35,6 +37,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Nitin Kumar Portfolio",
+    images: [
+      {
+        url: "/images/nitin.jpg",
+        width: 400,
+        height: 400,
+        alt: "Nitin Kumar",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -42,6 +52,7 @@ export const metadata: Metadata = {
     description:
       "A passionate Python Developer with interest in Automation and Data Science.",
     creator: "@nitinkumar30",
+    images: ["/images/nitin.jpg"],
   },
   robots: {
     index: true,
@@ -71,7 +82,10 @@ export default function RootLayout({
           >
             Skip to main content
           </a>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <Analytics />
+          </Providers>
         </body>
       </html>
   );

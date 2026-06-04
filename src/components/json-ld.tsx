@@ -2,6 +2,11 @@
 
 import { portfolioData } from "@/lib/portfolio-data";
 
+const siteUrl =
+  typeof window !== "undefined"
+    ? window.location.origin
+    : process.env.NEXT_PUBLIC_SITE_URL || "https://nitinkumar.dev";
+
 export function JsonLd() {
   const p = portfolioData.personal_info;
 
@@ -13,7 +18,7 @@ export function JsonLd() {
     familyName: "Kumar",
     jobTitle: p.current_role,
     description: p.headline,
-    url: "https://nitinkumar.dev",
+    url: siteUrl,
     sameAs: [
       portfolioData.social_links.github,
       portfolioData.social_links.linkedin,
