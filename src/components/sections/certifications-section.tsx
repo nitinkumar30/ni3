@@ -4,8 +4,9 @@ import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { ExpandableCard } from "@/components/ui/expandable-card"
 import { data } from "@/lib/data"
-import { Award, Star, BookOpen, ExternalLink, Trophy, Sparkles } from "lucide-react"
+import { Award, Star, BookOpen, ExternalLink, Trophy, Sparkles, ChevronRight } from "lucide-react"
 
 export function CertificationsSection() {
   return (
@@ -24,30 +25,36 @@ export function CertificationsSection() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Certifications */}
-          <Card className="p-6" hover glow>
+          {/* Certifications as FAQ-style card */}
+          <Card className="p-6" hover glow perspective>
             <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-6">
               <Award className="w-5 h-5 text-[#00E5FF]" />
               Certifications
+              <span className="ml-auto text-xs text-white/20 font-mono">{data.certifications.length}</span>
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {data.certifications.map((cert, i) => (
-                <motion.div
+                <ExpandableCard
                   key={cert.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-3 p-3 rounded-lg bg-white/[0.02] border border-white/5 hover:border-[#00E5FF]/20 transition-all duration-300"
+                  title={cert.name}
+                  icon={
+                    <div className="p-1 rounded-md bg-[#00E5FF]/10">
+                      <Star className="w-3 h-3 text-[#00E5FF]" />
+                    </div>
+                  }
+                  badge={cert.year}
                 >
-                  <div className="p-1.5 rounded-md bg-[#00E5FF]/10 shrink-0">
-                    <Star className="w-3.5 h-3.5 text-[#00E5FF]" />
+                  <div className="flex items-center gap-2 text-xs text-white/40">
+                    <ChevronRight className="w-3 h-3 text-[#00E5FF]/60" />
+                    <span>{cert.issuer}</span>
+                    {cert.credential_id && (
+                      <>
+                        <span className="text-white/20">·</span>
+                        <span className="font-mono">ID: {cert.credential_id}</span>
+                      </>
+                    )}
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-white/90">{cert.name}</p>
-                    <p className="text-xs text-white/40 mt-0.5">{cert.issuer} · {cert.year}</p>
-                  </div>
-                </motion.div>
+                </ExpandableCard>
               ))}
             </div>
           </Card>

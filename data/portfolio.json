@@ -627,6 +627,7 @@
     { "id": "blog", "label": "Blog", "icon": "book-open" },
     { "id": "testimonials", "label": "Testimonials", "icon": "message-square" },
     { "id": "recommendations", "label": "Recommendations", "icon": "thumbs-up" },
+    { "id": "explore", "label": "Explore", "icon": "compass" },
     { "id": "contact", "label": "Contact", "icon": "send" }
   ]
 }

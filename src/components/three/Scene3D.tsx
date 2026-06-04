@@ -3,33 +3,6 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 
-function randomBetween(min: number, max: number) {
-  return min + Math.random() * (max - min)
-}
-
-function createFloatingMesh(typeIndex: number): THREE.Mesh {
-  const geos = [
-    () => new THREE.TorusKnotGeometry(0.12, 0.05, 32, 16),
-    () => new THREE.OctahedronGeometry(0.1),
-    () => new THREE.DodecahedronGeometry(0.09),
-    () => new THREE.TetrahedronGeometry(0.12),
-    () => new THREE.IcosahedronGeometry(0.1, 0),
-    () => new THREE.TorusGeometry(0.12, 0.03, 12, 24),
-  ]
-  const geo = geos[typeIndex % geos.length]()
-  const hue = 0.45 + Math.random() * 0.3
-  const mat = new THREE.MeshPhysicalMaterial({
-    color: new THREE.Color().setHSL(hue, 0.6, 0.5),
-    metalness: 0.3 + Math.random() * 0.4,
-    roughness: 0.2 + Math.random() * 0.3,
-    emissive: new THREE.Color().setHSL(hue, 0.8, 0.2),
-    emissiveIntensity: randomBetween(0.1, 0.3),
-    transparent: true,
-    opacity: randomBetween(0.4, 0.8),
-  })
-  return new THREE.Mesh(geo, mat)
-}
-
 export function Scene3D() {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -39,10 +12,13 @@ export function Scene3D() {
 
     const isMobile = window.innerWidth < 768
     const scene = new THREE.Scene()
-    scene.fog = new THREE.FogExp2(0x050816, isMobile ? 0.025 : 0.018)
+    scene.background = new THREE.Color(0x050816)
 
-    const camera = new THREE.PerspectiveCamera(isMobile ? 60 : 70, window.innerWidth / window.innerHeight, 0.1, 100)
-    camera.position.set(0, 0, 16)
+    const fogColor = 0x0a0a2e
+    scene.fog = new THREE.FogExp2(fogColor, isMobile ? 0.035 : 0.025)
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 80)
+    camera.position.set(0, 1, 18)
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -52,174 +28,180 @@ export function Scene3D() {
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2))
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.2
+    renderer.toneMappingExposure = 1.0
     container.appendChild(renderer.domElement)
 
-    const ambientLight = new THREE.AmbientLight(0x222244, 0.4)
-    scene.add(ambientLight)
+    // Ethereal lighting
+    const ambient = new THREE.AmbientLight(0x222244, 0.6)
+    scene.add(ambient)
 
-    const colorShiftLight = new THREE.PointLight(0x00e5ff, 1.5, 30)
-    colorShiftLight.position.set(3, 4, 5)
-    scene.add(colorShiftLight)
+    const keyLight = new THREE.DirectionalLight(0x4488ff, 0.8)
+    keyLight.position.set(2, 5, 8)
+    scene.add(keyLight)
 
-    const dirLight = new THREE.DirectionalLight(0x00e5ff, 1.0)
-    dirLight.position.set(5, 10, 5)
-    scene.add(dirLight)
-
-    const rimLight = new THREE.DirectionalLight(0x7b61ff, 0.7)
-    rimLight.position.set(-5, -2, 5)
+    const rimLight = new THREE.DirectionalLight(0x8844ff, 0.5)
+    rimLight.position.set(-4, -1, 6)
     scene.add(rimLight)
 
-    const fillLight = new THREE.DirectionalLight(0x00ff9d, 0.3)
-    fillLight.position.set(0, -5, -5)
+    const fillLight = new THREE.DirectionalLight(0x00ffaa, 0.2)
+    fillLight.position.set(0, -3, -4)
     scene.add(fillLight)
 
-    const avatarGroup = new THREE.Group()
-    avatarGroup.position.y = 0.5
+    const glowLight = new THREE.PointLight(0x4488ff, 1.5, 25)
+    glowLight.position.set(2, 3, 4)
+    scene.add(glowLight)
 
-    const headGeo = new THREE.IcosahedronGeometry(0.8, 1)
-    const headMat = new THREE.MeshPhysicalMaterial({
-      color: 0x00e5ff,
-      metalness: 0.4,
-      roughness: 0.2,
-      emissive: 0x00e5ff,
-      emissiveIntensity: 0.15,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.2,
-      transparent: true,
-      opacity: 0.85,
-    })
-    const head = new THREE.Mesh(headGeo, headMat)
-    head.position.y = 1.8
-    avatarGroup.add(head)
-
-    const torsoMat = new THREE.MeshPhysicalMaterial({
-      color: 0x7b61ff,
-      metalness: 0.3,
-      roughness: 0.3,
-      emissive: 0x7b61ff,
-      emissiveIntensity: 0.1,
-      clearcoat: 0.5,
-      transparent: true,
-      opacity: 0.7,
-    })
-    const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 1.0, 1.8, 8), torsoMat)
-    torso.position.y = 0.5
-    avatarGroup.add(torso)
-
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(1.6, 0.03, 16, 48),
-      new THREE.MeshPhysicalMaterial({
-        color: 0x00e5ff, emissive: 0x00e5ff, emissiveIntensity: 0.3,
-        transparent: true, opacity: 0.5, metalness: 0.6, roughness: 0.2,
-      })
-    )
-    ring.rotation.x = Math.PI / 3
-    ring.position.y = 1.2
-    avatarGroup.add(ring)
-
-    const ring2 = new THREE.Mesh(
-      new THREE.TorusGeometry(1.9, 0.02, 12, 48),
-      new THREE.MeshPhysicalMaterial({
-        color: 0x7b61ff, emissive: 0x7b61ff, emissiveIntensity: 0.2,
-        transparent: true, opacity: 0.3, wireframe: true,
-      })
-    )
-    ring2.rotation.x = Math.PI / 2 + Math.PI / 4
-    ring2.position.y = 1.2
-    avatarGroup.add(ring2)
-
-    scene.add(avatarGroup)
-
-    // Floating tech objects
-    const floatingMeshes: THREE.Mesh[] = []
-    const floatCount = isMobile ? 10 : 30
-    for (let i = 0; i < floatCount; i++) {
-      const mesh = createFloatingMesh(i)
-      const radius = 4 + Math.random() * 14
-      const theta = Math.random() * Math.PI * 2
-      const phi = Math.acos(2 * Math.random() - 1)
-      mesh.position.set(
-        radius * Math.sin(phi) * Math.cos(theta),
-        (Math.random() - 0.5) * 10,
-        radius * Math.sin(phi) * Math.sin(theta) - 5
-      )
-      mesh.userData = {
-        rotSpeed: { x: randomBetween(-0.5, 0.5), y: randomBetween(-0.5, 0.5), z: randomBetween(-0.3, 0.3) },
-        floatSpeed: 0.2 + Math.random() * 0.4,
-        floatAmp: 0.1 + Math.random() * 0.3,
-        phase: Math.random() * Math.PI * 2,
-        basePos: mesh.position.clone(),
+    // Cloud-like particle layers
+    function createCloudLayer(count: number, spread: number, yRange: number, zOffset: number, size: number, color: THREE.Color, opacity: number) {
+      const geo = new THREE.BufferGeometry()
+      const pos = new Float32Array(count * 3)
+      const sizes = new Float32Array(count)
+      for (let i = 0; i < count; i++) {
+        pos[i * 3] = (Math.random() - 0.5) * spread
+        pos[i * 3 + 1] = (Math.random() - 0.5) * yRange
+        pos[i * 3 + 2] = (Math.random() - 0.5) * spread * 1.5 + zOffset
+        sizes[i] = size * (0.5 + Math.random() * 1)
       }
-      scene.add(mesh)
-      floatingMeshes.push(mesh)
+      geo.setAttribute("position", new THREE.BufferAttribute(pos, 3))
+      geo.setAttribute("size", new THREE.BufferAttribute(sizes, 1))
+      const mat = new THREE.PointsMaterial({
+        color,
+        size: size,
+        transparent: true,
+        opacity,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
+        depthWrite: false,
+      })
+      return new THREE.Points(geo, mat)
     }
 
-    // Enhanced particles
-    const particleCount = isMobile ? 800 : 3000
-    const particleGeo = new THREE.BufferGeometry()
-    const pos = new Float32Array(particleCount * 3)
-    const sizes = new Float32Array(particleCount)
-    const colors = new Float32Array(particleCount * 3)
-    const velocities = new Float32Array(particleCount)
+    const cloudLayers = [
+      createCloudLayer(isMobile ? 80 : 250, 30, 10, -10, 0.25, new THREE.Color(0x4488ff), 0.08),
+      createCloudLayer(isMobile ? 60 : 200, 25, 8, -5, 0.35, new THREE.Color(0x8844ff), 0.06),
+      createCloudLayer(isMobile ? 100 : 300, 35, 12, -15, 0.2, new THREE.Color(0x00ffaa), 0.05),
+      createCloudLayer(isMobile ? 40 : 150, 20, 5, 0, 0.4, new THREE.Color(0x6688ff), 0.07),
+    ]
+    cloudLayers.forEach((l) => scene.add(l))
 
-    for (let i = 0; i < particleCount; i++) {
-      const radius = 3 + Math.random() * 18
-      const theta = Math.random() * Math.PI * 2
-      const phi = Math.acos(2 * Math.random() - 1)
-      pos[i * 3] = radius * Math.sin(phi) * Math.cos(theta)
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 14
-      pos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta) - 6
-      sizes[i] = 0.01 + Math.random() * 0.05
-      velocities[i] = 0.1 + Math.random() * 0.3
-      const c = new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.6, 0.3 + Math.random() * 0.3)
-      colors[i * 3] = c.r
-      colors[i * 3 + 1] = c.g
-      colors[i * 3 + 2] = c.b
-    }
-
-    particleGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3))
-    particleGeo.setAttribute("size", new THREE.BufferAttribute(sizes, 1))
-    particleGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3))
-
-    const particleMat = new THREE.PointsMaterial({
-      size: isMobile ? 0.035 : 0.05,
-      vertexColors: true,
+    // Core glow sphere (center)
+    const coreGeo = new THREE.SphereGeometry(1.2, 24, 24)
+    const coreMat = new THREE.MeshPhysicalMaterial({
+      color: 0x4488ff,
+      emissive: 0x4488ff,
+      emissiveIntensity: 0.3,
+      metalness: 0.6,
+      roughness: 0.2,
       transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending,
-      sizeAttenuation: true,
+      opacity: 0.4,
+      clearcoat: 0.5,
     })
-    const particles = new THREE.Points(particleGeo, particleMat)
-    scene.add(particles)
+    const core = new THREE.Mesh(coreGeo, coreMat)
+    core.position.y = 0.5
+    scene.add(core)
 
-    // Orbiting geometries
-    const orbitingMeshes: THREE.Mesh[] = []
-    const orbitCount = isMobile ? 8 : 20
-    for (let i = 0; i < orbitCount; i++) {
-      const geo = new THREE.IcosahedronGeometry(0.06 + Math.random() * 0.12, 0)
+    // Outer glow rings
+    const ringMat = new THREE.MeshPhysicalMaterial({
+      color: 0x4488ff,
+      emissive: 0x4488ff,
+      emissiveIntensity: 0.2,
+      transparent: true,
+      opacity: 0.15,
+      side: THREE.DoubleSide,
+      wireframe: true,
+    })
+    const ring1 = new THREE.Mesh(new THREE.TorusGeometry(2.0, 0.04, 16, 48), ringMat)
+    ring1.position.y = 0.5
+    ring1.rotation.x = Math.PI / 3
+    scene.add(ring1)
+
+    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.6, 0.03, 12, 48), ringMat.clone())
+    ring2.material.color.setHex(0x8844ff)
+    ring2.material.emissive.setHex(0x8844ff)
+    ring2.position.y = 0.5
+    ring2.rotation.x = Math.PI / 2
+    ring2.rotation.z = Math.PI / 4
+    scene.add(ring2)
+
+    const ring3 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.02, 12, 48), ringMat.clone())
+    ring3.material.color.setHex(0x00ffaa)
+    ring3.material.emissive.setHex(0x00ffaa)
+    ring3.material.opacity = 0.1
+    ring3.position.y = 0.5
+    ring3.rotation.x = Math.PI / 4
+    ring3.rotation.z = Math.PI / 3
+    scene.add(ring3)
+
+    // Floating tech artifacts (like atmos has floating objects in the clouds)
+    const artifacts: THREE.Mesh[] = []
+    const artifactCount = isMobile ? 6 : 18
+    const geoTypes = [
+      () => new THREE.IcosahedronGeometry(0.12, 0),
+      () => new THREE.OctahedronGeometry(0.1),
+      () => new THREE.TetrahedronGeometry(0.15),
+      () => new THREE.DodecahedronGeometry(0.08),
+    ]
+    for (let i = 0; i < artifactCount; i++) {
+      const geo = geoTypes[i % geoTypes.length]()
       const mat = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.7, 0.5),
-        metalness: 0.5,
-        roughness: 0.3,
-        emissive: new THREE.Color().setHSL(0.5 + Math.random() * 0.2, 0.8, 0.3),
+        color: new THREE.Color().setHSL(0.55 + Math.random() * 0.15, 0.5, 0.4),
+        metalness: 0.3,
+        roughness: 0.4,
+        emissive: new THREE.Color().setHSL(0.55 + Math.random() * 0.15, 0.6, 0.15),
         emissiveIntensity: 0.2,
+        transparent: true,
+        opacity: 0.5 + Math.random() * 0.3,
       })
       const mesh = new THREE.Mesh(geo, mat)
-      const angle = (i / orbitCount) * Math.PI * 2
-      const radius = 2.5 + Math.random() * 1.5
-      mesh.position.set(Math.cos(angle) * radius, (Math.random() - 0.5) * 2, Math.sin(angle) * radius)
+      const angle = Math.random() * Math.PI * 2
+      const dist = 2 + Math.random() * 3
+      mesh.position.set(
+        Math.cos(angle) * dist,
+        (Math.random() - 0.5) * 2.5,
+        Math.sin(angle) * dist
+      )
       mesh.userData = {
-        angle, radius,
-        speed: 0.2 + Math.random() * 0.3,
-        yOffset: mesh.position.y,
-        ySpeed: 0.3 + Math.random() * 0.5,
+        angle, dist,
+        speed: 0.1 + Math.random() * 0.2,
+        yBase: mesh.position.y,
+        ySpeed: 0.2 + Math.random() * 0.4,
+        yAmp: 0.1 + Math.random() * 0.2,
+        rotSpeed: { x: (Math.random() - 0.5) * 0.02, y: (Math.random() - 0.5) * 0.02 },
       }
       scene.add(mesh)
-      orbitingMeshes.push(mesh)
+      artifacts.push(mesh)
     }
 
-    // Mouse + scroll tracking
+    // Distant floating objects (like atmos clouds / far objects)
+    const distantObjects: THREE.Mesh[] = []
+    const distCount = isMobile ? 4 : 12
+    for (let i = 0; i < distCount; i++) {
+      const geo = new THREE.SphereGeometry(0.3 + Math.random() * 0.6, 8, 8)
+      const mat = new THREE.MeshPhysicalMaterial({
+        color: 0x4488ff,
+        transparent: true,
+        opacity: 0.04 + Math.random() * 0.04,
+        emissive: 0x4488ff,
+        emissiveIntensity: 0.05,
+      })
+      const mesh = new THREE.Mesh(geo, mat)
+      const side = Math.random() > 0.5 ? 1 : -1
+      mesh.position.set(
+        side * (6 + Math.random() * 8),
+        (Math.random() - 0.5) * 6,
+        -8 - Math.random() * 10
+      )
+      mesh.userData = {
+        floatSpeed: 0.1 + Math.random() * 0.2,
+        floatAmp: 0.1 + Math.random() * 0.3,
+        phase: Math.random() * Math.PI * 2,
+        baseY: mesh.position.y,
+      }
+      scene.add(mesh)
+      distantObjects.push(mesh)
+    }
+
+    // Mouse tracking
     let mouseX = 0
     let mouseY = 0
     let scrollY = 0
@@ -250,64 +232,61 @@ export function Scene3D() {
     }
     window.addEventListener("resize", handleResize)
 
-    // Animation
     let time = 0
     const animate = () => {
       requestAnimationFrame(animate)
-      time += 0.008
+      time += 0.006
 
-      const cx = mouseX * 2.5
-      const cy = -mouseY * 1.8
-      const cz = scrollY * 3
-      camera.position.x += (cx - camera.position.x) * 0.025
-      camera.position.y += (cy - camera.position.y) * 0.025
-      camera.position.z += (16 - cz - camera.position.z) * 0.02
+      const cx = mouseX * 2
+      const cy = -mouseY * 1.2
+      camera.position.x += (cx - camera.position.x) * 0.02
+      camera.position.y += (cy - camera.position.y) * 0.02
       camera.lookAt(0, 0.5, 0)
 
-      // Color-shift light
-      const hue = (time * 0.02) % 1
-      colorShiftLight.color.setHSL(hue, 0.7, 0.5)
-      colorShiftLight.intensity = 1.0 + Math.sin(time * 0.5) * 0.5
-
-      // Volumetric fog pulse
-      const fogDensity = (isMobile ? 0.025 : 0.018) + Math.sin(time * 0.3) * 0.003
-      scene.fog = new THREE.FogExp2(0x050816, fogDensity)
-
-      // Avatar
-      avatarGroup.position.y = 0.5 + Math.sin(time * 0.5) * 0.15
-      avatarGroup.rotation.y = time * 0.15
-      head.position.y = 1.8 + Math.sin(time * 0.7 + 0.5) * 0.08
-      ring.rotation.z = time * 0.3
-      ring2.rotation.x = Math.PI / 2 + Math.sin(time * 0.4) * 0.2
-      ring2.rotation.y = time * 0.2
-
-      const pulse = 0.1 + Math.sin(time * 2) * 0.05
-      headMat.emissiveIntensity = pulse
-      torsoMat.emissiveIntensity = pulse * 0.6
-
-      // Float meshes
-      floatingMeshes.forEach((mesh) => {
-        const d = mesh.userData
-        mesh.rotation.x += d.rotSpeed.x * 0.01
-        mesh.rotation.y += d.rotSpeed.y * 0.01
-        mesh.rotation.z += d.rotSpeed.z * 0.01
-        mesh.position.y = d.basePos.y + Math.sin(time * d.floatSpeed + d.phase) * d.floatAmp
+      // Scroll parallax
+      cloudLayers.forEach((layer, i) => {
+        layer.position.y = -scrollY * (2 + i * 0.5)
+        layer.rotation.y += 0.0002 * (1 + i * 0.3)
       })
 
-      // Orbit
-      orbitingMeshes.forEach((mesh) => {
-        const d = mesh.userData
-        d.angle += 0.01 * d.speed
-        mesh.position.x = Math.cos(d.angle) * d.radius
-        mesh.position.z = Math.sin(d.angle) * d.radius
-        mesh.position.y = d.yOffset + Math.sin(time * d.ySpeed + d.angle) * 0.3
-        mesh.rotation.x += 0.02
-        mesh.rotation.y += 0.03
+      // Fog density shifts with scroll
+      const baseFog = isMobile ? 0.035 : 0.025
+      scene.fog = new THREE.FogExp2(fogColor, baseFog + scrollY * 0.015)
+
+      // Core pulse
+      const pulse = 0.2 + Math.sin(time * 1.2) * 0.15
+      coreMat.emissiveIntensity = pulse
+      core.scale.setScalar(1 + Math.sin(time * 0.8) * 0.05)
+
+      // Ring rotations
+      ring1.rotation.z = time * 0.15
+      ring1.rotation.x = Math.PI / 3 + Math.sin(time * 0.2) * 0.05
+      ring2.rotation.y = time * 0.1
+      ring2.rotation.x = Math.PI / 2 + Math.sin(time * 0.15) * 0.08
+      ring3.rotation.z = -time * 0.08
+      ring3.rotation.x = Math.PI / 4 + Math.sin(time * 0.12) * 0.06
+
+      // Artifacts float and orbit
+      artifacts.forEach((m) => {
+        const d = m.userData
+        d.angle += 0.005 * d.speed
+        m.position.x = Math.cos(d.angle) * d.dist
+        m.position.z = Math.sin(d.angle) * d.dist
+        m.position.y = d.yBase + Math.sin(time * d.ySpeed + d.angle) * d.yAmp
+        m.rotation.x += d.rotSpeed.x
+        m.rotation.y += d.rotSpeed.y
       })
 
-      // Particles
-      particles.rotation.y += 0.0003
-      particles.rotation.x += 0.0001
+      // Distant objects drift
+      distantObjects.forEach((m) => {
+        const d = m.userData
+        m.position.y = d.baseY + Math.sin(time * d.floatSpeed + d.phase) * d.floatAmp
+      })
+
+      // Glow light color shift
+      const hue = (time * 0.01) % 1
+      glowLight.color.setHSL(hue * 0.15 + 0.55, 0.6, 0.5)
+      glowLight.intensity = 1.2 + Math.sin(time * 0.5) * 0.4
 
       renderer.render(scene, camera)
     }

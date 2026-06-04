@@ -3,8 +3,9 @@
 import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
+import { ExpandableCard } from "@/components/ui/expandable-card"
 import { data } from "@/lib/data"
-import { Code2, Zap, Shield, Brain, Database, Globe, Cloud, Wrench, ShieldCheck } from "lucide-react"
+import { Code2, Zap, Shield, Brain, Database, Globe, Cloud, Wrench, ShieldCheck, ChevronRight } from "lucide-react"
 
 const categoryIcons: Record<string, React.ReactNode> = {
   Languages: <Code2 className="w-4 h-4" />,
@@ -91,34 +92,31 @@ export function SkillsSection() {
           ))}
         </div>
 
-        {/* Other skills as badges */}
-        <div className="space-y-8">
-          {categories.map((cat) => {
+        {/* Other skills as FAQ-style expandable cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {categories.map((cat, ci) => {
             const catSkills = data.skills.filter((s) => s.category === cat && s.proficiency < 70)
             if (catSkills.length === 0) return null
             return (
               <ScrollReveal key={cat}>
-                <div className="p-5 rounded-xl border border-white/10 bg-white/[0.02]">
-                  <div className="flex items-center gap-2 mb-4">
-                    {categoryIcons[cat] || <Code2 className="w-4 h-4 text-[#00E5FF]" />}
-                    <h3 className="text-sm font-semibold text-white/80">{cat}</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-3">
-                    {catSkills.map((skill, i) => (
-                      <motion.div
+                <ExpandableCard
+                  title={cat}
+                  icon={categoryIcons[cat] || <Code2 className="w-4 h-4" />}
+                  badge={`${catSkills.length}`}
+                >
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {catSkills.map((skill) => (
+                      <div
                         key={skill.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.05 }}
-                        className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/[0.03] border border-white/10"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 group hover:border-[#00E5FF]/20 transition-all duration-300"
                       >
-                        <span className="text-sm text-white/70">{skill.name}</span>
-                        <span className="text-xs text-white/30">{skill.proficiency}%</span>
-                      </motion.div>
+                        <ChevronRight className="w-3 h-3 text-[#00E5FF]/40 group-hover:text-[#00E5FF] transition-colors" />
+                        <span className="text-sm text-white/70 group-hover:text-white transition-colors">{skill.name}</span>
+                        <span className="text-[10px] text-white/20 ml-1">{skill.proficiency}%</span>
+                      </div>
                     ))}
                   </div>
-                </div>
+                </ExpandableCard>
               </ScrollReveal>
             )
           })}

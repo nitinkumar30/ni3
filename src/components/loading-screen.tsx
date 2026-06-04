@@ -6,24 +6,30 @@ import { motion, AnimatePresence } from "motion/react"
 export function LoadingScreen() {
   const [progress, setProgress] = useState(0)
   const [done, setDone] = useState(false)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
+    const readyTimer = setTimeout(() => setReady(true), 100)
     let frame: number
     const start = performance.now()
-    const duration = 2200
+    const duration = 2400
 
     const tick = (now: number) => {
       const elapsed = now - start
       const p = Math.min(elapsed / duration, 1)
-      setProgress(p)
+      const eased = 1 - Math.pow(1 - p, 3)
+      setProgress(eased)
       if (p < 1) {
         frame = requestAnimationFrame(tick)
       } else {
-        setTimeout(() => setDone(true), 400)
+        setTimeout(() => setDone(true), 500)
       }
     }
     frame = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(frame)
+    return () => {
+      clearTimeout(readyTimer)
+      cancelAnimationFrame(frame)
+    }
   }, [])
 
   return (
@@ -32,76 +38,60 @@ export function LoadingScreen() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#050816]"
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center"
+          style={{ background: "var(--background, #050816)" }}
         >
-          {/* N-i-3 logo reveal */}
-          <div className="flex items-center gap-1 mb-8">
-            {["N", "i", "3"].map((letter, i) => (
-              <motion.span
-                key={letter}
-                initial={{ opacity: 0, y: 40, rotateX: -90 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                transition={{ delay: i * 0.15 + 0.2, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-                className="text-6xl sm:text-7xl font-bold"
-                style={{
-                  background: "linear-gradient(135deg, #00E5FF, #7B61FF, #00FF9D)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </div>
-
-          {/* Orbiting dot ring */}
-          <div className="relative w-20 h-20 mb-8">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0"
-            >
-              {Array.from({ length: 4 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-2 h-2 rounded-full"
-                  style={{
-                    background: i === 0 ? "#00E5FF" : i === 1 ? "#7B61FF" : i === 2 ? "#00FF9D" : "#FF4D4D",
-                    top: "50%",
-                    left: "50%",
-                    transform: `rotate(${i * 90}deg) translateX(35px)`,
-                    boxShadow: `0 0 8px ${
-                      i === 0 ? "#00E5FF" : i === 1 ? "#7B61FF" : i === 2 ? "#00FF9D" : "#FF4D4D"
-                    }`,
-                  }}
-                />
-              ))}
-            </motion.div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-[#00E5FF]/50 animate-pulse" />
-            </div>
-          </div>
-
-          {/* Progress bar */}
-          <div className="w-48 h-1 rounded-full bg-white/10 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                background: "linear-gradient(90deg, #00E5FF, #7B61FF, #00FF9D)",
-                width: `${progress * 100}%`,
-              }}
-            />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ delay: 0.5 }}
-            className="mt-4 text-xs text-white/30 font-mono"
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={ready ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            className="flex flex-col items-center"
           >
-            LOADING SYSTEM...
-          </motion.p>
+            {/* Ni3 stacked logo */}
+            <div className="relative mb-10">
+              <div className="flex items-baseline gap-0">
+                {["N", "i", "3"].map((letter, i) => (
+                  <motion.span
+                    key={letter}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={ready ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: i * 0.12 + 0.1, duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="text-6xl sm:text-7xl font-bold tracking-tight"
+                    style={{
+                      background: "linear-gradient(135deg, var(--primary, #00E5FF), var(--secondary, #7B61FF), var(--accent, #00FF9D))",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Underline glow bar */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={ready ? { scaleX: 1 } : {}}
+                transition={{ delay: 0.5, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+                className="h-[2px] mt-2 rounded-full origin-left"
+                style={{
+                  background: "linear-gradient(90deg, var(--primary, #00E5FF), var(--secondary, #7B61FF))",
+                }}
+              />
+            </div>
+
+            {/* Progress bar */}
+            <div className="w-40 h-[2px] rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
+              <motion.div
+                className="h-full rounded-full"
+                style={{
+                  background: "linear-gradient(90deg, var(--primary, #00E5FF), var(--secondary, #7B61FF))",
+                  width: `${progress * 100}%`,
+                }}
+              />
+            </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
