@@ -98,6 +98,8 @@
   --aurora-2: rgba(59, 130, 246, 0.04);
   --aurora-3: rgba(0, 0, 0, 0.03);
   --theme-gradient: linear-gradient(135deg, #2563EB, #3B82F6, #000000);
+  --color-white: #111111;
+  --color-black: #eeeeee;
 }
 
 @theme inline {
