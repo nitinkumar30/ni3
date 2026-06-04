@@ -1,56 +1,46 @@
-"use client";
-
 import { useRef, useState } from "react";
 
 interface MagneticButtonProps {
   children: React.ReactNode;
   className?: string;
-  as?: "button" | "a";
-  href?: string;
-  onClick?: () => void;
 }
 
-export function MagneticButton({
-  children,
-  className = "",
-  as = "button",
-  href,
-  onClick,
-}: MagneticButtonProps) {
+export function MagneticButton({ children, className = "" }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const isTouch = typeof window !== "undefined" && "ontouchstart" in window;
 
-  const handleMouse = (e: React.MouseEvent) => {
+  const handleMove = (clientX: number, clientY: number) => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || isTouch) return;
     const rect = el.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+    const x = (clientX - rect.left - rect.width / 2) * 0.3;
+    const y = (clientY - rect.top - rect.height / 2) * 0.3;
     setPosition({ x, y });
   };
 
-  const handleLeave = () => setPosition({ x: 0, y: 0 });
+  const handleMouse = (e: React.MouseEvent) => handleMove(e.clientX, e.clientY);
+  const handleTouch = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    if (t) handleMove(t.clientX, t.clientY);
+  };
 
-  const Tag = as === "a" ? "a" : "button";
-  const props = as === "a" ? { href } : { onClick };
+  const handleLeave = () => setPosition({ x: 0, y: 0 });
 
   return (
     <div
       ref={ref}
       onMouseMove={handleMouse}
+      onTouchMove={handleTouch}
       onMouseLeave={handleLeave}
-      className="inline-block"
+      onTouchEnd={handleLeave}
+      className={`inline-block ${className}`}
+      style={{
+        transform: !isTouch ? `translate(${position.x}px, ${position.y}px)` : undefined,
+        transition: "transform 0.3s cubic-bezier(0.25, 0.4, 0.25, 1)",
+      }}
     >
-      <Tag
-        {...props}
-        className={className}
-        style={{
-          transform: `translate(${position.x}px, ${position.y}px)`,
-          transition: "transform 0.3s cubic-bezier(0.25, 0.4, 0.25, 1)",
-        }}
-      >
-        {children}
-      </Tag>
+      {children}
     </div>
   );
 }

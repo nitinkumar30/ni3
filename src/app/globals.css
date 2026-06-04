@@ -81,6 +81,29 @@ body {
   color: #ffffff;
 }
 
+/* Touch-friendly styles */
+@media (hover: none) and (pointer: coarse) {
+  .touch-manipulation {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  input, textarea, select, button {
+    font-size: 16px !important;
+  }
+
+  .group-hover\:opacity-100 {
+    opacity: 1;
+  }
+}
+
+/* Prevent zoom on iOS inputs */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

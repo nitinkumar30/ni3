@@ -61,7 +61,8 @@ export function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-white hover:text-[#00E5FF] transition-colors"
+            className="lg:hidden p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-white hover:text-[#00E5FF] transition-colors touch-manipulation"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -84,7 +85,7 @@ export function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => scrollTo(item)}
-                  className="block w-full text-left px-4 py-3 text-white/70 hover:text-[#00E5FF] hover:bg-white/5 rounded-lg transition-all"
+                  className="block w-full text-left px-4 py-4 min-h-[48px] text-white/70 hover:text-[#00E5FF] hover:bg-white/5 rounded-lg transition-all touch-manipulation active:bg-white/10"
                 >
                   {item}
                 </motion.button>

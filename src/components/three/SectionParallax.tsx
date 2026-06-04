@@ -13,9 +13,10 @@ export function SectionParallax({ children, className = "", depth = 0.05 }: Sect
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, margin: "-100px" });
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [isTouch] = useState(() => typeof window !== "undefined" && "ontouchstart" in window);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || isTouch) return;
     const handler = (e: MouseEvent) => {
       const el = ref.current;
       if (!el) return;
@@ -26,7 +27,7 @@ export function SectionParallax({ children, className = "", depth = 0.05 }: Sect
     };
     window.addEventListener("mousemove", handler);
     return () => window.removeEventListener("mousemove", handler);
-  }, [isInView, depth]);
+  }, [isInView, depth, isTouch]);
 
   return (
     <motion.div
@@ -35,10 +36,14 @@ export function SectionParallax({ children, className = "", depth = 0.05 }: Sect
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
       className={className}
-      style={{
-        transform: `perspective(1000px) rotateX(${mouse.y * 0.02}deg) rotateY(${mouse.x * 0.02}deg)`,
-        transition: "transform 0.1s ease-out",
-      }}
+      style={
+        !isTouch
+          ? {
+              transform: `perspective(1000px) rotateX(${mouse.y * 0.02}deg) rotateY(${mouse.x * 0.02}deg)`,
+              transition: "transform 0.1s ease-out",
+            }
+          : undefined
+      }
     >
       {children}
     </motion.div>

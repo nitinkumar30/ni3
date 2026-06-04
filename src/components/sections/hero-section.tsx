@@ -72,10 +72,10 @@ export function HeroSection() {
                 {data.headline}
               </p>
 
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto">
                 <MagneticButton>
                   <a href={data.resume_url} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="group">
+                    <Button size="lg" className="group w-full sm:w-auto touch-manipulation">
                       <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                       Download Resume
                     </Button>
@@ -86,7 +86,7 @@ export function HeroSection() {
                     size="lg"
                     variant="outline"
                     onClick={scrollToContact}
-                    className="group"
+                    className="group w-full sm:w-auto touch-manipulation"
                   >
                     <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
                     Contact Me
@@ -119,7 +119,7 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
             className="flex-1 flex justify-center items-center"
           >
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
               <SceneContainer className="w-full h-full">
                 <AvatarScene />
               </SceneContainer>
