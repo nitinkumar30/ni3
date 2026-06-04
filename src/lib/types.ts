@@ -130,6 +130,29 @@ export interface PortfolioImages {
   cards: string[]
 }
 
+export interface PortfolioData {
+  meta: Meta
+  personal_info: PersonalInfo
+  about: About
+  statistics: Statistics
+  skills: Skill[]
+  skill_groups: SkillGroup[]
+  tech_stack_nodes: string[]
+  education: Education[]
+  work_experience: WorkExperience[]
+  certifications: Certification[]
+  honors: Honor[]
+  publications: Publication[]
+  projects: Project[]
+  testimonials: Testimonial[]
+  recommendations: Recommendations
+  images: PortfolioImages
+  testimonial_images: string[]
+  ai_tools: AiTool[]
+  automation_tools: AutomationTool[]
+  navigation: NavigationItem[]
+}
+
 export interface Honor {
   title: string
   description: string

@@ -11,6 +11,7 @@ export function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
   const testimonials = data.testimonials
+  const testimonialImages = data.testimonial_images
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -68,19 +69,28 @@ export function TestimonialsSection() {
               transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
               className="w-full"
             >
-              <div className="p-8 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-white/[0.05] backdrop-blur-sm">
-                <Quote className="w-8 h-8 text-[#00E5FF]/30 mb-4" />
-                <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-6 italic">
+              <div className="p-8 rounded-xl border backdrop-blur-sm" style={{ borderColor: "var(--card-border)", background: "var(--card-bg)" }}>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 shrink-0" style={{ borderColor: "color-mix(in srgb, var(--primary) 30%, transparent)" }}>
+                    <img
+                      src={testimonialImages[current % testimonialImages.length]}
+                      alt={testimonials[current].name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <Quote className="w-6 h-6" style={{ color: "color-mix(in srgb, var(--primary) 30%, transparent)" }} />
+                </div>
+                <p className="text-sm sm:text-base leading-relaxed mb-6 italic" style={{ color: "var(--muted)" }}>
                   &ldquo;{testimonials[current].testimonial}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-semibold text-white">{testimonials[current].name}</p>
-                    <p className="text-xs text-white/40">{testimonials[current].designation}</p>
+                    <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>{testimonials[current].name}</p>
+                    <p className="text-xs" style={{ color: "var(--muted)" }}>{testimonials[current].designation}</p>
                   </div>
                   <div className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                      <Star key={i} className="w-3.5 h-3.5" style={{ color: "var(--accent)", fill: "var(--accent)" }} />
                     ))}
                   </div>
                 </div>
@@ -93,9 +103,10 @@ export function TestimonialsSection() {
         <div className="flex items-center justify-center gap-6 mt-6">
           <button
             onClick={goPrev}
-            className="p-2 rounded-full border border-white/10 hover:border-[#00E5FF]/30 hover:bg-[#00E5FF]/10 transition-all duration-200"
+            className="p-2 rounded-full border transition-all duration-200"
+            style={{ borderColor: "var(--card-border)" }}
           >
-            <ChevronLeft className="w-4 h-4 text-white/50" />
+            <ChevronLeft className="w-4 h-4" style={{ color: "var(--muted)" }} />
           </button>
 
           <div className="flex items-center gap-2">
@@ -103,18 +114,21 @@ export function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => goTo(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === current ? "w-6 bg-[#00E5FF]" : "bg-white/20 hover:bg-white/40"
-                }`}
+                className="w-2 h-2 rounded-full transition-all duration-300"
+                style={{
+                  width: i === current ? "1.5rem" : "0.5rem",
+                  background: i === current ? "var(--primary)" : "color-mix(in srgb, var(--foreground) 20%, transparent)",
+                }}
               />
             ))}
           </div>
 
           <button
             onClick={goNext}
-            className="p-2 rounded-full border border-white/10 hover:border-[#00E5FF]/30 hover:bg-[#00E5FF]/10 transition-all duration-200"
+            className="p-2 rounded-full border transition-all duration-200"
+            style={{ borderColor: "var(--card-border)" }}
           >
-            <ChevronRight className="w-4 h-4 text-white/50" />
+            <ChevronRight className="w-4 h-4" style={{ color: "var(--muted)" }} />
           </button>
         </div>
       </div>

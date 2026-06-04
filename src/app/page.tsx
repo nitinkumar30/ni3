@@ -20,6 +20,7 @@ import { Footer } from "@/components/layout/footer";
 import { CustomCursor } from "@/components/custom-cursor";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { KonamiEasterEgg } from "@/components/easter-egg";
+import { CoinToss } from "@/components/coin-toss";
 
 const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
   ssr: false,
@@ -56,6 +57,7 @@ export default function Home() {
       <ThemeSwitcher />
       <CustomCursor />
       <KonamiEasterEgg />
+      <CoinToss />
     </>
   );
 }

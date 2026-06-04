@@ -547,9 +547,15 @@
     "about": "/images/20260603_220746-IMG_STYLE.jpg",
     "experience": "/images/20260603_214745-IMG_STYLE.jpg",
     "contact": "/images/20260603_214824-IMG_STYLE.jpg",
-    "timeline": "/images/20260603_220709-IMG_STYLE.jpg",
-    "cards": ["/images/item-1.jpg", "/images/item-2.jpg", "/images/item-3.jpg", "/images/20260603_221130-IMG_STYLE.jpg", "/images/profile-2.jpg", "/images/profile-5.jpg"]
+    "timeline": "/images/20260603_221130-IMG_STYLE.jpg",
+    "cards": ["/images/20260529_155334(1).jpg", "/images/20260603_214745-IMG_STYLE.jpg", "/images/20260603_214824-IMG_STYLE.jpg", "/images/20260603_220746-IMG_STYLE.jpg", "/images/20260603_221130-IMG_STYLE.jpg"]
   },
+  "testimonial_images": [
+    "/images/profile-1.jpg",
+    "/images/profile-2.jpg",
+    "/images/profile-5.jpg",
+    "/images/profile-3.png"
+  ],
   "navigation": [
     { "id": "hero", "label": "Home", "icon": "home" },
     { "id": "about", "label": "About", "icon": "user" },

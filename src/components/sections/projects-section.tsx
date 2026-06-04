@@ -106,24 +106,15 @@ export function ProjectsSection() {
         {/* Featured tab */}
         {tab === "featured" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {featured.map((project, pi) => (
-              <ScrollReveal key={project.name}>
-                <a href={project.url || "#"} target="_blank" rel="noopener noreferrer">
-                  <Card hover glow className="p-4 h-full">
-                    <div className="flex flex-col h-full">
-                      <div className="flex items-start justify-between gap-2 mb-2">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 border border-[var(--card-border)]">
-                            <img
-                              src={data.images.cards[pi % data.images.cards.length]}
-                              alt=""
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <h4 className="text-sm font-medium truncate" style={{ color: "var(--foreground)" }}>
+              {featured.map((project) => (
+                <ScrollReveal key={project.name}>
+                  <a href={project.url || "#"} target="_blank" rel="noopener noreferrer">
+                    <Card hover glow className="p-4 h-full">
+                      <div className="flex flex-col h-full">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h4 className="text-sm font-medium" style={{ color: "var(--foreground)" }}>
                             {project.name}
                           </h4>
-                        </div>
                         <ExternalLink className="w-3 h-3 shrink-0 mt-0.5" style={{ color: "var(--muted)" }} />
                       </div>
                       <p className="text-xs flex-1" style={{ color: "var(--muted)" }}>
