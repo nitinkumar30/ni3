@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { motion } from "motion/react"
 import { data } from "@/lib/data"
 import { cn } from "@/lib/utils"
@@ -15,6 +15,31 @@ export function Navbar() {
     window.addEventListener("scroll", handler, { passive: true })
     return () => window.removeEventListener("scroll", handler)
   }, [])
+
+  useEffect(() => {
+    const ids = data.navigation.map((n) => n.id)
+    const observers: IntersectionObserver[] = []
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActiveSection(id)
+            }
+          })
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((o) => o.disconnect())
+  }, [setActiveSection])
 
   const scrollTo = (id: string) => {
     setActiveSection(id)
@@ -73,7 +98,7 @@ export function Navbar() {
             onClick={() => scrollTo("contact")}
             className="hidden sm:inline-flex px-4 py-2 text-xs font-medium rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] text-white hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300"
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
       </div>

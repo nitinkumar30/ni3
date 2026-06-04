@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
 import { data } from "@/lib/data"
-import { Code2, Zap, Shield, Brain, Database, Globe } from "lucide-react"
+import { Code2, Zap, Shield, Brain, Database, Globe, Cloud, Wrench, ShieldCheck } from "lucide-react"
 
 const categoryIcons: Record<string, React.ReactNode> = {
   Languages: <Code2 className="w-4 h-4" />,
@@ -13,6 +13,10 @@ const categoryIcons: Record<string, React.ReactNode> = {
   AI: <Brain className="w-4 h-4" />,
   Data: <Database className="w-4 h-4" />,
   Development: <Globe className="w-4 h-4" />,
+  Cloud: <Cloud className="w-4 h-4" />,
+  Frontend: <Code2 className="w-4 h-4" />,
+  Tools: <Wrench className="w-4 h-4" />,
+  Security: <ShieldCheck className="w-4 h-4" />,
 }
 
 function SkillRing({ name, proficiency, index }: { name: string; proficiency: number; index: number }) {
@@ -120,18 +124,7 @@ export function SkillsSection() {
           })}
         </div>
 
-        {/* Skill Universe */}
-        <ScrollReveal>
-          <div className="mt-20 p-6 rounded-xl border border-white/10 bg-white/[0.02]">
-            <h3 className="text-lg font-semibold text-white mb-4 text-center">Tech Stack Universe</h3>
-            <p className="text-sm text-white/40 text-center mb-6">Interactive 3D skill visualization — rotate to explore</p>
-            <div className="w-full h-[400px] rounded-lg overflow-hidden border border-white/5 bg-black/20">
-              <div className="flex items-center justify-center h-full text-white/20 text-sm">
-                3D Skill Universe Available (Three.js) — Open in browser to view
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
+
       </div>
     </section>
   )
