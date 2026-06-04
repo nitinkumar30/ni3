@@ -14,9 +14,11 @@ import { GitHubSection } from "@/components/sections/github-section";
 import { AILabSection } from "@/components/sections/ai-lab-section";
 import { BlogSection } from "@/components/sections/blog-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
+import { RecommendationsSection } from "@/components/sections/recommendations-section";
 import { AchievementsSection } from "@/components/sections/achievements-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
+import { CustomCursor } from "@/components/custom-cursor";
 import { KonamiEasterEgg } from "@/components/easter-egg";
 
 const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
@@ -41,10 +43,12 @@ export default function Home() {
         <AILabSection />
         <BlogSection />
         <TestimonialsSection />
+        <RecommendationsSection />
         <AchievementsSection />
         <ContactSection />
       </main>
       <Footer />
+      <CustomCursor />
       <KonamiEasterEgg />
     </>
   );

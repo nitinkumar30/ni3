@@ -16,7 +16,7 @@ const terminalCommands = [
   { cmd: "skills", output: "Python 90% | Selenium 90% | Automation 90% | AI 70%" },
   { cmd: "projects", output: "227 repos | 160+ stars | Top: edu-mail-auto-generator ★119" },
   { cmd: "github", output: "github.com/nitinkumar30 — 227 public repositories" },
-  { cmd: "contact", output: "nitinkumarpythonic@gmail.com | Pune, India" },
+  { cmd: "contact", output: "nitinkumar30.py@gmail.com | Pune, India" },
   { cmd: "cyber", output: "⚠️ CYBER MODE ACTIVATED — System breach detected" },
 ]
 

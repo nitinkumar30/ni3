@@ -62,12 +62,9 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] flex items-center justify-center text-white text-xs font-bold">
-              N
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] flex items-center justify-center text-white text-sm font-bold tracking-tight shadow-lg shadow-[#00E5FF]/20">
+              Ni3
             </div>
-            <span className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
-              NI3
-            </span>
           </button>
 
           <div className="hidden lg:flex items-center gap-1">

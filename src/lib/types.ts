@@ -79,6 +79,22 @@ export interface Certification {
   name: string
   issuer: string
   year: string
+  credential_id?: string
+}
+
+export interface Recommendation {
+  name: string
+  role: string
+  date: string
+  relationship: string
+  text: string
+}
+
+export interface Recommendations {
+  received_count: number
+  given_count: number
+  pending_count: number
+  list: Recommendation[]
 }
 
 export interface Honor {
@@ -152,6 +168,7 @@ export interface PortfolioData {
   featured_projects: FeaturedProject[]
   projects: Project[]
   testimonials: Testimonial[]
+  recommendations: Recommendations
   ai_tools: AiTool[]
   automation_tools: AutomationTool[]
   navigation: NavigationItem[]

@@ -17,7 +17,7 @@
     "current_location": "Pune, Maharashtra, India",
     "profile_image": "/images/nitin.jpg",
     "resume_url": "https://drive.google.com/drive/u/3/folders/14u3ywzWiFJjtl09JLlJUJc8eXEgJIkiZ",
-    "email": "nitinkumarpythonic@gmail.com",
+    "email": "nitinkumar30.py@gmail.com",
     "phone": "+91 9113797199",
     "linkedin": "https://www.linkedin.com/in/nitin30kumar/",
     "github": "https://github.com/nitinkumar30",
@@ -170,8 +170,12 @@
     }
   ],
   "certifications": [
+    { "name": "Agile for Practitioners - Delivery", "issuer": "Tata Consultancy Services", "year": "2020" },
+    { "name": "Data Science with Python", "issuer": "Simplilearn", "year": "2021", "credential_id": "2947407" },
+    { "name": "Automate the Boring Stuff with Python", "issuer": "Udemy", "year": "2021", "credential_id": "UC-c24fc050-54e6-444b-be40-21e10f1b9607" },
+    { "name": "Programming Foundations: Software Testing/QA", "issuer": "LinkedIn", "year": "2020" },
+    { "name": "Microsoft Technical Associates", "issuer": "Microsoft", "year": "2019", "credential_id": "6202a89b-3dde-4b8d-97c3-938" },
     { "name": "Eduhub Tech Conference", "issuer": "Eduhub", "year": "2024" },
-    { "name": "Programming Foundations: Software Testing/QA", "issuer": "LinkedIn Learning", "year": "2024" },
     { "name": "Digital: Python Foundation", "issuer": "Digital", "year": "2023" },
     { "name": "Codegoda 2022 Programming Competition", "issuer": "Codegoda", "year": "2022" },
     { "name": "Wifi Network Hacking", "issuer": "Udemy", "year": "2022" }
@@ -514,6 +518,76 @@
       "rating": 5
     }
   ],
+  "recommendations": {
+    "received_count": 8,
+    "given_count": 12,
+    "pending_count": 3,
+    "list": [
+      {
+        "name": "Tanmoy Bhattacharya",
+        "role": "Solution Architect | Enabling Scalable Data Warehouse Solutions in Retail | Databricks | Data Analytics | TOGAF Certified",
+        "date": "July 8, 2025",
+        "relationship": "Tanmoy managed Nitin directly",
+        "text": "I had the pleasure of working with Nitin on Morrisons Ordering Automation Project where their expertise in Test Automation proved invaluable. He has consistently demonstrated a deep understanding of both functional and automated testing frameworks, along with an exceptional ability to translate complex business requirements into effective, reliable test cases. What sets Nitin apart is not just technical skill, but also his proactive approach to problem-solving, attention to detail, and commitment to quality. Whether it was building robust automation scripts, optimizing existing frameworks, or mentoring junior team members, Nitin brought clarity, efficiency, and a calm professionalism to every task. If you're looking for someone who can elevate your Automation Testing Framework and be a strong team player, I highly recommend Nitin."
+      },
+      {
+        "name": "Sonali Sneh",
+        "role": "Information Technology Manager at Tata Steel Limited",
+        "date": "April 2, 2025",
+        "relationship": "Sonali was Nitin's teacher",
+        "text": "Nitin was always a very bright student. He is a quick learner and has a very good understanding of web applications. He has worked on latest technologies like Python and Rest APIs. He is very versatile and is not afraid to take up new challenges and roles. He has a good work exposure in data analysis and automation as well. I wish him good luck in IT industry."
+      },
+      {
+        "name": "Mayuri Kolhe",
+        "role": "SDET at Bridgenext | TCS Alumni",
+        "date": "July 20, 2024",
+        "relationship": "Mayuri worked with Nitin but on different teams",
+        "text": "I recommend Nitin for his exceptional skills in Automation, his dedication to learn new technologies and his ability. Nitin's strong work ethic and collaborative nature make him a valuable asset to any team. Nitin consistently demonstrates a keen analytical mindset, effectively solving complex problems. His proactive approach and excellent communication skills greatly contribute to successful project outcomes. I have confidence in Nitin's ability to excel in any role requiring a combination of technical expertise and interpersonal finesse. Nitin's innovative thinking and adaptability shine through in challenging situations, showcasing his resilience and ability to thrive under pressure. His commitment to continuous learning and staying updated with industry trends positions him as a forward-thinking professional. Nitin's positive attitude and collaborative spirit make him a pleasure to work with, fostering a productive and enjoyable work environment."
+      },
+      {
+        "name": "Vasudha Agarwal",
+        "role": "Global Change and Communications Graduate Trainee at Boston Consulting Group",
+        "date": "June 29, 2024",
+        "relationship": "Vasudha reported to Nitin directly",
+        "text": "I had the pleasure of working under Nitin Kumar during my internship at Happiest Minds Technologies. He assigned me a diverse range of data science projects that covered various topics, helping me understand the real-life applications of data analysis. His guidance and support were invaluable in enhancing my practical knowledge and skills."
+      },
+      {
+        "name": "Lalitha Pasumarthi",
+        "role": "Test Automation test engineer at Capgemini",
+        "date": "February 12, 2024",
+        "relationship": "Lalitha worked with Nitin on the same team",
+        "text": "I have had the privilege of collaborating with Nitin on a data-intensive project for the past several months, and I am delighted to provide this recommendation based on his exceptional performance. As an Automation Engineer specializing in GCP automation testing and Java Selenium, Nitin has demonstrated a profound understanding of our project's complexities, particularly in managing and validating large volumes of data. His meticulous attention to detail and methodical approach have been instrumental in ensuring the accuracy and reliability of our automation processes. Despite the challenges of virtual collaboration, Nitin's professionalism and commitment to excellence have consistently stood out."
+      },
+      {
+        "name": "Pakhi",
+        "role": "System Engineer at TCS",
+        "date": "October 16, 2023",
+        "relationship": "Pakhi worked with Nitin but on different teams",
+        "text": "I had the pleasure of working with Nitin Kumar during his tenure as an Assistant System Engineer at Tata Consultancy Services (TCS). Nitin's dedication and commitment to his work were truly impressive. He consistently demonstrated a strong aptitude for automation and a deep understanding of various tools such as JIRA, GCP, Selenium, and others. Nitin's problem-solving skills, attention to detail, and the ability to work collaboratively with engineers and software developers were instrumental in ensuring the compatibility and performance of system components. His work ethic and passion for quality and customer service have had a positive impact on our projects. Nitin consistently delivered tasks ahead of schedule, which greatly contributed to the success of our team."
+      },
+      {
+        "name": "Saurabh Sanap",
+        "role": "Software Developer at Infosys | reactjs, AEM, Sitecore",
+        "date": "September 17, 2022",
+        "relationship": "Nitin was senior to Saurabh",
+        "text": "He was really good at learning technical topics rapidly especially related to Python Languages like Data Science, Automation, etc. He was also a great Web Developer and worked as a freelancer for some months during his college time to pursue his side hustle. He's interested in the Cyber Security field too in addition to which he has some projects related to it. We helped each other in learning different topics based on our theoretical & practical knowledge. He's now diving into the Automation field which is helping him to add many more projects some of which are solutions to the common problems we're facing in the real world. Hoping for great success ahead. Good Luck!"
+      },
+      {
+        "name": "Hanish Kataria",
+        "role": "Senior Associate at PwC",
+        "date": "February 6, 2022",
+        "relationship": "Hanish worked with Nitin on the same team",
+        "text": "I have closely worked with Nitin in TCS. I highly recommend his expertise in python. He takes full ownership of his work and is willing to put that extra help whenever you need it. Would definitely like to work with him again."
+      },
+      {
+        "name": "Manas Pratim Mahanta",
+        "role": "Data Analyst || Senior Quality Engineer",
+        "date": "August 11, 2021",
+        "relationship": "Manas worked with Nitin on the same team",
+        "text": "I have known Nitin Kumar for around 1 year in TCS, Kolkata. He is a very dedicated person who gives 100 percent to the team. He has good technical knowledge in Selenium and Test Automation and Python. He is a good team player and performs well above expectations. I really liked working with him. Wish him Good Luck."
+      }
+    ]
+  },
   "ai_tools": [
     { "name": "ChatGPT", "category": "LLM", "description": "Conversational AI for code generation and problem-solving" },
     { "name": "Claude", "category": "LLM", "description": "Anthropic's AI for complex reasoning and analysis" },
@@ -544,6 +618,7 @@
     { "id": "hero", "label": "Home", "icon": "home" },
     { "id": "about", "label": "About", "icon": "user" },
     { "id": "experience", "label": "Experience", "icon": "briefcase" },
+    { "id": "education", "label": "Education", "icon": "book" },
     { "id": "skills", "label": "Skills", "icon": "code" },
     { "id": "certifications", "label": "Certifications", "icon": "award" },
     { "id": "projects", "label": "Projects", "icon": "folder" },
@@ -551,6 +626,7 @@
     { "id": "ai-lab", "label": "AI Lab", "icon": "cpu" },
     { "id": "blog", "label": "Blog", "icon": "book-open" },
     { "id": "testimonials", "label": "Testimonials", "icon": "message-square" },
+    { "id": "recommendations", "label": "Recommendations", "icon": "thumbs-up" },
     { "id": "contact", "label": "Contact", "icon": "send" }
   ]
 }

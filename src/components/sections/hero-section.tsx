@@ -92,41 +92,79 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* 3D Avatar placeholder */}
+          {/* Interactive revolving avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="flex-1 flex justify-center items-center"
           >
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 p-[3px]">
-                <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center overflow-hidden border border-white/5">
-                  <div className="text-center">
-                    <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px] mb-4">
-                      <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
-                        <img
-                          src={data.personal_info.profile_image}
-                          alt={data.personal_info.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <p className="text-white/20 text-xs font-mono">3D Avatar Initializing...</p>
-                  </div>
-                </div>
-              </div>
-              {/* Orbiting decor */}
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96 group">
+              {/* Orbiting rings */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-dashed border-[#00E5FF]/20"
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-dashed border-[#00E5FF]/20 group-hover:border-[#00E5FF]/40 transition-all duration-700"
               />
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-4 rounded-full border border-dashed border-[#7B61FF]/15"
+                transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-3 rounded-full border border-dashed border-[#7B61FF]/15 group-hover:border-[#7B61FF]/30 transition-all duration-700"
               />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-6 rounded-full border border-dashed border-[#00FF9D]/10 group-hover:border-[#00FF9D]/25 transition-all duration-700"
+              />
+
+              {/* Orbiting dots */}
+              {Array.from({ length: 6 }).map((_, i) => {
+                const angle = (i / 6) * Math.PI * 2
+                const radius = 160
+                return (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_6px_rgba(0,229,255,0.6)]"
+                    style={{
+                      left: `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
+                      top: `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
+                    }}
+                    animate={{
+                      left: [
+                        `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
+                        `calc(50% + ${Math.cos(angle + Math.PI) * radius}px - 4px)`,
+                        `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
+                      ],
+                      top: [
+                        `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
+                        `calc(50% + ${Math.sin(angle + Math.PI) * radius}px - 4px)`,
+                        `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
+                      ],
+                    }}
+                    transition={{
+                      duration: 6 + i * 0.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: i * 0.3,
+                    }}
+                  />
+                )
+              })}
+
+              {/* Avatar */}
+              <div className="absolute inset-[10%] rounded-full bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 p-[3px] group-hover:shadow-[0_0_40px_rgba(0,229,255,0.15)] transition-all duration-700">
+                <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center overflow-hidden border border-white/5">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px]">
+                    <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
+                      <img
+                        src={data.personal_info.profile_image}
+                        alt={data.personal_info.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
