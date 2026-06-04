@@ -1,108 +1,138 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { Badge } from "@/components/ui/badge";
-import { portfolioData } from "@/lib/portfolio-data";
-import { Code2, Cpu, Brain, Globe } from "lucide-react";
+import { motion } from "motion/react"
+import { ScrollReveal } from "@/components/animations/scroll-reveal"
+import { Badge } from "@/components/ui/badge"
+import { data } from "@/lib/data"
+import { Code2, Zap, Shield, Brain, Database, Globe } from "lucide-react"
 
-const skills = portfolioData.skills;
+const categoryIcons: Record<string, React.ReactNode> = {
+  Languages: <Code2 className="w-4 h-4" />,
+  Automation: <Zap className="w-4 h-4" />,
+  Testing: <Shield className="w-4 h-4" />,
+  AI: <Brain className="w-4 h-4" />,
+  Data: <Database className="w-4 h-4" />,
+  Development: <Globe className="w-4 h-4" />,
+}
 
-const skillIcons = [Code2, Cpu, Brain, Globe];
-const skillColors = ["#00E5FF", "#7B61FF", "#00FF9D", "#00E5FF"];
+function SkillRing({ name, proficiency, index }: { name: string; proficiency: number; index: number }) {
+  const radius = 40
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference - (proficiency / 100) * circumference
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className="flex flex-col items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#00E5FF]/30 hover:bg-white/[0.04] transition-all duration-300 group"
+    >
+      <div className="relative w-24 h-24">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
+          <motion.circle
+            cx="50" cy="50" r={radius}
+            fill="none"
+            stroke="url(#grad)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            whileInView={{ strokeDashoffset: offset }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+          />
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#00E5FF" />
+              <stop offset="50%" stopColor="#7B61FF" />
+              <stop offset="100%" stopColor="#00FF9D" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-lg font-bold text-white">{proficiency}%</span>
+        </div>
+      </div>
+      <span className="text-sm text-white/70 group-hover:text-white transition-colors text-center">{name}</span>
+    </motion.div>
+  )
+}
 
 export function SkillsSection() {
+  const categories = [...new Set(data.skills.map((s) => s.category))]
+  const topSkills = data.skills.filter((s) => s.proficiency >= 70)
+  const otherSkills = data.skills.filter((s) => s.proficiency < 70)
+
   return (
-    <section id="my-skills" className="relative py-24 sm:py-32">
+    <section id="skills" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <Badge variant="default" className="mb-4">My Skills</Badge>
+            <Badge variant="premium" className="mb-4">
+              <Zap className="w-3.5 h-3.5 mr-1.5" />
+              Technical Proficiency
+            </Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              <span className="bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] bg-clip-text text-transparent">
-                Technical Proficiency
-              </span>
+              <span className="text-gradient">My Skills</span>
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skills.map((skill, i) => {
-            const Icon = skillIcons[i] || Code2;
-            const color = skillColors[i] || "#00E5FF";
-            const proficiency = parseInt(skill.proficiency);
-            const circumference = 2 * Math.PI * 54;
-            const offset = circumference - (proficiency / 100) * circumference;
+        {/* Top skills as rings */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 mb-16">
+          {topSkills.map((skill, i) => (
+            <SkillRing key={skill.name} name={skill.name} proficiency={skill.proficiency} index={i} />
+          ))}
+        </div>
 
+        {/* Other skills as badges */}
+        <div className="space-y-8">
+          {categories.map((cat) => {
+            const catSkills = data.skills.filter((s) => s.category === cat && s.proficiency < 70)
+            if (catSkills.length === 0) return null
             return (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                className="relative p-6 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm hover:border-white/20 transition-all duration-500 group"
-              >
-                <div className="flex flex-col items-center text-center">
-                  {/* Circular progress */}
-                  <div className="relative w-32 h-32 mb-4">
-                    <svg className="w-32 h-32 -rotate-90" viewBox="0 0 120 120">
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="54"
-                        fill="none"
-                        stroke="rgba(255,255,255,0.05)"
-                        strokeWidth="6"
-                      />
-                      <motion.circle
-                        cx="60"
-                        cy="60"
-                        r="54"
-                        fill="none"
-                        stroke={color}
-                        strokeWidth="6"
-                        strokeLinecap="round"
-                        strokeDasharray={circumference}
-                        initial={{ strokeDashoffset: circumference }}
-                        whileInView={{ strokeDashoffset: offset }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: i * 0.15 + 0.3, ease: "easeOut" }}
-                        style={{
-                          filter: `drop-shadow(0 0 6px ${color}40)`,
-                        }}
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon className="w-8 h-8" style={{ color }} />
-                    </div>
+              <ScrollReveal key={cat}>
+                <div className="p-5 rounded-xl border border-white/10 bg-white/[0.02]">
+                  <div className="flex items-center gap-2 mb-4">
+                    {categoryIcons[cat] || <Code2 className="w-4 h-4 text-[#00E5FF]" />}
+                    <h3 className="text-sm font-semibold text-white/80">{cat}</h3>
                   </div>
-
-                  <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[#00E5FF] transition-colors">
-                    {skill.name}
-                  </h3>
-
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="flex flex-wrap gap-3">
+                    {catSkills.map((skill, i) => (
                       <motion.div
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: color }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${proficiency}%` }}
+                        key={skill.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: i * 0.15 + 0.5, ease: "easeOut" }}
-                      />
-                    </div>
-                    <span className="text-xs font-mono" style={{ color }}>
-                      {skill.proficiency}
-                    </span>
+                        transition={{ delay: i * 0.05 }}
+                        className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white/[0.03] border border-white/10"
+                      >
+                        <span className="text-sm text-white/70">{skill.name}</span>
+                        <span className="text-xs text-white/30">{skill.proficiency}%</span>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </motion.div>
-            );
+              </ScrollReveal>
+            )
           })}
         </div>
+
+        {/* Skill Universe */}
+        <ScrollReveal>
+          <div className="mt-20 p-6 rounded-xl border border-white/10 bg-white/[0.02]">
+            <h3 className="text-lg font-semibold text-white mb-4 text-center">Tech Stack Universe</h3>
+            <p className="text-sm text-white/40 text-center mb-6">Interactive 3D skill visualization — rotate to explore</p>
+            <div className="w-full h-[400px] rounded-lg overflow-hidden border border-white/5 bg-black/20">
+              <div className="flex items-center justify-center h-full text-white/20 text-sm">
+                3D Skill Universe Available (Three.js) — Open in browser to view
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
-  );
+  )
 }

@@ -1,48 +1,32 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-import { Download, Mail, Sparkles, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { TypingAnimation } from "@/components/ui/typing-animation";
-import { MagneticButton } from "@/components/animations/magnetic-button";
-import { portfolioData } from "@/lib/portfolio-data";
+import { motion } from "motion/react"
+import { data } from "@/lib/data"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Download, Mail, ChevronDown, Sparkles, Terminal } from "lucide-react"
 
-const AvatarScene = dynamic(
-  () => import("@/components/three/avatar-scene").then((m) => ({ default: m.AvatarScene })),
-  { ssr: false }
-);
-const SceneContainer = dynamic(
-  () => import("@/components/three/scene-container").then((m) => ({ default: m.SceneContainer })),
-  { ssr: false }
-);
-
-const data = portfolioData.personal_info;
-const about = portfolioData.about;
+const roles = [
+  "Python Developer", "Automation Engineer", "Cyber Security Enthusiast",
+  "Data Science Learner", "Prompt Engineer", "Web Developer",
+]
 
 export function HeroSection() {
-  const scrollToContact = () => {
-    const el = document.getElementById("contact-me");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
-    >
-      {/* Background gradient orbs */}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Aurora overlays */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00E5FF]/10 rounded-full blur-[150px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#7B61FF]/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00FF9D]/5 rounded-full blur-[200px]" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#00E5FF]/5 rounded-full blur-[150px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7B61FF]/8 rounded-full blur-[130px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00FF9D]/3 rounded-full blur-[200px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          {/* Left content */}
           <div className="flex-1 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -50,81 +34,99 @@ export function HeroSection() {
               transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
             >
               <Badge variant="default" className="mb-6 animate-fade-in">
-                <Sparkles className="w-3 h-3 mr-1" />
-                {data.current_role}
+                <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+                {data.personal_info.current_role} @ {data.personal_info.current_company}
               </Badge>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">
-                <span className="text-white">Hi, I&apos;m </span>
-                <span className="bg-gradient-to-r from-[#00E5FF] via-[#7B61FF] to-[#00FF9D] bg-clip-text text-transparent">
-                  {data.name}
-                </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                <span className="text-white/90">Hi, I&apos;m </span>
+                <span className="text-gradient">{data.personal_info.name}</span>
               </h1>
 
-              <div className="text-xl sm:text-2xl lg:text-3xl text-white/80 mb-4 h-10">
-                <TypingAnimation
-                  words={["Python Developer", "Automation Expert", "Cyber Security Enthusiast", "Data Science Learner", "Web Developer"]}
-                  className="text-white/80"
-                />
+              <div className="h-12 mb-4">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03]"
+                >
+                  <Terminal className="w-4 h-4 text-[#00E5FF]" />
+                  <AnimatedRoleRotator roles={roles} />
+                </motion.div>
               </div>
 
               <p className="text-base sm:text-lg text-white/50 max-w-xl mb-8 leading-relaxed">
-                {data.headline}
+                {data.personal_info.headline}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto">
-                <MagneticButton>
-                  <a href={data.resume_url} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="group w-full sm:w-auto touch-manipulation">
-                      <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                      Download Resume
-                    </Button>
-                  </a>
-                </MagneticButton>
-                <MagneticButton>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={scrollToContact}
-                    className="group w-full sm:w-auto touch-manipulation"
-                  >
-                    <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                    Contact Me
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                <a href={data.personal_info.resume_url} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="group w-full sm:w-auto">
+                    <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+                    Download Resume
                   </Button>
-                </MagneticButton>
+                </a>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => scrollTo("contact")}
+                  className="group w-full sm:w-auto"
+                >
+                  <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                  Contact Me
+                </Button>
               </div>
 
-              {/* Tech stack badges */}
               <div className="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start">
-                {about.interests.map((interest, i) => (
+                {data.about.interests.slice(0, 6).map((interest, i) => (
                   <motion.div
                     key={interest}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 + i * 0.1 }}
                   >
-                    <Badge variant="secondary" className="text-xs">
-                      {interest}
-                    </Badge>
+                    <Badge variant="outline" className="text-xs">{interest}</Badge>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </div>
 
-          {/* Right - Interactive 3D Avatar */}
+          {/* 3D Avatar placeholder */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 1, delay: 0.3 }}
             className="flex-1 flex justify-center items-center"
           >
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
-              <SceneContainer className="w-full h-full">
-                <AvatarScene />
-              </SceneContainer>
-              {/* Ambient glow */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00E5FF]/10 via-[#7B61FF]/5 to-transparent blur-3xl pointer-events-none" />
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 p-[3px]">
+                <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center overflow-hidden border border-white/5">
+                  <div className="text-center">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px] mb-4">
+                      <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
+                        <img
+                          src={data.personal_info.profile_image}
+                          alt={data.personal_info.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <p className="text-white/20 text-xs font-mono">3D Avatar Initializing...</p>
+                  </div>
+                </div>
+              </div>
+              {/* Orbiting decor */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-dashed border-[#00E5FF]/20"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-4 rounded-full border border-dashed border-[#7B61FF]/15"
+              />
             </div>
           </motion.div>
         </div>
@@ -140,12 +142,27 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-white/30"
+          className="flex flex-col items-center gap-2 text-white/20"
         >
-          <span className="text-xs">Scroll</span>
+          <span className="text-xs">Scroll to explore</span>
           <ChevronDown size={16} />
         </motion.div>
       </motion.div>
     </section>
-  );
+  )
+}
+
+function AnimatedRoleRotator({ roles }: { roles: string[] }) {
+  return (
+    <span className="text-sm text-[#00E5FF] font-mono inline-block min-w-[180px]">
+      <motion.span
+        key={roles[0]}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {roles[0]}
+      </motion.span>
+    </span>
+  )
 }

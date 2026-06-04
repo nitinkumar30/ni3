@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { SectionParallax } from "@/components/three/SectionParallax";
-import { Badge } from "@/components/ui/badge";
-import { portfolioData } from "@/lib/portfolio-data";
-import { Star, GitFork, ExternalLink, Code2 } from "lucide-react";
+import { motion } from "motion/react"
+import { ScrollReveal } from "@/components/animations/scroll-reveal"
+import { SectionParallax } from "@/components/three/SectionParallax"
+import { Badge } from "@/components/ui/badge"
+import { data } from "@/lib/data"
+import { Star, GitFork, ExternalLink, Code2 } from "lucide-react"
 
-const projects = portfolioData.featured_projects;
+const projects = data.featured_projects
 
 export function FeaturedProjectsSection() {
   return (
@@ -18,7 +18,7 @@ export function FeaturedProjectsSection() {
             <div className="text-center mb-16">
               <Badge variant="default" className="mb-4">Open Source</Badge>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-                <span className="bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] bg-clip-text text-transparent">
+                <span className="text-gradient">
                   Featured Projects
                 </span>
               </h2>
@@ -96,18 +96,18 @@ export function FeaturedProjectsSection() {
             className="text-center mt-12"
           >
             <a
-              href={portfolioData.social_links.github}
+              href={data.personal_info.github}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 text-white/60 hover:text-white hover:border-white/20 hover:bg-white/5 transition-all duration-300 text-sm"
             >
               <GitFork className="w-4 h-4" />
-              View all {portfolioData.statistics.projects} projects on GitHub
+              View all {data.statistics.projects} projects on GitHub
               <ExternalLink className="w-3 h-3" />
             </a>
           </motion.div>
         </ScrollReveal>
       </div>
     </section>
-  );
+  )
 }

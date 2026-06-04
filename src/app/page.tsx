@@ -9,9 +9,15 @@ import { ExperienceSection } from "@/components/sections/experience-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { FeaturedProjectsSection } from "@/components/sections/featured-projects-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
+import { CertificationsSection } from "@/components/sections/certifications-section";
+import { GitHubSection } from "@/components/sections/github-section";
+import { AILabSection } from "@/components/sections/ai-lab-section";
+import { BlogSection } from "@/components/sections/blog-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
+import { AchievementsSection } from "@/components/sections/achievements-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
+import { KonamiEasterEgg } from "@/components/easter-egg";
 
 const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
   ssr: false,
@@ -28,12 +34,18 @@ export default function Home() {
         <EducationSection />
         <ExperienceSection />
         <SkillsSection />
+        <CertificationsSection />
         <FeaturedProjectsSection />
         <ProjectsSection />
+        <GitHubSection />
+        <AILabSection />
+        <BlogSection />
         <TestimonialsSection />
+        <AchievementsSection />
         <ContactSection />
       </main>
       <Footer />
+      <KonamiEasterEgg />
     </>
   );
 }

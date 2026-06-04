@@ -1,0 +1,398 @@
+{
+  "meta": {
+    "title": "NI3 — Developer Operating System",
+    "description": "Futuristic Automation Engineer navigating through a digital universe. 3D interactive portfolio showcasing engineering, automation, AI, and cybersecurity expertise.",
+    "author": "Nitin S Kumar",
+    "siteUrl": "https://ni3.dev",
+    "language": "en",
+    "keywords": ["Python Developer", "Automation Engineer", "Cyber Security", "Prompt Engineering", "Data Science", "Nitin Kumar"],
+    "favicon": "/images/favicon-1.png"
+  },
+  "personal_info": {
+    "name": "Nitin S Kumar",
+    "title": "Senior Automation Engineer",
+    "headline": "Automation Engineer navigating through a digital universe. Building the future with Python, AI, and an unhealthy amount of caffeine.",
+    "current_role": "Senior Automation Engineer",
+    "current_company": "Happiest Minds Technologies",
+    "current_location": "Pune, Maharashtra, India",
+    "profile_image": "/images/nitin.jpg",
+    "resume_url": "https://drive.google.com/drive/u/3/folders/14u3ywzWiFJjtl09JLlJUJc8eXEgJIkiZ",
+    "email": "nitinkumarpythonic@gmail.com",
+    "phone": "+91 9113797199",
+    "linkedin": "https://www.linkedin.com/in/nitin30kumar/",
+    "github": "https://github.com/nitinkumar30",
+    "twitter": "https://twitter.com/nitinkumar30",
+    "instagram": "https://www.instagram.com/nitinkumar30.py/",
+    "blog": "https://dev.to/nitinkumar30",
+    "hackerrank": "https://www.hackerrank.com/nitinkumar30",
+    "stackoverflow": "https://stackoverflow.com/users/10957470/nitin-kumar",
+    "whatsapp": "https://wa.me/919113797199?text=Hi%20Nitin.",
+    "holopin": "https://www.holopin.io/@nitinkumar30#",
+    "devto": "https://dev.to/nitinkumar30",
+    "pypi": "https://pypi.org/user/nitinkumar30/"
+  },
+  "about": {
+    "summary": "Automation Engineer with a focus on meeting quality goals and customer service. Experienced in using JIRA, GCP, Selenium, and other tools to complete tasks before deadlines. Currently serving as Senior Automation Engineer at Happiest Minds Technologies, Pune in the PDES (Product & Digital Engineering Services) department, developing and maintaining robust automation test scripts using Python and Selenium, leading framework migrations, and delivering sessions on GCP automation.",
+    "roles": ["Senior Automation Engineer", "Python Developer", "Aspiring Data Scientist", "Cyber Security Enthusiast", "Prompt Engineer"],
+    "interests": ["Python Automation", "Selenium Testing", "Data Science", "AI & LLMs", "Cyber Security", "GCP & Cloud", "Open Source"],
+    "available_for": ["Full-time", "Contract", "Remote"]
+  },
+  "statistics": {
+    "experience": "5+ Years",
+    "projects": "200+",
+    "certifications": "30+",
+    "tools": "11+",
+    "ai_tools": "4+",
+    "languages": "4",
+    "publications": "2",
+    "github_repos": "227",
+    "github_stars": "160+"
+  },
+  "skills": [
+    { "name": "Python", "proficiency": 90, "category": "Languages" },
+    { "name": "Automation", "proficiency": 90, "category": "Automation" },
+    { "name": "Selenium", "proficiency": 90, "category": "Automation" },
+    { "name": "Pytest", "proficiency": 85, "category": "Testing" },
+    { "name": "JIRA", "proficiency": 85, "category": "Tools" },
+    { "name": "Manual Testing", "proficiency": 85, "category": "Testing" },
+    { "name": "API Testing", "proficiency": 80, "category": "Testing" },
+    { "name": "Git", "proficiency": 80, "category": "Tools" },
+    { "name": "GCP", "proficiency": 75, "category": "Cloud" },
+    { "name": "SQL", "proficiency": 75, "category": "Data" },
+    { "name": "Java", "proficiency": 70, "category": "Languages" },
+    { "name": "Web Development", "proficiency": 70, "category": "Development" },
+    { "name": "Bootstrap", "proficiency": 70, "category": "Frontend" },
+    { "name": "Prompt Engineering", "proficiency": 70, "category": "AI" },
+    { "name": "Vibe Coding", "proficiency": 70, "category": "AI" },
+    { "name": "Playwright", "proficiency": 65, "category": "Automation" },
+    { "name": "Data Science", "proficiency": 60, "category": "Data" },
+    { "name": "Cyber Security", "proficiency": 50, "category": "Security" }
+  ],
+  "tech_stack_nodes": [
+    "Python", "Automation", "Selenium", "Playwright", "Data Science",
+    "Cyber Security", "Prompt Engineering", "AI", "React", "Next.js",
+    "Docker", "APIs", "Git", "Linux", "OpenAI", "Claude", "LangChain",
+    "TypeScript", "Node.js", "GCP", "SQL", "NoSQL", "CI/CD", "ML"
+  ],
+  "education": [
+    {
+      "degree": "MCA (Master of Computer Applications)",
+      "institution": "Arka Jain University",
+      "duration": "2021-2023",
+      "description": "Completed Post Graduation with Computer Software as specialization.",
+      "highlights": ["Computer Science", "Software Development", "Data Structures"]
+    },
+    {
+      "degree": "BCA (Bachelor of Computer Applications)",
+      "institution": "Arka Jain University",
+      "duration": "2017-2020",
+      "description": "Completed Graduation with IT as specialization.",
+      "highlights": ["Information Technology", "Programming", "Database Management"]
+    },
+    {
+      "degree": "Intermediate (Science)",
+      "institution": "DAV Public School, NIT Campus",
+      "year": "2017",
+      "description": "Completed schooling with Science stream & 1st division.",
+      "highlights": ["Physics", "Chemistry", "Mathematics"]
+    }
+  ],
+  "work_experience": [
+    {
+      "position": "Senior Automation Engineer",
+      "company": "Happiest Minds Technologies",
+      "duration": "03/2024 - Present",
+      "type": "Full-time",
+      "location": "Pune, India",
+      "highlights": [
+        "Department: PDES (Product & Digital Engineering Services)",
+        "Developed and maintained robust automation test scripts using Python and Selenium",
+        "Enhanced existing automation frameworks, optimizing performance and ensuring scalability",
+        "Led migration of test automation frameworks from legacy systems to modern platforms",
+        "Headed an intern's one-month internship in data science",
+        "Delivered comprehensive session on GCP automation for data migration"
+      ]
+    },
+    {
+      "position": "System Engineer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2023 - 02/2024",
+      "type": "Full-time",
+      "location": "Kolkata, India",
+      "highlights": ["Served my organisation as Automation Engineer in Python."]
+    },
+    {
+      "position": "Assistant System Engineer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2022 - 09/2023",
+      "type": "Full-time",
+      "location": "Kolkata, India",
+      "highlights": ["System engineering, software engineering, system integration", "Hardware and software testing", "Performance analysis using manual and automated tools"]
+    },
+    {
+      "position": "Automation Engineer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2021 - 09/2022",
+      "type": "Full-time",
+      "location": "Kolkata, India",
+      "highlights": ["Selenium Test Environment setup", "Framework design and implementation", "Defect management and regression testing", "Customer interaction and issue resolution"]
+    },
+    {
+      "position": "IT Analyst",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2020 - 09/2021",
+      "type": "Full-time",
+      "location": "Kolkata, India",
+      "highlights": ["Software Functional Testing", "Test scenario preparation and execution", "Database impact analysis", "Client interaction for product requirements"]
+    },
+    {
+      "position": "Data Science & Business Analytics Intern",
+      "company": "The Sparks Foundation",
+      "duration": "07/2021",
+      "type": "Internship",
+      "location": "Remote",
+      "highlights": ["Virtual internship on Data Science & Business Analytics"]
+    },
+    {
+      "position": "Placement Coordinator",
+      "company": "Arka Jain University",
+      "duration": "09/2019 - 02/2020",
+      "type": "Part-time",
+      "location": "Jamshedpur, India",
+      "highlights": ["BCA student placement coordination", "Resume building and interview skills workshops", "Employer communication management"]
+    },
+    {
+      "position": "Internship Trainee",
+      "company": "Integrated Software Enterprises",
+      "duration": "05/2019 - 07/2019",
+      "type": "Internship",
+      "location": "Jamshedpur, India",
+      "highlights": ["ASP.NET framework", "SQL Server backend development"]
+    }
+  ],
+  "certifications": [
+    { "name": "Eduhub Tech Conference", "issuer": "Eduhub", "year": "2024" },
+    { "name": "Programming Foundations: Software Testing/QA", "issuer": "LinkedIn Learning", "year": "2024" },
+    { "name": "Digital: Python Foundation", "issuer": "Digital", "year": "2023" },
+    { "name": "Codegoda 2022 Programming Competition", "issuer": "Codegoda", "year": "2022" },
+    { "name": "Wifi Network Hacking", "issuer": "Udemy", "year": "2022" }
+  ],
+  "honors": [
+    { "title": "iAppreciate Q2 '24", "description": "Quarterly recognition award at Happiest Minds Technologies", "issuer": "Happiest Minds Technologies", "year": "2024" }
+  ],
+  "publications": [
+    {
+      "title": "PyShrink: Python Projects, Minus the Junk",
+      "description": "A Python project sanitizer & packager built with a POM-style framework architecture, rich console output, and just enough sarcasm to make good engineering memorable.",
+      "type": "Open Source",
+      "url": "https://github.com/nitinkumar30/pyshrink-vscode"
+    },
+    {
+      "title": "PhoneTracer ⚡ OSINT Phone Number Metadata Toolkit",
+      "description": "An OSINT toolkit for extracting metadata from phone numbers, built with Python for reconnaissance and security research.",
+      "type": "Open Source",
+      "url": "https://github.com/nitinkumar30/phonetracer"
+    }
+  ],
+  "featured_projects": [
+    {
+      "name": "edu-mail-auto-generator",
+      "description": "Automatically generate an edu-mail for you in less than 10 minutes using Python and Selenium.",
+      "stars": 119,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/edu-mail-auto-generator",
+      "category": "Automation",
+      "topics": ["automation", "selenium", "python"]
+    },
+    {
+      "name": "auto-book-covid-vaccine-slots",
+      "description": "Booking vaccine slots automatically whenever a slot is ready using Python and Selenium.",
+      "stars": 3,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/auto-book-covid-vaccine-slots",
+      "category": "Automation",
+      "topics": ["automation", "covid-19", "selenium"]
+    },
+    {
+      "name": "number-recognition-using-python",
+      "description": "Handwriting digit recognition with ML, dataset, and GUI using Tkinter.",
+      "stars": 3,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/number-recognition-using-python",
+      "category": "Data Science",
+      "topics": ["machine-learning", "digit-recognizer", "python"]
+    },
+    {
+      "name": "keylogger",
+      "description": "Keylogger made in Python demonstrating cyber security concepts.",
+      "stars": 3,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/keylogger",
+      "category": "Cyber Security",
+      "topics": ["cyber-security", "python"]
+    },
+    {
+      "name": "control-pc-remotely",
+      "description": "Control your PC remotely using this mini-project with just 2 files.",
+      "stars": 2,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/control-pc-remotely",
+      "category": "Automation",
+      "topics": ["networking", "python", "remote"]
+    },
+    {
+      "name": "hawk",
+      "description": "Network, recon and offensive-security tool for Linux systems.",
+      "stars": 2,
+      "language": "Shell",
+      "url": "https://github.com/nitinkumar30/hawk",
+      "category": "Cyber Security",
+      "topics": ["security", "recon", "network"]
+    },
+    {
+      "name": "auto-search-job-openings",
+      "description": "Automatically search job openings from various sites using Python.",
+      "stars": 2,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/auto-search-job-openings",
+      "category": "Automation",
+      "topics": ["automation", "job-search", "python"]
+    },
+    {
+      "name": "phonetracer",
+      "description": "OSINT Phone Number Metadata Toolkit for phone number reconnaissance.",
+      "stars": 1,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/phonetracer",
+      "category": "Cyber Security",
+      "topics": ["osint", "security", "python"]
+    },
+    {
+      "name": "pyshrink-vscode",
+      "description": "Python project sanitizer & packager with a POM-style framework architecture.",
+      "stars": 1,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/pyshrink-vscode",
+      "category": "Development",
+      "topics": ["python", "vscode", "packaging"]
+    },
+    {
+      "name": "Black-Coder",
+      "description": "Blog project built with Python Flask framework for user-friendly websites.",
+      "stars": 2,
+      "language": "CSS",
+      "url": "https://github.com/nitinkumar30/Black-Coder",
+      "category": "Web Development",
+      "topics": ["flask", "blog", "web-development"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Auto Book Slot for Vaccine",
+      "description": "Automates the process of booking a slot for taking COVID vaccine during the pandemic.",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"]
+    },
+    {
+      "name": "Auto Edu Mail Generator",
+      "description": "Automates the process of creating EDU emails.",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"]
+    },
+    {
+      "name": "Blog Website",
+      "description": "A blog website built using Python Flask.",
+      "category": "Web Development",
+      "technologies": ["Python", "Flask"]
+    },
+    {
+      "name": "Search Engine for CSV",
+      "description": "Allows users to search through CSV data efficiently.",
+      "category": "Data",
+      "technologies": ["Python", "Pandas"]
+    },
+    {
+      "name": "Number Recognition",
+      "description": "Machine learning project that recognizes handwritten numbers.",
+      "category": "Data Science",
+      "technologies": ["Python", "Scikit-learn"]
+    },
+    {
+      "name": "Web Scrapping",
+      "description": "Automates collection of data from websites.",
+      "category": "Automation",
+      "technologies": ["Python", "BeautifulSoup"]
+    },
+    {
+      "name": "Ransomware Using Python",
+      "description": "Demonstrates file encryption and verification processes.",
+      "category": "Cyber Security",
+      "technologies": ["Python", "Cryptography"]
+    },
+    {
+      "name": "Cosmopolitan Award Nomination Automation",
+      "description": "Automates nomination submissions for 22 categories.",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"]
+    },
+    {
+      "name": "Automation Mini Projects",
+      "description": "Collection of automation projects built using Python.",
+      "category": "Automation",
+      "technologies": ["Python"]
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Zeba Bukhtayar",
+      "designation": "AJU Placement Cell",
+      "testimonial": "You're quite good at your work at this young age. You're doing wonderful job.",
+      "rating": 5
+    },
+    {
+      "name": "Divya Pakairay",
+      "designation": "AJU CS Department Professor",
+      "testimonial": "Nice and humble student with good understanding of Python. Knows better usage of it in almost any field be it automation, creating applications, Web designing etc.",
+      "rating": 5
+    },
+    {
+      "name": "Naveen Kumar",
+      "designation": "1st Client",
+      "testimonial": "Best Web Designer at this young age. Even not a graduate and working as a freelance Web Developer. God Bless!",
+      "rating": 5
+    }
+  ],
+  "ai_tools": [
+    { "name": "ChatGPT", "category": "AI Assistant", "description": "Conversational AI for code generation and problem-solving" },
+    { "name": "Claude", "category": "AI Assistant", "description": "Anthropic's AI for complex reasoning and analysis" },
+    { "name": "Gemini", "category": "AI Assistant", "description": "Google's multimodal AI for diverse tasks" },
+    { "name": "Cursor", "category": "IDE", "description": "AI-native code editor with intelligent completions" },
+    { "name": "Windsurf", "category": "IDE", "description": "AI-powered development environment" },
+    { "name": "GitHub Copilot", "category": "AI Assistant", "description": "AI pair programmer for real-time code suggestions" }
+  ],
+  "automation_tools": [
+    { "name": "Selenium", "category": "Browser Automation", "icon": "globe" },
+    { "name": "Playwright", "category": "Browser Automation", "icon": "globe" },
+    { "name": "Python", "category": "Language", "icon": "code" },
+    { "name": "APIs", "category": "Integration", "icon": "api" },
+    { "name": "BeautifulSoup", "category": "Web Scraping", "icon": "file" },
+    { "name": "Pandas", "category": "Data Processing", "icon": "database" },
+    { "name": "Pytest", "category": "Testing", "icon": "check" },
+    { "name": "Docker", "category": "Containerization", "icon": "container" },
+    { "name": "CI/CD", "category": "DevOps", "icon": "refresh" },
+    { "name": "Git", "category": "Version Control", "icon": "git-branch" }
+  ],
+  "navigation": [
+    { "id": "hero", "label": "Home", "icon": "home" },
+    { "id": "about", "label": "About", "icon": "user" },
+    { "id": "experience", "label": "Experience", "icon": "briefcase" },
+    { "id": "skills", "label": "Skills", "icon": "code" },
+    { "id": "certifications", "label": "Certifications", "icon": "award" },
+    { "id": "projects", "label": "Projects", "icon": "folder" },
+    { "id": "dashboard", "label": "Dashboard", "icon": "bar-chart" },
+    { "id": "ai-lab", "label": "AI Lab", "icon": "cpu" },
+    { "id": "blog", "label": "Blog", "icon": "book-open" },
+    { "id": "testimonials", "label": "Testimonials", "icon": "message-square" },
+    { "id": "contact", "label": "Contact", "icon": "send" }
+  ]
+}

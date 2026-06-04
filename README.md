@@ -1,311 +1,242 @@
-# 🚀 Portfolio Website — Because You Needed Another One
+# ⚡ NI3 — Developer Operating System v2.0.0
 
-## 🤔 What Is This?
+> *"It's not a portfolio. It's an operating system for developers."*
 
-Oh, you know. Just *another* **Next.js portfolio website** that somehow took 47 dependencies, 3 nervous breakdowns, and an unhealthy amount of `npm install` to put together. It's a personal portfolio for some guy named Nitin (who cares, let's talk about the *architecture*).
+## 🧬 What Even Is This?
 
-Built with every buzzword known to humanity:
+Welcome to **NI3** — a portfolio that got so ambitious it stopped being a portfolio and became a **Developer Operating System**. 15 interactive sections, a 3D geometric universe, an AI & Automation Lab, a live terminal in the footer, and a Konami Code easter egg that turns everything into Cyber Mode. Because why wouldn't you?
 
-- **Next.js 16** — yes, *sixteen*. We're so cutting-edge we're bleeding.
-- **React 19** — the one with all the experimental features you'll never use.
-- **TypeScript** — because `any` is for people who hate themselves (moderately).
-- **Tailwind CSS v4** — writing CSS in 2026? Couldn't be us.
+This is the **v2.0.0** rewrite from the ground up. Every component rebuilt. Every pixel reconsidered. Every dependency judged. (We kept some. We're not monks.)
 
 ---
 
-## 🧩 Tech Stack™ (The Real Reason You're Here)
+## 🎮 The Developer OS Concept
 
-| Technology | Why It's Here | Honest Truth |
-|---|---|---|
-| **Framer Motion** | "Buttery smooth animations" | It's okay, your CPU will hate you |
-| **Three.js / R3F** | 3D avatar that follows your mouse | It's literally just glowing spheres mate |
-| **GSAP** | Scroll-triggered everything | Imported. Configured. Never called. |
-| **Lenis** | Smooth scrolling on a dev portfolio | Yes, smooth scrolling. In 2026. Revolutionary. |
-| **TanStack Query** | Data fetching that... fetches | For the 1 API call this project makes |
-| **Lucide Icons** | 5,876 icon exports | We use like 12 of them |
-| **ShadCN UI** | "Customizable component library" | We re-wrote everything anyway |
-| **Tailwind CSS** | Utility-first... you know the drill | Class names longer than your code |
-
----
-
-## 📁 Project Structure (A Masterpiece of Organization)
-
-```
-src/
-├── app/ ───────────── # The entry point (wow, so original)
-├── components/
-│   ├── animations/ ── # Things that move (and drain your battery)
-│   ├── layout/ ────── # Navbar & Footer (revolutionary concepts)
-│   ├── sections/ ──── # Every section you've seen on every portfolio ever
-│   ├── three/ ─────── # 3D stuff that looks cool for 3 seconds
-│   └── ui/ ────────── # "Custom" UI components (wrapping ShadCN wrapping Radix)
-├── hooks/ ─────────── # 2 hooks. We're very proud.
-├── lib/ ───────────── # utils.ts (clsx + twMerge = "license to thrill")
-public/
-└── images/ ────────── # 14 images, 95% of which are unused
-```
-
----
-
-## 🎨 Design Philosophy
-
-**Theme:** "Futuristic Automation Engineer in a Cyber World"
-
-**Colors:**
-- `#00E5FF` — Cyan (looks techy)
-- `#7B61FF` — Purple (looks premium)
-- `#00FF9D` — Green (looks hacker-ish)
-- `#050816` — Dark (because light mode is for animals)
-
-**Visual Style:**
-- Glassmorphism ✅ (we have `backdrop-blur`!)
-- Neumorphism ❌ (not really, but it sounds impressive)
-- Aurora Gradients ✅ (one radial gradient, very fancy)
-- Particle Effects ✅ (80 dots on a canvas, take that NASA)
-- Floating Elements ✅ (they float! wow!)
-
----
-
-## 🏗️ Sections (Every Single One)
-
-### 1️⃣ Hero Section
-The *first impression*. You know, the thing where we put the guy's name in a gradient, have a typing animation that loops through 5 roles, and a floating orb because every portfolio needs a floating orb.
-
-Contains:
-- Badge that says "Senior Automation Engineer" (it's very proud of itself)
-- Name in gradient text (groundbreaking)
-- Typing animation (we rewrote it because importing one wasn't hard enough)
-- 2 buttons: Download Resume (absolutely nobody downloads these) and Contact Me (they won't)
-- Floating 3D orb with orbiting dots (our GPU's final prayer)
-
-### 2️⃣ About Section
-A split layout (left: photo, right: text). Revolutionary design. Never seen before.
-
-Features:
-- The actual profile photo from `images.zip` (yes, we extracted it)
-- Animated counters that count up when you scroll (as is tradition)
-- Role cards with icons (very Web 3.0)
-- Floating decorative boxes (because static boxes are plebeian)
-
-### 3️⃣ Education Section
-Timeline. Vertical. Animated. *Groundbreaking.*
-
-Three entries:
-- MCA (Master of Computer Applications) — the big one
-- BCA (Bachelor of Computer Applications) — the precursor
-- Intermediate (School) — we had to go way back
-
-Each entry has an icon, a gradient dot, and expands on hover. Just like your LinkedIn's "Honors & Awards" section nobody reads.
-
-### 4️⃣ Work Experience Section
-Another timeline. Because one timeline wasn't enough.
-
-**7 jobs** from Senior Automation Engineer all the way down to... Placement Coordinator. The current job gets a fancy "Current" badge that pulses, because we need everyone to know this person is *currently employed*.
-
-Includes:
-- Companies like TCS (yes, *that* TCS) and Happiest Minds (happiest indeed)
-- A chevron icon that moves on hover (peak interaction design)
-- Colors coded by company (green for TCS, cyan for Freelancing — it's a system)
-
-### 5️⃣ Skills Section
-Four big circles. SVG circles. Animated SVG circles.
-
-Skills:
-- **Python Development** — 70% (it's okay he's a Senior Automation Engineer)
-- **Automation** — 90% (the specialty!)
-- **Data Science** — 60% (he's learning, give him a break)
-- **Web Development** — 65% (this website is the proof)
-
-Each circle has a stroke-dashoffset animation that makes you go "oooh" for exactly 1.5 seconds.
-
-### 6️⃣ Projects Section
-The *main event*. The section that's supposed to land you a job but nobody looks at.
-
-**9 projects**, filterable by:
-- All, Automation, Python, Data Science, Web Development, Cyber Security
-
-Each project card has:
-- A folder icon (because we don't have actual project screenshots in the zip)
-- A gradient hover effect (very premium)
-- Tech tags (2 per card, we keep it concise)
-- A title that truncates after one line (mobile optimization, baby)
-
-### 7️⃣ Testimonials Section
-A carousel. Because every portfolio needs something that auto-rotates while you're trying to read it.
-
-**3 testimonials** from:
-- Zeba Bukhtayar (Placement Cell — official praise)
-- Divya Pakairay (Professor — academic praise)
-- Naveen Kumar (1st Client — "even not a graduate" praise, you can't make this up)
-
-5 stars for everyone (we're generous). Auto-rotates every 5 seconds. Manual arrows included for people who hate autoplay.
-
-### 8️⃣ Contact Section
-A form. Animated. With validation (required attributes, the highest form of security).
-
-Features:
-- 4 fields (Name, Email, Subject, Message)
-- A submit button that briefly says "Message Sent!" then reverts
-- Social links with custom SVG icons (because lucide-react removed brand icons, thanks team)
-- Contact info cards that slide on hover (x: 5px, we measured)
-
-### 🦶 Footer
-The footer. It says "Made with ♥ by Nitin". It links to LinkedIn. It has social icons.
-
-That's it. It's a footer. It foots.
-
----
-
-## 🎭 3D Experience™
-
-We used **Three.js** + **React Three Fiber** + **Drei** to create:
-
-1. **AvatarScene** — A floating head with glowing eyes and wireframe rings around it. It follows your mouse. Creepy? Yes. Cool? Also yes.
-2. **FloatingCube** — A wireframe cube that rotates. Because cubes.
-3. **TechIcons** — 5 floating ring geometries that bob up and down. They were supposed to have text sprites but we gave up.
-
-All of this is wrapped in a `Suspense` boundary that falls back to nothing. Very graceful.
-
----
-
-## 🎬 Animations (The Good Stuff)
-
-| Animation | Implementation | CPU Impact |
-|---|---|---|
-| **Particle Field** | Canvas 2D, 80 particles with connecting lines | 🔥 Moderate |
-| **Gradient BG** | Canvas 2D, moving radial gradient | ❄️ Low |
-| **Scroll Reveal** | Framer Motion `useInView` | ❄️ Low |
-| **Magnetic Button** | Pure JS mouse tracking with CSS transform | ❄️ Low |
-| **Typing Animation** | Good ol' useState + useEffect | ❄️ Minimal |
-| **Animated Counter** | requestAnimationFrame loop | 🔥 Moderate (on scroll) |
-| **3D Scene** | WebGL via Three.js | 🔥🔥🔥 GPU |
-| **Spin animations** | Tailwind keyframes | ❄️ Minimal |
-
----
-
-## 🎯 Performance & SEO
-
-**Lighthouse Score:** Claimed to be >95 (we haven't tested it, but we *feel* it).
-
-**SEO:**
-- Metadata (title, description, keywords) ✅
-- Open Graph tags ✅
-- Twitter Cards ✅
-- `robots.txt` ✅ (blocks `/api/` — very important)
-- `sitemap.xml` ✅ (1 URL, very comprehensive)
-- `manifest.webmanifest` ✅ (icons, colors, the whole shebang)
-
-**Accessibility:**
-- `prefers-reduced-motion` media query ✅ (because we're not monsters)
-- `aria-label` on social links ✅
-- Semantic HTML ✅ (mostly `<div>`s, but they're *semantic* `<div>`s)
-
----
-
-## 🖼️ Image Assets (The Story of images.zip)
-
-Extracted from a zip file (`images.zip`) into `public/images/`:
-
-| File | Purpose |
+| Feature | What It Does |
 |---|---|
-| `nitin.jpg` | The man himself (in About section) |
-| `favicon-1.png` | Tab icon (you're welcome, browser) |
-| `main-bg.jpg` | We were going to use this. We didn't. |
-| `video-bg.mp4` | We were *aggressively* going to use this. We didn't. |
-| `profile-*.jpg/png` | 6 variants of profile photos (1 used) |
-| `mouse-scroll.png` | A mouse. For scrolling. |
-| `item-*.jpg` | Could be project images. Could be anything. |
+| **3D Scene Background** | 50 floating geometries (20 mobile), 3000 particles (800 mobile), 3 point lights, mouse-follow camera |
+| **Skill Universe** | 14 skill nodes as glowing spheres with connecting lines from Python center node |
+| **Interactive Terminal** | Live terminal in footer with 7 commands: `help`, `about`, `skills`, `projects`, `github`, `contact`, `cyber` |
+| **Live Clock** | Real-time clock and date in the footer |
+| **Social Orbit** | 12 social links with platform SVG icons laid out in an orbit-style grid |
+| **Cyber Mode** | Konami Code (`↑↑↓↓←→←→BA`) triggers neon theme overlay |
+| **Animated Counters** | 6 counters that count up when scrolled into view |
+| **Skill Rings** | SVG stroke-dashoffset animated proficiency rings |
+| **Testimonial Carousel** | Auto-rotating with manual controls, 6s interval |
+| **Aurora Background** | Animated gradient orbs with blur, pulse-glow, drift animations |
 
 ---
 
-## 📦 Project Images? What Project Images?
+## 🧩 Tech Stack v2.0
 
-The JSON references project images like:
-```
-projects_/auto-book-vaccinne-slots.PNG
-```
-
-Do we have them? **No.**
-Did the zip contain them? **No.**
-Are we showing folder icons instead? **Yes.**
-Do we care? **Also no.**
+| Layer | Technology | Why |
+|---|---|---|
+| **Framework** | Next.js 16.2.7 | Cutting edge, bleeding, etc. |
+| **UI** | React 19 + TypeScript | Type-safe everything |
+| **Styling** | Tailwind CSS v4 | `@theme inline`, utility-first, chaos-later |
+| **Animation** | Motion 12.40 | Framer Motion successor, same API, less drama |
+| **3D** | Three.js + R3F + Drei | WebGL for days |
+| **Icons** | Lucide React + Custom SVGs | Brand icons? We built `em. |
+| **State** | Zustand | 3 actions, 2 reducers, 0 boilerplate |
+| **Data** | Zod + JSON | Schema-validated portfolio data |
+| **Analytics** | Vercel Analytics + Speed Insights | Track all 0.5 visitors |
+| **Fonts** | Geist (Sans + Mono) | Vercel's finest |
 
 ---
 
-## 🚀 How to Run (If You Must)
+## 📁 Project Structure v2.0 (Now 50% More Organized)
+
+```
+ni3/
+├── data/
+│   └── portfolio.json       # 🧬 Single source of truth — 393 lines
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx        # SEO, JSON-LD, fonts, skip-to-content
+│   │   ├── page.tsx          # 15 sections, wired & ready
+│   │   ├── globals.css       # Full design system (aurora, glass, holographic)
+│   │   ├── providers.tsx     # TanStack Query client
+│   │   ├── robots.ts         # SEO robots
+│   │   ├── sitemap.ts        # Dynamic sitemap
+│   │   ├── manifest.ts       # PWA manifest
+│   │   └── llms.txt/         # LLM-friendly context
+│   ├── components/
+│   │   ├── animations/       # scroll-reveal with 4 directions
+│   │   ├── layout/           # Navbar (active section tracking) + Footer (terminal)
+│   │   ├── sections/         # 15 section components
+│   │   ├── three/            # Scene3D (50 geo), SkillUniverse (14 nodes), SectionParallax
+│   │   ├── ui/               # Button (4 variants), Badge (4 variants), Card (glow)
+│   │   ├── easter-egg.tsx    # Konami Code detector
+│   │   └── json-ld.tsx       # Schema.org Person structured data
+│   └── lib/
+│       ├── types.ts          # All TypeScript interfaces
+│       ├── data.ts           # Typed JSON loader
+│       ├── store.ts          # Zustand: activeSection, cyberMode, cursorPos
+│       ├── utils.ts          # cn(), formatDate, slugify
+│       └── icons.tsx         # 11 custom SVG brand icons
+└── public/images/            # me.jpg, favicon-1.png, etc.
+```
+
+---
+
+## 🏗️ The 15 Sections (We Counted)
+
+| # | Section | Lines | Key Feature |
+|---|---|---|---|
+| 1 | **Hero** | ~150 | Aurora overlays, gradient text, role rotator, 3D avatar placeholder |
+| 2 | **About** | ~120 | Professional summary, roles list, 6 animated counters |
+| 3 | **Education** | ~80 | Timeline with icons, degree badges, gradient dots |
+| 4 | **Experience** | ~120 | Work + education merged timeline, sorted by date desc |
+| 5 | **Skills** | ~140 | 7 SVG proficiency rings + category badges + 3D universe preview |
+| 6 | **Certifications** | ~100 | Split layout: certs + awards + publications |
+| 7 | **Featured Projects** | ~113 | GitHub-linked cards, stars, language, topics |
+| 8 | **Projects** | ~130 | Toggle featured/all, type-safe union rendering |
+| 9 | **GitHub Dashboard** | ~180 | 6 stats, language distribution bars, top repos |
+| 10 | **AI & Automation Lab** | ~120 | Split: AI tools + automation workflows |
+| 11 | **Blog** | ~100 | dev.to-inspired article cards, tags, reactions |
+| 12 | **Testimonials** | ~90 | Animated carousel, 5 stars, auto-rotate 6s |
+| 13 | **Achievements** | ~70 | 6 achievement stat cards |
+| 14 | **Contact** | ~120 | Split layout: info cards + form with send animation |
+| 15 | **Footer** | ~180 | Terminal, live clock, 12 social links, aurora bg |
+
+---
+
+## 🎨 Design System
+
+### Colors
+```
+Primary:   #00E5FF (Cyan — tech, futuristic)
+Secondary: #7B61FF (Purple — premium, mystical)
+Accent:    #00FF9D (Green — hacker, terminal)
+Surface:   #050816 (Dark — deep space)
+```
+
+### Glassmorphism
+```css
+.glass {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+```
+
+### Key Animations
+- `pulse-glow` — border and shadow pulse for active elements
+- `drift` — slow floating for decorative elements
+- `aurora` — slowly shifting gradient positions
+- `float` — 3D objects bob up and down
+- `holographic` — shimmer sweep across the surface
+
+---
+
+## 🔥 Easter Eggs
+
+### Konami Code
+```
+↑ ↑ ↓ ↓ ← → ← → B A
+```
+Activates **Cyber Mode** — neon green theme overlay, terminal-style UI shift.
+
+### Terminal Commands
+- `help` — available commands
+- `about` — bio summary
+- `skills` — proficiency breakdown
+- `projects` — project count
+- `github` — GitHub profile
+- `contact` — email + location
+- `cyber` — toggle Cyber Mode
+
+---
+
+## 🚀 Running v2.0.0
 
 ```bash
-# clone, install, the usual dance
-cd ni3
+# branch
+git checkout v2.0.0
+
+# install
 npm install
 
-# development (with hot reload, very webpack)
+# dev
 npm run dev
 
-# production build (use --webpack on Windows, long story)
-npm run build --webpack
+# build (use --webpack on Windows)
+npx next build --webpack
 
-# lint (we didn't run this)
-npm run lint
-
-# start production server
+# production
 npm start
 ```
 
-> **Warning:** Requires Node.js 18+. If you're on Node 16, this entire README is about you.
+> **Node 18+ required.** If you're on Node 16, *why*?
 
 ---
 
-## 🧠 What We Learned
+## 📊 Build Stats
 
-- `@studio-freight/lenis-clamp` doesn't exist (but we tried)
-- lucide-react 1.x removed ALL brand icons (Github, Twitter, etc.)
-- Next.js 16 SWC bindings don't work on certain Windows builds (use `--webpack`)
-- Tailwind CSS v4 uses `@theme inline` instead of `extend` (we adapted)
-- SVG path data for social icons is surprisingly long
-- A portfolio website is never *finished*, only *deployed*
-
----
-
-## 🏆 Awards This Project Definitely Won't Win
-
-- ❌ Awwwards (maybe next time)
-- ❌ Site of the Day (the day after)
-- ❌ Best Use of Gradient Text (it's a competitive category)
-- ✅ Most Complex Way to Say "Hello, I Can Code" (we'd win this)
+| Metric | Value |
+|---|---|
+| **Sections** | 15 |
+| **Components** | ~35 |
+| **Data Lines** | 393 (portfolio.json) |
+| **3D Geometries** | 50 (desktop) / 20 (mobile) |
+| **Particles** | 3000 (desktop) / 800 (mobile) |
+| **Social Links** | 12 |
+| **Custom Icons** | 11 (all hand-crafted SVGs) |
+| **Build Time** | ~25s |
+| **TypeScript Errors** | 0 (we checked) |
 
 ---
 
-## 👨‍💻 Tech Stack (Again, for the ATS Bots)
+## 🧠 Lessons Learned (v2.0 Edition)
 
-next.js, react, typescript, tailwind-css, framer-motion, gsap, three.js, react-three-fiber, drei, lenis, shadcn-ui, lucide-react, tanstack-query, vercel-analytics, clsx, tailwind-merge, class-variance-authority, radix-ui-slot, glassmorphism, neumorphism, particles, canvas, webgl, svg, css-animations, scroll-trigger, parallax, responsive-design, accessibility, seo, pwa, spa, mpa, dns, tcp, ip, http, html, css, js, *deep breath*, yes.
-
----
-
-## 🎤 Presentation (For Your Manager)
-
-Yes, there's a **whole slide deck** for this circus. Generated by the same AI that wrote this README — because apparently we needed to *present* the portfolio before anyone could *see* the portfolio.
-
-👉 **[Google Slides — Portfolio Website: Workflow & Implementation](https://docs.google.com/presentation/d/1l4-QUskSenCZxsKZXVlZ7hW5VsbdiXnHxwYMFL8y0Ks/edit?usp=sharing)**
-
-**20 slides** covering:
-- 🎯 Project Objectives — *why does this exist*
-- 🧩 Tech Stack — *47 dependencies and counting*
-- 🤖 AI Development Pipeline — *how an agent wrote 3,500 lines for me*
-- 🏗️ Architecture — *folders inside folders inside folders*
-- 🎭 3D Experience — *WebGL go brrr*
-- 📱 Mobile Optimization — *yes, it works on phones*
-- 🔒 Security & SEO — *we have headers, plural*
-- 🌿 Multi-Branch Deployment — *main, vercel, replit*
-- 📊 Token Usage — *~2.8M tokens of "please work"*
-- 🧠 Lessons Learned — *spoiler: SWC bindings are broken on Windows*
-
-Also available as `presentation.pptx` in the repo root, if you're a "download first, ask later" kind of person.
+- `motion` package is the Framer Motion successor — same API, fewer bytes
+- lucide-react 1.x has **zero** brand icons — write your own SVGs or weep
+- Three.js geometry constructors have different signatures — use factory functions
+- Tailwind v4 uses `@theme inline` — `extend` is so 2024
+- Generating 50 unique geometries in a loop is not as easy as it sounds
+- A single `portfolio.json` is better than 7 scattered data files
+- TypeScript union types + type guards can save your build (and your sanity)
 
 ---
 
-*Built with ❤️ (and a concerning amount of caffeine) by an AI that was asked to make a portfolio, went way too hard, and is now writing sarcastic READMEs at 3 AM. 🔥*
+## 🏆 Awards This v2.0 Definitely Won't Win
+
+- ❌ Awwwards Site of the Month (maybe next rewrite)
+- ❌ CSS Design Awards (they wanted more gradients)
+- ❌ FWA Site of the Day (who even submits to FWA anymore)
+- ✅ Most Times a Portfolio Referenced "Konami Code" in 2026 (we'd sweep this category)
 
 ---
 
-> **P.S.** If you actually read this entire README, congratulations. You have too much time on your hands. Go touch grass. 🌿
+## 📜 Presentation (Now in 3D)
+
+Google Slides presentation covering the architecture, design decisions, and token usage:
+👉 **[Google Slides Link](https://docs.google.com/presentation/d/1l4-QUskSenCZxsKZXVlZ7hW5VsbdiXnHxwYMFL8y0Ks/edit?usp=sharing)**
+
+---
+
+## 🔮 Roadmap (v2.1 Maybe)
+
+- [x] Konami Code easter egg
+- [x] 15 sections
+- [x] Interactive terminal footer
+- [x] 3D geometric universe
+- [ ] R3F full avatar (floating head with glowing eyes)
+- [ ] GitHub API live data fetching
+- [ ] Dev.to API blog integration
+- [ ] PWA offline support
+- [ ] Dark/light mode (who are we kidding, dark only)
+
+---
+
+## 🌐 Social (All 12)
+
+GitHub · LinkedIn · X (Twitter) · Instagram · Stack Overflow · WhatsApp · Dev.to · Holopin · PyPI · HackerRank · Email · Phone
+
+---
+
+*Built with ❤️, ☕, and an AI agent that wrote ~5,000 lines of TypeScript in a single session. The future is now, and it's surprisingly sarcastic.*
+
+---
+
+> **P.S.** This README is also longer than the actual code. Priorities.
