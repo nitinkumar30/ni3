@@ -543,12 +543,12 @@
     { "name": "Git", "category": "Version Control", "icon": "git-branch" }
   ],
   "images": {
-    "hero": "/images/20260529_155334(1).jpg",
+    "hero": "/images/20260603_221130-IMG_STYLE.jpg",
     "about": "/images/20260603_220746-IMG_STYLE.jpg",
     "experience": "/images/20260603_214745-IMG_STYLE.jpg",
     "contact": "/images/20260603_214824-IMG_STYLE.jpg",
-    "timeline": "/images/20260603_221130-IMG_STYLE.jpg",
-    "cards": ["/images/20260529_155334(1).jpg", "/images/20260603_214745-IMG_STYLE.jpg", "/images/20260603_214824-IMG_STYLE.jpg", "/images/20260603_220746-IMG_STYLE.jpg", "/images/20260603_221130-IMG_STYLE.jpg"]
+    "timeline": "/images/20260603_220709-IMG_STYLE.jpg",
+    "cards": ["/images/20260603_221130-IMG_STYLE.jpg", "/images/20260603_214745-IMG_STYLE.jpg", "/images/20260603_214824-IMG_STYLE.jpg", "/images/20260603_220746-IMG_STYLE.jpg", "/images/20260603_220709-IMG_STYLE.jpg"]
   },
   "testimonial_images": [
     "/images/profile-1.jpg",
