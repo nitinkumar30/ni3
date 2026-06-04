@@ -72,6 +72,7 @@ export interface WorkExperience {
   duration: string
   type: string
   location: string
+  description?: string
   highlights: string[]
 }
 
@@ -90,13 +91,43 @@ export interface Recommendation {
   text: string
 }
 
+export interface HighlightItem {
+  title: string
+  description: string
+  icon?: string
+}
+
 export interface Recommendations {
   received_count: number
   given_count: number
   pending_count: number
   given_details?: string
   pending_details?: string
+  professional_highlights?: {
+    title: string
+    items: HighlightItem[]
+  }
+  community_impact?: {
+    title: string
+    items: HighlightItem[]
+  }
   list: Recommendation[]
+}
+
+export interface SkillGroup {
+  category: string
+  icon: string
+  description: string
+  skills: string[]
+}
+
+export interface PortfolioImages {
+  hero: string
+  about: string
+  experience: string
+  contact: string
+  timeline: string
+  cards: string[]
 }
 
 export interface Honor {
@@ -156,6 +187,7 @@ export interface PortfolioData {
   about: About
   statistics: Statistics
   skills: Skill[]
+  skill_groups: SkillGroup[]
   tech_stack_nodes: string[]
   education: Education[]
   work_experience: WorkExperience[]
@@ -165,6 +197,7 @@ export interface PortfolioData {
   projects: Project[]
   testimonials: Testimonial[]
   recommendations: Recommendations
+  images: PortfolioImages
   ai_tools: AiTool[]
   automation_tools: AutomationTool[]
   navigation: NavigationItem[]

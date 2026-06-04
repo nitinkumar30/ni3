@@ -67,6 +67,50 @@
     { "name": "Data Science", "proficiency": 60, "category": "Data" },
     { "name": "Cyber Security", "proficiency": 50, "category": "Security" }
   ],
+  "skill_groups": [
+    {
+      "category": "Automation",
+      "icon": "Zap",
+      "description": "Building bots that do the boring stuff so you don't have to.",
+      "skills": ["Python Automation", "Selenium", "Playwright", "Pytest", "Workflow Automation", "Browser Automation", "API Automation", "Scheduling", "Automation Framework Development", "Process Automation"]
+    },
+    {
+      "category": "Testing",
+      "icon": "Shield",
+      "description": "Breaking things professionally so production doesn't have to.",
+      "skills": ["Manual Testing", "API Testing", "Functional Testing", "Regression Testing", "Smoke Testing", "Integration Testing", "Test Planning", "Defect Tracking", "Postman", "Pytest"]
+    },
+    {
+      "category": "Python Development",
+      "icon": "Code2",
+      "description": "The snake charmer's toolkit — from scripts to systems.",
+      "skills": ["Core Python", "Object Oriented Programming", "Multithreading", "Async Programming", "REST APIs", "CLI Development", "Package Development"]
+    },
+    {
+      "category": "Web Development",
+      "icon": "Globe",
+      "description": "Making the internet pretty since 2019.",
+      "skills": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Flask", "Responsive Design"]
+    },
+    {
+      "category": "Data Science",
+      "icon": "Database",
+      "description": "Turning coffee into statistics, statistics into insights.",
+      "skills": ["Pandas", "NumPy", "Data Analysis", "Data Cleaning", "Data Visualization", "Machine Learning Fundamentals"]
+    },
+    {
+      "category": "Cyber Security",
+      "icon": "ShieldCheck",
+      "description": "Hacking ethically so the bad guys don't get to have all the fun.",
+      "skills": ["OSINT", "Wifi Security", "Network Analysis", "Ethical Hacking Fundamentals", "Security Research"]
+    },
+    {
+      "category": "AI & Prompt Engineering",
+      "icon": "Brain",
+      "description": "Convincing LLMs they're having original thoughts.",
+      "skills": ["Prompt Engineering", "ChatGPT", "Claude", "Gemini", "Cursor", "Windsurf", "AI Workflow Design", "AI-Assisted Development", "Vibe Coding"]
+    }
+  ],
   "tech_stack_nodes": [
     "Python", "Automation", "Selenium", "Playwright", "Data Science",
     "Cyber Security", "Prompt Engineering", "AI", "React", "Next.js",
@@ -103,6 +147,7 @@
       "duration": "03/2024 - Present",
       "type": "Full-time",
       "location": "Pune, India",
+      "description": "Leading automation engineering in the PDES department, developing robust test frameworks and mentoring team members.",
       "highlights": [
         "Department: PDES (Product & Digital Engineering Services)",
         "Developed and maintained robust automation test scripts using Python and Selenium",
@@ -115,9 +160,10 @@
     {
       "position": "System Engineer",
       "company": "Tata Consultancy Services",
-      "duration": "10/2023 - 02/2024",
+      "duration": "10/2023 - 03/2024",
       "type": "Full-time",
       "location": "Kolkata, India",
+      "description": "Served my organisation as Automation Engineer in Python.",
       "highlights": ["Served my organisation as Automation Engineer in Python."]
     },
     {
@@ -126,14 +172,16 @@
       "duration": "10/2022 - 09/2023",
       "type": "Full-time",
       "location": "Kolkata, India",
+      "description": "System engineering, integration, and performance analysis using manual and automated tools.",
       "highlights": ["System engineering, software engineering, system integration", "Hardware and software testing", "Performance analysis using manual and automated tools"]
     },
     {
-      "position": "Automation Engineer",
+      "position": "Programmer",
       "company": "Tata Consultancy Services",
       "duration": "10/2021 - 09/2022",
       "type": "Full-time",
       "location": "Kolkata, India",
+      "description": "Automation engineering with Selenium, framework design, and defect management.",
       "highlights": ["Selenium Test Environment setup", "Framework design and implementation", "Defect management and regression testing", "Customer interaction and issue resolution"]
     },
     {
@@ -142,15 +190,8 @@
       "duration": "10/2020 - 09/2021",
       "type": "Full-time",
       "location": "Kolkata, India",
+      "description": "Software testing, database analysis, and client interaction for product requirements.",
       "highlights": ["Software Functional Testing", "Test scenario preparation and execution", "Database impact analysis", "Client interaction for product requirements"]
-    },
-    {
-      "position": "Data Science & Business Analytics Intern",
-      "company": "The Sparks Foundation",
-      "duration": "07/2021",
-      "type": "Internship",
-      "location": "Remote",
-      "highlights": ["Virtual internship on Data Science & Business Analytics"]
     },
     {
       "position": "Placement Coordinator",
@@ -158,7 +199,17 @@
       "duration": "09/2019 - 02/2020",
       "type": "Part-time",
       "location": "Jamshedpur, India",
+      "description": "Coordinated BCA student placements, resume building workshops, and employer communication.",
       "highlights": ["BCA student placement coordination", "Resume building and interview skills workshops", "Employer communication management"]
+    },
+    {
+      "position": "Freelance Web Developer",
+      "company": "Self-Employed",
+      "duration": "2019 - 2020",
+      "type": "Freelance",
+      "location": "Remote",
+      "description": "Built websites and web applications for clients during college.",
+      "highlights": ["Developed responsive websites for local businesses", "Built web applications using HTML, CSS, JavaScript", "Managed client communication and project delivery"]
     },
     {
       "position": "Internship Trainee",
@@ -166,6 +217,7 @@
       "duration": "05/2019 - 07/2019",
       "type": "Internship",
       "location": "Jamshedpur, India",
+      "description": "Trained in ASP.NET framework and SQL Server backend development.",
       "highlights": ["ASP.NET framework", "SQL Server backend development"]
     }
   ],
@@ -387,6 +439,24 @@
     "pending_count": 3,
     "given_details": "Given 12 detailed LinkedIn recommendations highlighting leadership, technical mentorship, and collaborative project work across teams.",
     "pending_details": "3 pending recommendations awaiting response — peers have been requested to share their experience working together.",
+    "professional_highlights": {
+      "title": "Professional Highlights",
+      "items": [
+        { "title": "iAppreciate Q2 '24", "description": "Quarterly recognition award at Happiest Minds Technologies for exceptional performance and contribution.", "icon": "Trophy" },
+        { "title": "Open Source Contributor", "description": "Published multiple open-source projects including PyShrink and PhoneTracer with 160+ GitHub stars.", "icon": "GitFork" },
+        { "title": "30+ Certifications", "description": "Completed certifications across automation, data science, cybersecurity, and cloud platforms.", "icon": "Award" },
+        { "title": "Codegoda 2022", "description": "Participated in Codegoda 2022 programming competition, demonstrating competitive coding skills.", "icon": "Code2" }
+      ]
+    },
+    "community_impact": {
+      "title": "Community Impact",
+      "items": [
+        { "title": "Open Source Contributions", "description": "227+ GitHub repositories with active contributions to the developer community.", "icon": "GitHubIcon" },
+        { "title": "Technical Publications", "description": "Published PyShrink and PhoneTracer — open-source tools used by developers globally.", "icon": "FileText" },
+        { "title": "Internship Mentorship", "description": "Headed a data science internship program, mentoring the next generation of engineers.", "icon": "Users" },
+        { "title": "Knowledge Sharing", "description": "Delivered sessions on GCP automation, Python development, and testing best practices.", "icon": "Presentation" }
+      ]
+    },
     "list": [
       {
         "name": "Tanmoy Bhattacharya",
@@ -472,6 +542,14 @@
     { "name": "CI/CD", "category": "DevOps", "icon": "refresh" },
     { "name": "Git", "category": "Version Control", "icon": "git-branch" }
   ],
+  "images": {
+    "hero": "/images/nitin.jpg",
+    "about": "/images/profile-01.jpg",
+    "experience": "/images/profile-2.jpg",
+    "contact": "/images/profile-5.jpg",
+    "timeline": "/images/profile-3.png",
+    "cards": ["/images/item-1.jpg", "/images/item-2.jpg", "/images/item-3.jpg"]
+  },
   "navigation": [
     { "id": "hero", "label": "Home", "icon": "home" },
     { "id": "about", "label": "About", "icon": "user" },

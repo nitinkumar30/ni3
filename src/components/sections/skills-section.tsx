@@ -1,79 +1,33 @@
 "use client"
 
+import { useRef, type ReactNode } from "react"
 import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
-import { ExpandableCard } from "@/components/ui/expandable-card"
 import { data } from "@/lib/data"
-import { Code2, Zap, Shield, Brain, Database, Globe, Cloud, Wrench, ShieldCheck, ChevronRight } from "lucide-react"
+import {
+  Code2, Zap, Shield, Globe, Database, ShieldCheck, Brain,
+  Wrench, Cloud, Terminal, Palette, Server, Lock, GitBranch,
+} from "lucide-react"
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  Languages: <Code2 className="w-4 h-4" />,
-  Automation: <Zap className="w-4 h-4" />,
-  Testing: <Shield className="w-4 h-4" />,
-  AI: <Brain className="w-4 h-4" />,
-  Data: <Database className="w-4 h-4" />,
-  Development: <Globe className="w-4 h-4" />,
-  Cloud: <Cloud className="w-4 h-4" />,
-  Frontend: <Code2 className="w-4 h-4" />,
-  Tools: <Wrench className="w-4 h-4" />,
-  Security: <ShieldCheck className="w-4 h-4" />,
-}
-
-function SkillRing({ name, proficiency, index }: { name: string; proficiency: number; index: number }) {
-  const radius = 40
-  const circumference = 2 * Math.PI * radius
-  const offset = circumference - (proficiency / 100) * circumference
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className="flex flex-col items-center gap-3 p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 group"
-      style={{
-        borderColor: "var(--card-border)",
-        background: "var(--card-bg)",
-      }}
-    >
-      <div className="relative w-24 h-24">
-        <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r={radius} fill="none" stroke="color-mix(in srgb, var(--foreground) 5%, transparent)" strokeWidth="6" />
-          <motion.circle
-            cx="50" cy="50" r={radius}
-            fill="none"
-            stroke="url(#grad)"
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            initial={{ strokeDashoffset: circumference }}
-            whileInView={{ strokeDashoffset: offset }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-          />
-          <defs>
-            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="var(--primary)" />
-              <stop offset="50%" stopColor="color-mix(in srgb, var(--primary) 50%, var(--accent) 50%)" />
-              <stop offset="100%" stopColor="var(--accent)" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{proficiency}%</span>
-        </div>
-      </div>
-      <span className="text-sm transition-colors text-center" style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)", }}>{name}</span>
-    </motion.div>
-  )
+const iconMap: Record<string, ReactNode> = {
+  Zap: <Zap className="w-5 h-5" />,
+  Shield: <Shield className="w-5 h-5" />,
+  Code2: <Code2 className="w-5 h-5" />,
+  Globe: <Globe className="w-5 h-5" />,
+  Database: <Database className="w-5 h-5" />,
+  ShieldCheck: <ShieldCheck className="w-5 h-5" />,
+  Brain: <Brain className="w-5 h-5" />,
+  Wrench: <Wrench className="w-5 h-5" />,
+  Cloud: <Cloud className="w-5 h-5" />,
+  Terminal: <Terminal className="w-5 h-5" />,
+  Palette: <Palette className="w-5 h-5" />,
+  Server: <Server className="w-5 h-5" />,
+  Lock: <Lock className="w-5 h-5" />,
+  GitBranch: <GitBranch className="w-5 h-5" />,
 }
 
 export function SkillsSection() {
-  const categories = [...new Set(data.skills.map((s) => s.category))]
-  const topSkills = data.skills.filter((s) => s.proficiency >= 70)
-  const otherSkills = data.skills.filter((s) => s.proficiency < 70)
-
   return (
     <section id="skills" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,56 +35,90 @@ export function SkillsSection() {
           <div className="text-center mb-16">
             <Badge variant="premium" className="mb-4">
               <Zap className="w-3.5 h-3.5 mr-1.5" />
-              Technical Proficiency
+              Technical Arsenal
             </Badge>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              <span className="text-gradient">My Skills</span>
+              <span className="text-gradient">Skills</span>
             </h2>
           </div>
         </ScrollReveal>
 
-        {/* Top skills as rings */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 mb-16">
-          {topSkills.map((skill, i) => (
-            <SkillRing key={skill.name} name={skill.name} proficiency={skill.proficiency} index={i} />
-          ))}
-        </div>
-
-        {/* Other skills as FAQ-style expandable cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {categories.map((cat, ci) => {
-            const catSkills = data.skills.filter((s) => s.category === cat && s.proficiency < 70)
-            if (catSkills.length === 0) return null
-            return (
-              <ScrollReveal key={cat}>
-                <ExpandableCard
-                  title={cat}
-                  icon={categoryIcons[cat] || <Code2 className="w-4 h-4" />}
-                  badge={`${catSkills.length}`}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
+          {data.skill_groups.map((group) => (
+            <motion.div
+              key={group.category}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            >
+              <ScrollReveal>
+                <div
+                  className="group relative rounded-xl border backdrop-blur-sm p-6 transition-all duration-500 hover:shadow-[0_0_30px_var(--theme-gradient)]"
+                  style={{
+                    borderColor: "var(--card-border)",
+                    background: "var(--card-bg)",
+                  }}
                 >
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {catSkills.map((skill) => (
+                  <div
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background: "radial-gradient(600px circle at 50% 50%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 40%)",
+                    }}
+                  />
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-4 mb-4">
                       <div
-                        key={skill.name}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-300"
+                        className="p-2.5 rounded-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_color-mix(in_srgb,var(--primary)_30%,transparent)]"
                         style={{
-                          background: "color-mix(in srgb, var(--foreground) 3%, transparent)",
-                          border: "1px solid color-mix(in srgb, var(--foreground) 10%, transparent)",
+                          background: "color-mix(in srgb, var(--primary) 12%, transparent)",
+                          color: "var(--primary)",
                         }}
                       >
-                        <ChevronRight className="w-3 h-3" style={{ color: "color-mix(in srgb, var(--primary) 40%, transparent)" }} />
-                        <span className="text-sm" style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)" }}>{skill.name}</span>
-                        <span className="text-[10px] ml-1" style={{ color: "color-mix(in srgb, var(--foreground) 20%, transparent)" }}>{skill.proficiency}%</span>
+                        {iconMap[group.icon] || <Code2 className="w-5 h-5" />}
                       </div>
-                    ))}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-semibold mb-1" style={{ color: "var(--foreground)" }}>
+                          {group.category}
+                        </h3>
+                        <p className="text-sm leading-relaxed" style={{ color: "color-mix(in srgb, var(--foreground) 55%, transparent)" }}>
+                          {group.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="inline-flex items-center px-3 py-1.5 text-sm rounded-lg transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-default"
+                          style={{
+                            background: "color-mix(in srgb, var(--foreground) 4%, transparent)",
+                            border: "1px solid color-mix(in srgb, var(--foreground) 8%, transparent)",
+                            color: "color-mix(in srgb, var(--foreground) 75%, transparent)",
+                          }}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </ExpandableCard>
+                </div>
               </ScrollReveal>
-            )
-          })}
-        </div>
-
-
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
