@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-export type Theme = "matrix" | "aurora" | "ember"
+export type Theme = "blue" | "cyber" | "ai" | "data" | "minimal"
 
 interface AppState {
   activeSection: string
@@ -20,6 +20,6 @@ export const useAppStore = create<AppState>((set) => ({
   toggleCyberMode: () => set((s) => ({ cyberMode: !s.cyberMode })),
   cursorPos: { x: 0, y: 0 },
   setCursorPos: (pos) => set({ cursorPos: pos }),
-  theme: "matrix",
+  theme: "blue",
   setTheme: (theme) => set({ theme }),
 }))

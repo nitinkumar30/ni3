@@ -13,7 +13,7 @@ const KONAMI_CODE = [
 ]
 
 export function KonamiEasterEgg() {
-  const { cyberMode, toggleCyberMode } = useAppStore()
+  const { cyberMode, toggleCyberMode, setTheme, theme } = useAppStore()
 
   const handleKeyDown = useCallback(
     (() => {
@@ -23,12 +23,18 @@ export function KonamiEasterEgg() {
         if (buffer.length > KONAMI_CODE.length) buffer.shift()
 
         if (buffer.length === KONAMI_CODE.length && buffer.every((k, i) => k === KONAMI_CODE[i])) {
-          toggleCyberMode()
+          if (cyberMode) {
+            toggleCyberMode()
+            setTheme("blue")
+          } else {
+            toggleCyberMode()
+            setTheme("cyber")
+          }
           buffer = []
         }
       }
     })(),
-    [toggleCyberMode]
+    [cyberMode, toggleCyberMode, setTheme]
   )
 
   useEffect(() => {
@@ -42,8 +48,13 @@ export function KonamiEasterEgg() {
     <div className="fixed inset-0 pointer-events-none z-[100]">
       <div className="absolute top-4 right-4 pointer-events-auto">
         <button
-          onClick={() => { if (cyberMode) toggleCyberMode() }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00FF9D]/20 border border-[#00FF9D]/40 text-[#00FF9D] text-xs"
+          onClick={() => { toggleCyberMode(); setTheme("blue") }}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs"
+          style={{
+            background: "color-mix(in srgb, var(--primary) 20%, transparent)",
+            border: "1px solid color-mix(in srgb, var(--primary) 40%, transparent)",
+            color: "var(--primary)",
+          }}
         >
           <Sparkles className="w-3 h-3" />
           CYBER MODE

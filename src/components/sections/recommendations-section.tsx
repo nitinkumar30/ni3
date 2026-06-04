@@ -11,6 +11,7 @@ export function RecommendationsSection() {
   const recs = data.recommendations
   const [current, setCurrent] = useState(0)
   const [direction, setDirection] = useState(0)
+  const [detailModal, setDetailModal] = useState<"given" | "pending" | null>(null)
 
   const goTo = (i: number) => {
     setDirection(i > current ? 1 : -1)
@@ -45,25 +46,67 @@ export function RecommendationsSection() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-12 max-w-lg mx-auto">
           {[
-            { icon: ThumbsUp, label: "Received", value: recs.received_count, color: "from-[#00E5FF] to-[#7B61FF]" },
-            { icon: Send, label: "Given", value: recs.given_count, color: "from-[#7B61FF] to-[#00FF9D]" },
-            { icon: Clock, label: "Pending", value: recs.pending_count, color: "from-[#FF6B6B] to-[#FFA500]" },
+            { icon: ThumbsUp, label: "Received", value: recs.received_count, key: "received" as const, color: "from-[var(--primary)] to-[var(--secondary)]" },
+            { icon: Send, label: "Given", value: recs.given_count, key: "given" as const, color: "from-[var(--secondary)] to-[var(--success)]" },
+            { icon: Clock, label: "Pending", value: recs.pending_count, key: "pending" as const, color: "from-[#FF6B6B] to-[#FFA500]" },
           ].map((stat) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center p-4 rounded-xl border border-white/10 bg-white/[0.02]"
+              onClick={() => stat.key !== "received" && setDetailModal(stat.key)}
+              className="text-center p-4 rounded-xl border backdrop-blur-sm bg-[var(--card-bg)] border-[var(--card-border)]"
+              style={stat.key !== "received" ? { cursor: "pointer" } : {}}
             >
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center mx-auto mb-2`}>
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2`} style={{ background: "var(--theme-gradient)" }}>
                 <stat.icon className="w-4 h-4 text-white" />
               </div>
-              <p className="text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-white/40">{stat.label}</p>
+              <p className="text-2xl font-bold" style={{ color: "var(--foreground)" }}>{stat.value}</p>
+              <p className="text-xs" style={{ color: "var(--muted)" }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* Detail modal */}
+        <AnimatePresence>
+          {detailModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setDetailModal(null)}
+              className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+              style={{ background: "rgba(0,0,0,0.6)" }}
+            >
+              <motion.div
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                onClick={(e) => e.stopPropagation()}
+                className="max-w-md w-full p-6 rounded-xl backdrop-blur-xl"
+                style={{
+                  background: "var(--nav-bg)",
+                  border: "1px solid var(--card-border)",
+                }}
+              >
+                <h3 className="text-lg font-semibold mb-3" style={{ color: "var(--foreground)" }}>
+                  {detailModal === "given" ? "Given Recommendations" : "Pending Recommendations"}
+                </h3>
+                <p className="text-sm" style={{ color: "var(--muted)" }}>
+                  {detailModal === "given" ? recs.given_details : recs.pending_details}
+                </p>
+                <button
+                  onClick={() => setDetailModal(null)}
+                  className="mt-6 px-4 py-2 rounded-lg text-sm text-white transition-all"
+                  style={{ background: "var(--theme-gradient)" }}
+                >
+                  Close
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Carousel */}
         <div className="relative max-w-3xl mx-auto min-h-[320px] flex items-center">

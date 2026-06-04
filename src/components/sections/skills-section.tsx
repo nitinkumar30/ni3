@@ -31,11 +31,15 @@ function SkillRing({ name, proficiency, index }: { name: string; proficiency: nu
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="flex flex-col items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#00E5FF]/30 hover:bg-white/[0.04] transition-all duration-300 group"
+      className="flex flex-col items-center gap-3 p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 group"
+      style={{
+        borderColor: "var(--card-border)",
+        background: "var(--card-bg)",
+      }}
     >
       <div className="relative w-24 h-24">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r={radius} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
+          <circle cx="50" cy="50" r={radius} fill="none" stroke="color-mix(in srgb, var(--foreground) 5%, transparent)" strokeWidth="6" />
           <motion.circle
             cx="50" cy="50" r={radius}
             fill="none"
@@ -50,17 +54,17 @@ function SkillRing({ name, proficiency, index }: { name: string; proficiency: nu
           />
           <defs>
             <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#00E5FF" />
-              <stop offset="50%" stopColor="#7B61FF" />
-              <stop offset="100%" stopColor="#00FF9D" />
+              <stop offset="0%" stopColor="var(--primary)" />
+              <stop offset="50%" stopColor="color-mix(in srgb, var(--primary) 50%, var(--accent) 50%)" />
+              <stop offset="100%" stopColor="var(--accent)" />
             </linearGradient>
           </defs>
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-lg font-bold text-white">{proficiency}%</span>
+          <span className="text-lg font-bold" style={{ color: "var(--foreground)" }}>{proficiency}%</span>
         </div>
       </div>
-      <span className="text-sm text-white/70 group-hover:text-white transition-colors text-center">{name}</span>
+      <span className="text-sm transition-colors text-center" style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)", }}>{name}</span>
     </motion.div>
   )
 }
@@ -108,11 +112,15 @@ export function SkillsSection() {
                     {catSkills.map((skill) => (
                       <div
                         key={skill.name}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 group hover:border-[#00E5FF]/20 transition-all duration-300"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all duration-300"
+                        style={{
+                          background: "color-mix(in srgb, var(--foreground) 3%, transparent)",
+                          border: "1px solid color-mix(in srgb, var(--foreground) 10%, transparent)",
+                        }}
                       >
-                        <ChevronRight className="w-3 h-3 text-[#00E5FF]/40 group-hover:text-[#00E5FF] transition-colors" />
-                        <span className="text-sm text-white/70 group-hover:text-white transition-colors">{skill.name}</span>
-                        <span className="text-[10px] text-white/20 ml-1">{skill.proficiency}%</span>
+                        <ChevronRight className="w-3 h-3" style={{ color: "color-mix(in srgb, var(--primary) 40%, transparent)" }} />
+                        <span className="text-sm" style={{ color: "color-mix(in srgb, var(--foreground) 70%, transparent)" }}>{skill.name}</span>
+                        <span className="text-[10px] ml-1" style={{ color: "color-mix(in srgb, var(--foreground) 20%, transparent)" }}>{skill.proficiency}%</span>
                       </div>
                     ))}
                   </div>

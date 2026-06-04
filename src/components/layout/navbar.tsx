@@ -55,35 +55,40 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-[#050816]/80 backdrop-blur-xl border-b border-white/5"
+          ? "bg-[var(--nav-bg)] backdrop-blur-xl border-b border-[var(--card-border)]"
           : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] flex items-center justify-center text-white text-sm font-bold tracking-tight shadow-lg shadow-[#00E5FF]/20">
+        <div className="flex items-center justify-between h-14">
+          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 group shrink-0">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold tracking-tight shadow-lg"
+              style={{ background: "var(--theme-gradient)", boxShadow: "0 0 20px color-mix(in srgb, var(--primary) 20%, transparent)" }}
+            >
               Ni3
             </div>
           </button>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0.5 overflow-x-auto">
             {data.navigation.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={cn(
-                  "relative px-3.5 py-2 text-xs font-medium transition-all duration-300 rounded-lg",
+                  "relative whitespace-nowrap px-2.5 py-1.5 text-[11px] font-medium transition-all duration-300 rounded-md",
                   activeSection === item.id
-                    ? "text-[#00E5FF] bg-[#00E5FF]/10"
-                    : "text-white/50 hover:text-white hover:bg-white/5"
+                    ? "text-[var(--primary)]"
+                    : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--card-bg)]"
                 )}
+                style={activeSection === item.id ? { background: "color-mix(in srgb, var(--primary) 10%, transparent)" } : {}}
               >
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="nav-active"
-                    className="absolute inset-0 rounded-lg border border-[#00E5FF]/30"
+                    className="absolute inset-0 rounded-md"
+                    style={{ border: "1px solid color-mix(in srgb, var(--primary) 30%, transparent)" }}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -93,7 +98,8 @@ export function Navbar() {
 
           <button
             onClick={() => scrollTo("contact")}
-            className="hidden sm:inline-flex px-4 py-2 text-xs font-medium rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] text-white hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300"
+            className="hidden sm:inline-flex whitespace-nowrap px-3.5 py-1.5 text-[11px] font-medium rounded-md text-white transition-all duration-300"
+            style={{ background: "var(--theme-gradient)" }}
           >
             Let&apos;s Talk
           </button>

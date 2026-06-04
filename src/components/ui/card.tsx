@@ -8,35 +8,39 @@ interface CardProps {
   className?: string
   hover?: boolean
   glow?: boolean
-  perspective?: boolean
+  tilt?: boolean
+  onClick?: () => void
 }
 
-export function Card({ children, className, hover = false, glow = false, perspective = false }: CardProps) {
+export function Card({ children, className, hover = false, glow = false, tilt = false, onClick }: CardProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   const handleMove = (e: React.MouseEvent) => {
-    if (!perspective || !ref.current) return
+    if (!tilt || !ref.current) return
     const rect = ref.current.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width - 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5
-    ref.current.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateZ(4px)`
+    ref.current.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(8px)`
   }
 
   const handleLeave = () => {
-    if (!perspective || !ref.current) return
+    if (!ref.current) return
     ref.current.style.transform = "perspective(800px) rotateY(0deg) rotateX(0deg) translateZ(0px)"
   }
 
   return (
     <div
       ref={ref}
-      onMouseMove={perspective ? handleMove : undefined}
-      onMouseLeave={perspective ? handleLeave : undefined}
+      onMouseMove={tilt ? handleMove : undefined}
+      onMouseLeave={tilt ? handleLeave : undefined}
+      onClick={onClick}
       className={cn(
-        "rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-500",
-        hover && "hover:border-[#00E5FF]/30 hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(0,229,255,0.05)]",
-        glow && "shadow-[0_0_20px_rgba(0,229,255,0.08)]",
-        perspective && "cursor-default",
+        "rounded-xl border backdrop-blur-sm transition-all duration-500",
+        "bg-[var(--card-bg)] border-[var(--card-border)]",
+        hover && "hover:border-[var(--primary)]/30 hover:bg-[var(--card-bg)] hover:shadow-[0_0_30px_var(--primary)/10]",
+        glow && "shadow-[0_0_20px_var(--primary)/8]",
+        tilt && "cursor-default",
+        onClick && "cursor-pointer",
         className
       )}
       style={{ transformStyle: "preserve-3d" }}

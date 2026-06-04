@@ -94,6 +94,8 @@ export interface Recommendations {
   received_count: number
   given_count: number
   pending_count: number
+  given_details?: string
+  pending_details?: string
   list: Recommendation[]
 }
 
@@ -111,21 +113,16 @@ export interface Publication {
   url: string
 }
 
-export interface FeaturedProject {
-  name: string
-  description: string
-  stars: number
-  language: string
-  url: string
-  category: string
-  topics: string[]
-}
-
 export interface Project {
   name: string
   description: string
   category: string
   technologies: string[]
+  stars?: number
+  language?: string
+  url?: string
+  topics?: string[]
+  featured?: boolean
 }
 
 export interface Testimonial {
@@ -165,7 +162,6 @@ export interface PortfolioData {
   certifications: Certification[]
   honors: Honor[]
   publications: Publication[]
-  featured_projects: FeaturedProject[]
   projects: Project[]
   testimonials: Testimonial[]
   recommendations: Recommendations

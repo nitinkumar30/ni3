@@ -26,11 +26,11 @@ export function CertificationsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Certifications as FAQ-style card */}
-          <Card className="p-6" hover glow perspective>
-            <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-6">
-              <Award className="w-5 h-5 text-[#00E5FF]" />
+          <Card className="p-6" hover glow>
+            <h3 className="text-lg font-semibold flex items-center gap-2 mb-6" style={{ color: "var(--foreground)" }}>
+              <Award className="w-5 h-5" style={{ color: "var(--primary)" }} />
               Certifications
-              <span className="ml-auto text-xs text-white/20 font-mono">{data.certifications.length}</span>
+              <span className="ml-auto text-xs font-mono" style={{ color: "color-mix(in srgb, var(--foreground) 20%, transparent)" }}>{data.certifications.length}</span>
             </h3>
             <div className="space-y-3">
               {data.certifications.map((cert, i) => (
@@ -38,18 +38,18 @@ export function CertificationsSection() {
                   key={cert.name}
                   title={cert.name}
                   icon={
-                    <div className="p-1 rounded-md bg-[#00E5FF]/10">
-                      <Star className="w-3 h-3 text-[#00E5FF]" />
+                    <div className="p-1 rounded-md" style={{ background: "color-mix(in srgb, var(--primary) 10%, transparent)" }}>
+                      <Star className="w-3 h-3" style={{ color: "var(--primary)" }} />
                     </div>
                   }
                   badge={cert.year}
                 >
-                  <div className="flex items-center gap-2 text-xs text-white/40">
-                    <ChevronRight className="w-3 h-3 text-[#00E5FF]/60" />
+                  <div className="flex items-center gap-2 text-xs" style={{ color: "color-mix(in srgb, var(--foreground) 40%, transparent)" }}>
+                    <ChevronRight className="w-3 h-3" style={{ color: "color-mix(in srgb, var(--primary) 60%, transparent)" }} />
                     <span>{cert.issuer}</span>
                     {cert.credential_id && (
                       <>
-                        <span className="text-white/20">·</span>
+                        <span style={{ color: "color-mix(in srgb, var(--foreground) 20%, transparent)" }}>·</span>
                         <span className="font-mono">ID: {cert.credential_id}</span>
                       </>
                     )}
@@ -62,8 +62,8 @@ export function CertificationsSection() {
           {/* Honors + Publications */}
           <div className="space-y-8">
             <Card className="p-6" hover glow>
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-6">
-                <Trophy className="w-5 h-5 text-[#7B61FF]" />
+              <h3 className="text-lg font-semibold flex items-center gap-2 mb-6" style={{ color: "var(--foreground)" }}>
+                <Trophy className="w-5 h-5" style={{ color: "var(--primary)" }} />
                 Honors & Awards
               </h3>
               <div className="space-y-4">
@@ -74,22 +74,26 @@ export function CertificationsSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-4 rounded-lg bg-gradient-to-r from-[#7B61FF]/10 to-transparent border border-[#7B61FF]/20"
+                    className="p-4 rounded-lg"
+                    style={{
+                      background: "color-mix(in srgb, var(--primary) 10%, transparent)",
+                      border: "1px solid color-mix(in srgb, var(--primary) 20%, transparent)",
+                    }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <Sparkles className="w-4 h-4 text-yellow-400" />
-                      <p className="text-sm font-semibold text-white">{honor.title}</p>
+                      <Sparkles className="w-4 h-4" style={{ color: "var(--accent)" }} />
+                      <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>{honor.title}</p>
                     </div>
-                    <p className="text-xs text-white/50 ml-6">{honor.description}</p>
-                    <p className="text-xs text-white/30 ml-6 mt-1">{honor.issuer} · {honor.year}</p>
+                    <p className="text-xs ml-6" style={{ color: "color-mix(in srgb, var(--foreground) 50%, transparent)" }}>{honor.description}</p>
+                    <p className="text-xs ml-6 mt-1" style={{ color: "color-mix(in srgb, var(--foreground) 30%, transparent)" }}>{honor.issuer} · {honor.year}</p>
                   </motion.div>
                 ))}
               </div>
             </Card>
 
             <Card className="p-6" hover glow>
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-6">
-                <BookOpen className="w-5 h-5 text-[#00FF9D]" />
+              <h3 className="text-lg font-semibold flex items-center gap-2 mb-6" style={{ color: "var(--foreground)" }}>
+                <BookOpen className="w-5 h-5" style={{ color: "var(--primary)" }} />
                 Publications
               </h3>
               <div className="space-y-4">
@@ -103,13 +107,15 @@ export function CertificationsSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="block p-4 rounded-lg bg-white/[0.02] border border-white/5 hover:border-[#00FF9D]/30 transition-all duration-300 group"
+                    className="block p-4 rounded-lg transition-all duration-300 group"
+                    style={{
+                      background: "color-mix(in srgb, var(--foreground) 2%, transparent)",
+                      border: "1px solid color-mix(in srgb, var(--foreground) 5%, transparent)",
+                    }}
                   >
-                    <p className="text-sm font-medium text-white group-hover:text-[#00FF9D] transition-colors">
-                      {pub.title}
-                    </p>
-                    <p className="text-xs text-white/50 mt-1">{pub.description}</p>
-                    <div className="flex items-center gap-1 mt-2 text-xs text-[#00FF9D]/60">
+                    <p className="text-sm font-medium transition-colors" style={{ color: "var(--foreground)" }}>{pub.title}</p>
+                    <p className="text-xs mt-1" style={{ color: "color-mix(in srgb, var(--foreground) 50%, transparent)" }}>{pub.description}</p>
+                    <div className="flex items-center gap-1 mt-2 text-xs" style={{ color: "color-mix(in srgb, var(--primary) 60%, transparent)" }}>
                       <ExternalLink className="w-3 h-3" />
                       <span>{pub.type}</span>
                     </div>

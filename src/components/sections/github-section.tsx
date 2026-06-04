@@ -81,7 +81,7 @@ function LanguageBar({ name, percentage, color, index }: { name: string; percent
 
 export function GitHubSection() {
   const [stats] = useState<GitHubStats>(defaultStats)
-  const [repos] = useState(data.featured_projects.slice(0, 6))
+  const [repos] = useState(data.projects.filter((p) => p.featured).slice(0, 6))
 
   return (
     <section id="github" className="relative py-24 sm:py-32">

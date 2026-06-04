@@ -60,7 +60,7 @@
     { "name": "GCP", "proficiency": 75, "category": "Cloud" },
     { "name": "SQL", "proficiency": 75, "category": "Data" },
     { "name": "Web Development", "proficiency": 70, "category": "Development" },
-    { "name": "Bootstrap", "proficiency": 70, "category": "Frontend" },
+    { "name": "Bootstrap", "proficiency": 70, "category": "Development" },
     { "name": "Prompt Engineering", "proficiency": 70, "category": "AI" },
     { "name": "Vibe Coding", "proficiency": 70, "category": "AI" },
     { "name": "Playwright", "proficiency": 65, "category": "Automation" },
@@ -197,305 +197,168 @@
       "url": "https://github.com/nitinkumar30/phonetracer"
     }
   ],
-  "featured_projects": [
+  "projects": [
     {
-      "name": "edu-mail-auto-generator",
-      "description": "Automatically generate an edu-mail in under 10 minutes using Python and Selenium.",
+      "name": "Auto Edu Mail Generator",
+      "description": "Automatically generates EDU email accounts.",
       "stars": 119,
       "language": "Python",
       "url": "https://github.com/nitinkumar30/edu-mail-auto-generator",
       "category": "Automation",
-      "topics": ["automation", "selenium", "python"]
+      "technologies": ["Python", "Selenium"],
+      "topics": ["automation", "selenium", "python"],
+      "featured": true
     },
     {
-      "name": "n8n-projects",
-      "description": "Workflow automation projects built with n8n — connecting APIs, databases, and services.",
+      "name": "n8n Projects",
+      "description": "Workflow automation projects built with n8n for API orchestration.",
       "stars": 12,
       "language": "TypeScript",
       "url": "https://github.com/nitinkumar30/n8n-projects",
       "category": "Automation",
-      "topics": ["n8n", "automation", "workflow"]
-    },
-    {
-      "name": "email-marketing-tool",
-      "description": "Automated email marketing tool for campaigns, newsletters, and audience engagement.",
-      "stars": 8,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/email-marketing-tool",
-      "category": "Automation",
-      "topics": ["email", "marketing", "automation"]
-    },
-    {
-      "name": "naukri-auto-resume-uploader",
-      "description": "Automates resume uploads and job applications on Naukri.com using Selenium.",
-      "stars": 15,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/naukri-auto-resume-uploader",
-      "category": "Automation",
-      "topics": ["selenium", "job-search", "automation"]
-    },
-    {
-      "name": "ration-card-request-automation",
-      "description": "Automates ration card request submissions on government portals.",
-      "stars": 6,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/ration-card-request-automation",
-      "category": "Automation",
-      "topics": ["automation", "selenium", "government"]
-    },
-    {
-      "name": "slack_chatBot",
-      "description": "Slack chatbot for automated responses, notifications, and team integrations.",
-      "stars": 4,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/slack_chatBot",
-      "category": "Automation",
-      "topics": ["slack", "chatbot", "python"]
-    },
-    {
-      "name": "automation-framework-in-python",
-      "description": "Modular test automation framework built with Python, Pytest, and Selenium.",
-      "stars": 10,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/automation-framework-in-python",
-      "category": "Automation",
-      "topics": ["testing", "framework", "python"]
-    },
-    {
-      "name": "ransomware-using-python",
-      "description": "Educational ransomware simulation demonstrating file encryption and decryption.",
-      "stars": 5,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/ransomware-using-python",
-      "category": "Cyber Security",
-      "topics": ["cyber-security", "encryption", "python"]
-    },
-    {
-      "name": "emoji-encoder",
-      "description": "Encode and decode text into emoji-based representations — fun data obfuscation.",
-      "stars": 7,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/emoji-encoder",
-      "category": "Development",
-      "topics": ["encoding", "emoji", "python"]
-    },
-    {
-      "name": "auto-book-covid-vaccine-slots",
-      "description": "Automatically books COVID vaccine slots when available using Python and Selenium.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/auto-book-covid-vaccine-slots",
-      "category": "Automation",
-      "topics": ["automation", "covid-19", "selenium"]
-    },
-    {
-      "name": "keylogger",
-      "description": "Keylogger built in Python for educational cyber security demonstrations.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/keylogger",
-      "category": "Cyber Security",
-      "topics": ["cyber-security", "python"]
-    },
-    {
-      "name": "gmail-dictionary-attack",
-      "description": "Dictionary attack simulation against Gmail for security research and education.",
-      "stars": 4,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/gmail-dictionary-attack",
-      "category": "Cyber Security",
-      "topics": ["security", "python", "education"]
-    },
-    {
-      "name": "password-encrypter-and-generator-in-python",
-      "description": "Password generator and encrypter with various encryption algorithms.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/password-encrypter-and-generator-in-python",
-      "category": "Cyber Security",
-      "topics": ["security", "encryption", "python"]
-    },
-    {
-      "name": "automate-investing-website",
-      "description": "Automates interactions with investing platforms for portfolio tracking.",
-      "stars": 5,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/automate-investing-website",
-      "category": "Automation",
-      "topics": ["automation", "selenium", "finance"]
-    },
-    {
-      "name": "automate-item-order-in-meesho",
-      "description": "Automates item ordering on Meesho e-commerce platform using Selenium.",
-      "stars": 4,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/automate-item-order-in-meesho",
-      "category": "Automation",
-      "topics": ["ecommerce", "selenium", "automation"]
-    },
-    {
-      "name": "auto-search-job-openings",
-      "description": "Automatically search and aggregate job openings across multiple sites.",
-      "stars": 2,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/auto-search-job-openings",
-      "category": "Automation",
-      "topics": ["automation", "job-search", "python"]
-    },
-    {
-      "name": "Data-Science-mini-projects",
-      "description": "Collection of Data Science mini-projects covering ML, visualization, and analysis.",
-      "stars": 6,
-      "language": "Jupyter Notebook",
-      "url": "https://github.com/nitinkumar30/Data-Science-mini-projects",
-      "category": "Data Science",
-      "topics": ["data-science", "machine-learning", "python"]
-    },
-    {
-      "name": "predict-airline-ticket",
-      "description": "ML model to predict airline ticket prices based on historical data.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/predict-airline-ticket",
-      "category": "Data Science",
-      "topics": ["machine-learning", "prediction", "python"]
-    },
-    {
-      "name": "search-engine-based-on-csv",
-      "description": "Search engine that indexes and queries CSV data efficiently using Python.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/search-engine-based-on-csv",
-      "category": "Data",
-      "topics": ["search", "csv", "python"]
-    },
-    {
-      "name": "live-camera-sketching",
-      "description": "Real-time webcam image processing that converts video feed into sketch art.",
-      "stars": 3,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/live-camera-sketching",
-      "category": "Development",
-      "topics": ["computer-vision", "python", "opencv"]
-    },
-    {
-      "name": "sleep-sort-in-python",
-      "description": "Novel sleep sort algorithm implementation — sorting by sleeping.",
-      "stars": 2,
-      "language": "Python",
-      "url": "https://github.com/nitinkumar30/sleep-sort-in-python",
-      "category": "Development",
-      "topics": ["algorithm", "python", "fun"]
-    }
-  ],
-  "projects": [
-    {
-      "name": "n8n Projects",
-      "description": "Workflow automation projects built with n8n for API orchestration.",
-      "category": "Automation",
-      "technologies": ["n8n", "TypeScript", "APIs"]
-    },
-    {
-      "name": "Emoji Encoder",
-      "description": "Encode/decode text into emoji-based representations.",
-      "category": "Development",
-      "technologies": ["Python"]
+      "technologies": ["n8n", "TypeScript", "APIs"],
+      "topics": ["n8n", "automation", "workflow"],
+      "featured": true
     },
     {
       "name": "Naukri Auto Resume Uploader",
       "description": "Automates resume uploads on Naukri.com job portal.",
+      "stars": 15,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/naukri-auto-resume-uploader",
       "category": "Automation",
-      "technologies": ["Python", "Selenium"]
+      "technologies": ["Python", "Selenium"],
+      "topics": ["selenium", "job-search", "automation"],
+      "featured": true
+    },
+    {
+      "name": "Email Marketing Tool",
+      "description": "Automated email marketing campaigns and newsletters.",
+      "stars": 8,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/email-marketing-tool",
+      "category": "Automation",
+      "technologies": ["Python", "SMTP"],
+      "topics": ["email", "marketing", "automation"],
+      "featured": true
+    },
+    {
+      "name": "Automation Framework",
+      "description": "Modular test automation framework built from scratch.",
+      "stars": 10,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/automation-framework-in-python",
+      "category": "Automation",
+      "technologies": ["Python", "Pytest", "Selenium"],
+      "topics": ["testing", "framework", "python"],
+      "featured": true
+    },
+    {
+      "name": "Emoji Encoder",
+      "description": "Encode/decode text into emoji-based representations.",
+      "stars": 7,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/emoji-encoder",
+      "category": "Development",
+      "technologies": ["Python"],
+      "topics": ["encoding", "emoji", "python"],
+      "featured": true
+    },
+    {
+      "name": "Ransomware Simulation",
+      "description": "Educational ransomware demonstrating file encryption.",
+      "stars": 5,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/ransomware-using-python",
+      "category": "Cyber Security",
+      "technologies": ["Python", "Cryptography"],
+      "topics": ["cyber-security", "encryption", "python"],
+      "featured": true
+    },
+    {
+      "name": "Investing Website Automation",
+      "description": "Automates investing platform interactions.",
+      "stars": 5,
+      "language": "Python",
+      "url": "https://github.com/nitinkumar30/automate-investing-website",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"],
+      "topics": ["automation", "selenium", "finance"],
+      "featured": true
+    },
+    {
+      "name": "Data Science Mini Projects",
+      "description": "ML, visualization, and analysis projects collection.",
+      "stars": 6,
+      "language": "Jupyter Notebook",
+      "url": "https://github.com/nitinkumar30/Data-Science-mini-projects",
+      "category": "Data Science",
+      "technologies": ["Python", "Scikit-learn", "Pandas"],
+      "topics": ["data-science", "machine-learning", "python"],
+      "featured": true
     },
     {
       "name": "Ration Card Automation",
       "description": "Automates ration card request submissions on government portals.",
       "category": "Automation",
-      "technologies": ["Python", "Selenium"]
-    },
-    {
-      "name": "Email Marketing Tool",
-      "description": "Automated email marketing campaigns and newsletters.",
-      "category": "Automation",
-      "technologies": ["Python", "SMTP"]
+      "technologies": ["Python", "Selenium"],
+      "featured": false
     },
     {
       "name": "Slack ChatBot",
       "description": "Slack chatbot for automated team notifications.",
       "category": "Automation",
-      "technologies": ["Python", "Slack API"]
-    },
-    {
-      "name": "Automation Framework",
-      "description": "Modular test automation framework built from scratch.",
-      "category": "Automation",
-      "technologies": ["Python", "Pytest", "Selenium"]
-    },
-    {
-      "name": "Auto Edu Mail Generator",
-      "description": "Automatically generates EDU email accounts.",
-      "category": "Automation",
-      "technologies": ["Python", "Selenium"]
-    },
-    {
-      "name": "Ransomware Simulation",
-      "description": "Educational ransomware demonstrating file encryption.",
-      "category": "Cyber Security",
-      "technologies": ["Python", "Cryptography"]
+      "technologies": ["Python", "Slack API"],
+      "featured": false
     },
     {
       "name": "Meesho Order Automation",
       "description": "Automates ordering on Meesho e-commerce platform.",
       "category": "Automation",
-      "technologies": ["Python", "Selenium"]
+      "technologies": ["Python", "Selenium"],
+      "featured": false
     },
     {
       "name": "Gmail Dictionary Attack",
       "description": "Dictionary attack simulation for security education.",
       "category": "Cyber Security",
-      "technologies": ["Python"]
-    },
-    {
-      "name": "Investing Website Automation",
-      "description": "Automates investing platform interactions.",
-      "category": "Automation",
-      "technologies": ["Python", "Selenium"]
-    },
-    {
-      "name": "Data Science Mini Projects",
-      "description": "ML, visualization, and analysis projects collection.",
-      "category": "Data Science",
-      "technologies": ["Python", "Scikit-learn", "Pandas"]
+      "technologies": ["Python"],
+      "featured": false
     },
     {
       "name": "Password Encrypter & Generator",
       "description": "Password generation and encryption tool.",
       "category": "Cyber Security",
-      "technologies": ["Python", "Cryptography"]
+      "technologies": ["Python", "Cryptography"],
+      "featured": false
     },
     {
       "name": "Live Camera Sketching",
       "description": "Real-time webcam to sketch art conversion.",
       "category": "Development",
-      "technologies": ["Python", "OpenCV"]
+      "technologies": ["Python", "OpenCV"],
+      "featured": false
     },
     {
       "name": "Airline Ticket Predictor",
       "description": "ML model predicting airline ticket prices.",
       "category": "Data Science",
-      "technologies": ["Python", "Machine Learning"]
+      "technologies": ["Python", "Machine Learning"],
+      "featured": false
     },
     {
       "name": "Sleep Sort",
       "description": "Novel sleep sort algorithm implementation.",
       "category": "Development",
-      "technologies": ["Python"]
+      "technologies": ["Python"],
+      "featured": false
     },
     {
       "name": "CSV Search Engine",
       "description": "Search engine indexing CSV data files.",
       "category": "Data",
-      "technologies": ["Python", "Pandas"]
+      "technologies": ["Python", "Pandas"],
+      "featured": false
     }
   ],
   "testimonials": [
@@ -522,6 +385,8 @@
     "received_count": 8,
     "given_count": 12,
     "pending_count": 3,
+    "given_details": "Given 12 detailed LinkedIn recommendations highlighting leadership, technical mentorship, and collaborative project work across teams.",
+    "pending_details": "3 pending recommendations awaiting response — peers have been requested to share their experience working together.",
     "list": [
       {
         "name": "Tanmoy Bhattacharya",
@@ -578,13 +443,6 @@
         "date": "February 6, 2022",
         "relationship": "Hanish worked with Nitin on the same team",
         "text": "I have closely worked with Nitin in TCS. I highly recommend his expertise in python. He takes full ownership of his work and is willing to put that extra help whenever you need it. Would definitely like to work with him again."
-      },
-      {
-        "name": "Manas Pratim Mahanta",
-        "role": "Data Analyst || Senior Quality Engineer",
-        "date": "August 11, 2021",
-        "relationship": "Manas worked with Nitin on the same team",
-        "text": "I have known Nitin Kumar for around 1 year in TCS, Kolkata. He is a very dedicated person who gives 100 percent to the team. He has good technical knowledge in Selenium and Test Automation and Python. He is a good team player and performs well above expectations. I really liked working with him. Wish him Good Luck."
       }
     ]
   },
@@ -627,7 +485,6 @@
     { "id": "blog", "label": "Blog", "icon": "book-open" },
     { "id": "testimonials", "label": "Testimonials", "icon": "message-square" },
     { "id": "recommendations", "label": "Recommendations", "icon": "thumbs-up" },
-    { "id": "explore", "label": "Explore", "icon": "compass" },
     { "id": "contact", "label": "Contact", "icon": "send" }
   ]
 }
