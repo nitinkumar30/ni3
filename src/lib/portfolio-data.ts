@@ -22,6 +22,32 @@ export interface Statistics {
   working_years: string;
   languages_known: string;
   tools_used: string;
+  ai_tools: string;
+}
+
+export interface Certification {
+  name: string;
+  issuer?: string;
+}
+
+export interface Honor {
+  title: string;
+  description?: string;
+}
+
+export interface Publication {
+  title: string;
+  description?: string;
+  url?: string;
+}
+
+export interface FeaturedProject {
+  name: string;
+  description: string;
+  stars: number;
+  language: string;
+  url: string;
+  topics?: string[];
 }
 
 export interface Education {
@@ -85,6 +111,10 @@ export interface PortfolioData {
   education: Education[];
   work_experience: WorkExperience[];
   skills: Skill[];
+  certifications: Certification[];
+  honors: Honor[];
+  publications: Publication[];
+  featured_projects: FeaturedProject[];
   projects: Project[];
   testimonials: Testimonial[];
   contact: Contact;
@@ -127,10 +157,11 @@ export const portfolioData: PortfolioData = {
   },
   statistics: {
     certifications: "5+",
-    projects: "70+",
+    projects: "200+",
     working_years: "5+",
     languages_known: "4",
-    tools_used: "15+",
+    tools_used: "11+",
+    ai_tools: "4+",
   },
   education: [
     {
@@ -167,7 +198,7 @@ export const portfolioData: PortfolioData = {
       company: "Tata Consultancy Services",
       duration: "10/2023 - 02/2024",
       description:
-        "Investigated system component suitability for specified purposes and made recommendations regarding component use. Developed system engineering, software engineering, system integration, and distributed system architectures. Conducted hardware and software tests. Used manual and automated tools to analyze and predict system performance under different operating conditions. Tested and verified software patches to restore or enhance system performance.",
+        "Served my organisation as Automation Engineer in Python.",
     },
     {
       position: "Assistant System Engineer",
@@ -218,16 +249,115 @@ export const portfolioData: PortfolioData = {
     { name: "Automation Testing", proficiency: "90%" },
     { name: "Pytest", proficiency: "85%" },
     { name: "API Testing", proficiency: "80%" },
+    { name: "Manual Testing", proficiency: "85%" },
+    { name: "JIRA", proficiency: "85%" },
+    { name: "Git", proficiency: "80%" },
     { name: "GCP", proficiency: "75%" },
+    { name: "MySQL / SQL Server", proficiency: "75%" },
     { name: "Java", proficiency: "70%" },
     { name: "Web Development", proficiency: "70%" },
-    { name: "Data Science", proficiency: "60%" },
-    { name: "MySQL / SQL Server", proficiency: "75%" },
-    { name: "Git", proficiency: "80%" },
-    { name: "JIRA", proficiency: "85%" },
-    { name: "Manual Testing", proficiency: "85%" },
     { name: "Bootstrap", proficiency: "70%" },
+    { name: "Prompt Engineering", proficiency: "70%" },
+    { name: "Vibe Coding", proficiency: "70%" },
     { name: "Anaconda", proficiency: "65%" },
+    { name: "Data Science", proficiency: "60%" },
+    { name: "Cyber Security", proficiency: "50%" },
+  ],
+  certifications: [
+    { name: "Eduhub Tech Conference" },
+    { name: "Programming Foundations: Software Testing/QA" },
+    { name: "Digital: Python Foundation" },
+    { name: "Certificate of Participation in Codegoda 2022 Programming Competition" },
+    { name: "Wifi Network Hacking" },
+  ],
+  honors: [
+    { title: "iAppreciate Q2 '24", description: "Quarterly recognition award at Happiest Minds Technologies" },
+  ],
+  publications: [
+    { title: "PyShrink: Python Projects, Minus the Junk", description: "A Python project sanitizer & packager built with a POM-style framework architecture." },
+    { title: "PhoneTracer ⚡ OSINT Phone Number Metadata Toolkit", description: "An OSINT toolkit for extracting metadata from phone numbers." },
+  ],
+  featured_projects: [
+    {
+      name: "edu-mail-auto-generator",
+      description: "Automatically generate an edu-mail for you in less than 10 minutes using Python and Selenium.",
+      stars: 119,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/edu-mail-auto-generator",
+      topics: ["automation", "selenium", "python"],
+    },
+    {
+      name: "auto-book-covid-vaccine-slots",
+      description: "Booking vaccine slots automatically whenever a slot is ready using Python and Selenium.",
+      stars: 3,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/auto-book-covid-vaccine-slots",
+      topics: ["automation", "covid-19", "python"],
+    },
+    {
+      name: "number-recognition-using-python",
+      description: "Handwriting digit recognition with ML, dataset, and GUI using Tkinter.",
+      stars: 3,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/number-recognition-using-python",
+      topics: ["machine-learning", "digit-recognizer", "python"],
+    },
+    {
+      name: "keylogger",
+      description: "Keylogger made in Python with a shell script for relevant output.",
+      stars: 3,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/keylogger",
+      topics: ["cyber-security", "python"],
+    },
+    {
+      name: "hawk",
+      description: "Network, recon and offensive-security tool for Linux systems.",
+      stars: 2,
+      language: "Shell",
+      url: "https://github.com/nitinkumar30/hawk",
+      topics: ["security", "recon", "network"],
+    },
+    {
+      name: "control-pc-remotely",
+      description: "Control your PC remotely using this mini-project with just 2 files.",
+      stars: 2,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/control-pc-remotely",
+      topics: ["networking", "python", "remote"],
+    },
+    {
+      name: "auto-search-job-openings",
+      description: "Automatically search job openings from various sites using Python.",
+      stars: 2,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/auto-search-job-openings",
+      topics: ["automation", "job-search", "python"],
+    },
+    {
+      name: "phonetracer",
+      description: "OSINT Phone Number Metadata Toolkit for phone number reconnaissance.",
+      stars: 1,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/phonetracer",
+      topics: ["osint", "security", "python"],
+    },
+    {
+      name: "Black-Coder",
+      description: "First blog project built with Python Flask framework for user-friendly websites.",
+      stars: 2,
+      language: "CSS",
+      url: "https://github.com/nitinkumar30/Black-Coder",
+      topics: ["flask", "blog", "web-development"],
+    },
+    {
+      name: "ransomware-using-python",
+      description: "A ransomware script demonstrating file encryption and verification processes in Python.",
+      stars: 1,
+      language: "Python",
+      url: "https://github.com/nitinkumar30/ransomware-using-python",
+      topics: ["cyber-security", "encryption", "python"],
+    },
   ],
   projects: [
     {
