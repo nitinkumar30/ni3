@@ -1,30 +1,42 @@
-import { portfolioData } from "@/lib/portfolio-data";
+import { data } from "@/lib/data";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ni3.dev";
 
 export async function GET() {
-  const p = portfolioData.personal_info;
-  const sections = portfolioData.website_metadata.navigation;
+  const p = data.personal_info;
+  const nav = data.navigation;
 
-  const text = `# ${p.name} - Portfolio
+  const skills = data.skill_groups?.flatMap((g) => g.skills.map((s: string) => s)) || data.skills?.map((s) => s.name) || [];
+  const projects = data.projects?.slice(0, 6) || [];
+
+  const text = `# NI3 — Developer Operating System
 > ${p.headline}
 > ${p.current_role} @ ${p.current_company} | ${p.current_location}
 
-## Sections
-${sections.map((s) => `- ${s}`).join("\n")}
+Site URL: ${siteUrl}
 
 ## About
-${portfolioData.about.summary}
+${p.name} is a ${p.current_role} at ${p.current_company}. ${p.headline}
+
+## Navigation
+${nav.map((n) => `- [${n.label}](${siteUrl}/#${n.id})`).join("\n")}
 
 ## Skills
-${portfolioData.skills.map((s) => `- ${s.name}: ${s.proficiency}`).join("\n")}
+${skills.map((s) => `- ${s}`).join("\n")}
 
-## Projects
-${portfolioData.projects.map((p) => `- ${p.name}: ${p.description}`).join("\n")}
+## Key Projects
+${projects.map((pr) => `- [${pr.name}](${pr.url || siteUrl}): ${pr.description}`).join("\n")}
 
 ## Social
-- GitHub: ${portfolioData.social_links.github}
-- LinkedIn: ${portfolioData.social_links.linkedin}
-- Twitter: ${portfolioData.social_links.twitter}
-- Instagram: ${portfolioData.social_links.instagram}
+- GitHub: ${p.github}
+- LinkedIn: ${p.linkedin}
+- Twitter: ${p.twitter}
+- Dev.to: ${p.blog}
+- Stack Overflow: ${p.stackoverflow}
+
+## Contact
+- Email: ${p.email}
+- Location: ${p.current_location}
 `;
 
   return new Response(text, {

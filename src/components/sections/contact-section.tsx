@@ -251,31 +251,40 @@ export function ContactSection() {
             >
               <div className="space-y-4">
                 <div>
+                  <label htmlFor="contact-name" className="sr-only">Your Name</label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder="Your Name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     required
+                    aria-required="true"
                     className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
                   />
                 </div>
                 <div>
+                  <label htmlFor="contact-email" className="sr-only">Your Email</label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder="Your Email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     required
+                    aria-required="true"
                     className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
                   />
                 </div>
                 <div>
+                  <label htmlFor="contact-message" className="sr-only">Your Message</label>
                   <textarea
+                    id="contact-message"
                     placeholder="Your Message"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     required
+                    aria-required="true"
                     rows={4}
                     className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all resize-none"
                   />

@@ -105,7 +105,7 @@ ni3/
 ## 🏗️ The Sections
 
 | # | Section | Key Feature |
-|---|---|---|---|
+|---|---|---|
 | 1 | **Hero** | Aurora overlays, gradient text, role rotator, primary profile image |
 | 2 | **About** | Professional summary, roles list, 6 animated counters, secondary portrait |
 | 3 | **Digital Playground** | Interactive 3D section — 5 buildings, crystal, data nodes, tech facts tooltips, character sprite from profile photo |

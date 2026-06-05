@@ -126,7 +126,7 @@
 @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 @keyframes breathe { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
 body {
   background: var(--background);
@@ -142,6 +142,21 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); opacity: 0.5; }
 
 ::selection { background: color-mix(in srgb, var(--primary) 20%, transparent); color: var(--foreground); }
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 
 .glass {
   background: var(--card-bg);
@@ -230,5 +245,15 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .motion-safe-only {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-smooth {
+    scroll-behavior: smooth;
   }
 }
