@@ -10,7 +10,7 @@ Welcome to **NI3** — a portfolio that got so ambitious it stopped being a port
 
 This is the **v2.0.0** rewrite from the ground up. Every component rebuilt. Every pixel reconsidered. Every dependency judged. (We kept some. We're not monks.)
 
-<a href="./public/screenshots/full-page.png"><img src="./public/screenshots/full-page.png" width="800" alt="Full page preview" /></a>
+<!-- <a href="./public/screenshots/full-page.png"><img src="./public/screenshots/full-page.png" width="800" alt="Full page preview" /></a> -->
 
 ---
 
