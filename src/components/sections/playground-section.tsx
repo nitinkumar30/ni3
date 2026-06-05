@@ -57,8 +57,9 @@ export function PlaygroundSection() {
     el.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 100)
-    camera.position.set(mobile ? 6 : 8, mobile ? 4 : 5, mobile ? 6 : 8)
+    const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100)
+    camera.position.set(mobile ? 5 : 7, mobile ? 2 : 2.5, mobile ? 5 : 7)
+    camera.lookAt(0, 0, 0)
 
     const pivot = new THREE.Group()
     scene.add(pivot)
@@ -179,6 +180,32 @@ export function PlaygroundSection() {
     const particles = new THREE.Points(pGeo, pMat)
     pivot.add(particles)
 
+    // Character sprite
+    let charSprite: THREE.Sprite | null = null
+    new THREE.TextureLoader().load("/images/20260603_220709-IMG_STYLE.jpg", (tex) => {
+      const c = document.createElement("canvas")
+      const cx = c.getContext("2d")!
+      c.width = tex.image.width
+      c.height = tex.image.height
+      cx.drawImage(tex.image, 0, 0)
+      const id = cx.getImageData(0, 0, c.width, c.height)
+      const d = id.data
+      const sr = d[0], sg = d[1], sb = d[2]
+      const threshold = 45
+      for (let i = 0; i < d.length; i += 4) {
+        const dr = d[i] - sr, dg = d[i + 1] - sg, db = d[i + 2] - sb
+        if (Math.sqrt(dr * dr + dg * dg + db * db) < threshold) d[i + 3] = 0
+      }
+      cx.putImageData(id, 0, 0)
+      const ct = new THREE.CanvasTexture(c)
+      const mat = new THREE.SpriteMaterial({ map: ct, transparent: true, depthTest: true, depthWrite: false })
+      charSprite = new THREE.Sprite(mat)
+      charSprite.position.set(3.5, -0.5, 2.5)
+      const aspect = c.width / c.height
+      charSprite.scale.set(1.8 * aspect, 1.8, 1)
+      pivot.add(charSprite)
+    })
+
     // animation state
     const rot = { current: 0, target: 0 }
     let animTime = 0
@@ -272,12 +299,19 @@ export function PlaygroundSection() {
       renderer.dispose()
       if (renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement)
       scene.traverse((child) => {
-        if (child instanceof THREE.Mesh || child instanceof THREE.Line || child instanceof THREE.LineSegments || child instanceof THREE.Points) {
+        if (child instanceof THREE.Mesh || child instanceof THREE.Line || child instanceof THREE.LineSegments || child instanceof THREE.Points || child instanceof THREE.Sprite) {
           child.geometry?.dispose()
           if (Array.isArray(child.material)) child.material.forEach((m) => m.dispose())
           else child.material?.dispose()
         }
       })
+      if (charSprite) {
+        pivot.remove(charSprite)
+        charSprite.material?.dispose()
+        if (charSprite.material && "map" in charSprite.material) {
+          ;(charSprite.material as THREE.SpriteMaterial).map?.dispose()
+        }
+      }
     }
   }, [isActive, isMobile])
 

@@ -5,7 +5,161 @@ import { motion } from "motion/react"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
 import { data } from "@/lib/data"
-import { Mail, MapPin, Phone, Send, MessageSquare, CheckCircle2 } from "lucide-react"
+import { Mail, MapPin, Phone, Send, MessageSquare, CheckCircle2, Code, Terminal, Sparkles } from "lucide-react"
+
+function CharacterIllustration() {
+  return (
+    <div className="relative w-full mx-auto">
+      {/* Animated gradient ring behind character */}
+      <motion.div
+        className="absolute inset-0 rounded-full opacity-25 blur-2xl"
+        style={{ background: "var(--theme-gradient)" }}
+        animate={{ scale: [1, 1.06, 1], rotate: [0, 5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Orbiting ring */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] aspect-square rounded-full border pointer-events-none"
+        style={{ borderColor: "color-mix(in srgb, var(--primary) 15%, transparent)" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full" style={{ background: "var(--primary)" }} />
+      </motion.div>
+
+      {/* Character image — pre-processed PNG with transparent background */}
+      <div className="relative z-10 px-4 pt-4">
+        <div className="relative mx-auto" style={{ maxWidth: 260 }}>
+          <motion.img
+            src="/images/20260603_220709-IMG_STYLE-removebg.png"
+            alt="Character"
+            className="w-full h-auto block"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+
+          {/* Scanning line effect */}
+          <motion.div
+            className="absolute inset-x-0 h-0.5 pointer-events-none"
+            style={{
+              background: "linear-gradient(90deg, transparent, var(--primary), transparent)",
+              filter: "blur(1px)",
+            }}
+            animate={{ top: ["0%", "100%", "0%"] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+      </div>
+
+      {/* Floating code snippets */}
+      <motion.div
+        className="absolute left-0 top-[15%] z-30 pointer-events-none"
+        animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="px-2 py-1.5 rounded-lg text-[8px] font-mono whitespace-nowrap shadow-lg backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--primary) 12%, transparent)", border: "1px solid color-mix(in srgb, var(--primary) 25%, transparent)", color: "var(--primary)" }}>
+          <Code className="w-2.5 h-2.5 inline mr-1" />
+          const dev = true
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute right-0 top-[30%] z-30 pointer-events-none"
+        animate={{ y: [0, 8, 0], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      >
+        <div className="px-2 py-1.5 rounded-lg text-[8px] font-mono whitespace-nowrap shadow-lg backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--accent) 12%, transparent)", border: "1px solid color-mix(in srgb, var(--accent) 25%, transparent)", color: "var(--accent)" }}>
+          <Terminal className="w-2.5 h-2.5 inline mr-1" />
+          npm run build
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute left-1 top-[55%] z-30 pointer-events-none"
+        animate={{ y: [0, -5, 0], opacity: [0.5, 0.9, 0.5] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        <div className="px-2 py-1 rounded-lg text-[8px] font-mono whitespace-nowrap shadow-lg backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--success) 12%, transparent)", border: "1px solid color-mix(in srgb, var(--success) 25%, transparent)", color: "var(--success)" }}>
+          git push origin main
+        </div>
+      </motion.div>
+
+      {/* Message bubble */}
+      <motion.div
+        className="absolute right-0 bottom-[15%] z-30 pointer-events-none"
+        animate={{ y: [0, -6, 0], opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      >
+        <div className="px-3 py-1.5 rounded-2xl text-[9px] font-medium whitespace-nowrap shadow-lg backdrop-blur-sm" style={{ background: "color-mix(in srgb, var(--success) 12%, transparent)", border: "1px solid color-mix(in srgb, var(--success) 25%, transparent)", color: "var(--success)" }}>
+          <Sparkles className="w-2.5 h-2.5 inline mr-1" />
+          Let&apos;s build!
+        </div>
+      </motion.div>
+
+      {/* Typing cursor */}
+      <motion.div
+        className="absolute bottom-[8%] left-1/2 -translate-x-1/2 z-30 pointer-events-none font-mono text-[9px]"
+        style={{ color: "var(--muted)" }}
+      >
+        <span>_</span>
+        <motion.span
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 1, repeat: Infinity }}
+        >
+          ▎
+        </motion.span>
+      </motion.div>
+
+      {/* Particles */}
+      {[...Array(8)].map((_, i) => {
+        const left = 10 + (i * 11) % 80
+        const top = 5 + (i * 13) % 70
+        const size = 1.5 + (i % 3)
+        return (
+          <motion.div
+            key={i}
+            className="absolute rounded-full z-20 pointer-events-none"
+            style={{
+              width: size,
+              height: size,
+              background: i % 3 === 0 ? "var(--primary)" : i % 3 === 1 ? "var(--accent)" : "var(--success)",
+              left: `${left}%`,
+              top: `${top}%`,
+              filter: "blur(0.3px)",
+            }}
+            animate={{
+              y: [0, -(6 + (i % 5) * 2), 0],
+              x: [0, (i % 3 - 1) * 4, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{
+              duration: 2.5 + (i % 3) * 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        )
+      })}
+
+      {/* Bottom decorative line */}
+      <div className="relative z-10 mt-3 flex justify-center gap-1">
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="w-6 h-0.5 rounded-full"
+            style={{ background: "var(--theme-gradient)" }}
+            animate={{ opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function ContactSection() {
   const [sent, setSent] = useState(false)
@@ -86,65 +240,86 @@ export function ContactSection() {
             </motion.div>
           </div>
 
-          {/* Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="lg:col-span-3 p-6 rounded-xl border border-white/10 bg-white/[0.02]"
-          >
-            <div className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  required
-                  className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
-                />
+          {/* Form + Illustration */}
+          <div className="lg:col-span-3 space-y-6">
+            <motion.form
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="p-6 rounded-xl border border-white/10 bg-white/[0.02]"
+            >
+              <div className="space-y-4">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    required
+                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    required
+                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    placeholder="Your Message"
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all resize-none"
+                  />
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] text-white text-sm font-medium hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300"
+                >
+                  {sent ? (
+                    <>
+                      <CheckCircle2 className="w-4 h-4" />
+                      Message Sent!
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
+                </motion.button>
               </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  required
-                  className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
-                />
-              </div>
-              <div>
-                <textarea
-                  placeholder="Your Message"
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  required
-                  rows={4}
-                  className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all resize-none"
-                />
-              </div>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-[#00E5FF] to-[#7B61FF] text-white text-sm font-medium hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-300"
-              >
-                {sent ? (
-                  <>
-                    <CheckCircle2 className="w-4 h-4" />
-                    Message Sent!
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Send Message
-                  </>
-                )}
-              </motion.button>
-            </div>
-          </motion.form>
+            </motion.form>
+
+            {/* Character illustration filling space below form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]"
+              style={{ minHeight: 320 }}
+            >
+              {/* Card gradient top border */}
+              <div className="absolute top-0 inset-x-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
+
+              <CharacterIllustration />
+
+              {/* Card corner accents */}
+              <div className="absolute top-3 left-3 w-6 h-6 pointer-events-none" style={{ borderTop: "1px solid color-mix(in srgb, var(--primary) 30%, transparent)", borderLeft: "1px solid color-mix(in srgb, var(--primary) 30%, transparent)" }} />
+              <div className="absolute bottom-3 right-3 w-6 h-6 pointer-events-none" style={{ borderBottom: "1px solid color-mix(in srgb, var(--primary) 30%, transparent)", borderRight: "1px solid color-mix(in srgb, var(--primary) 30%, transparent)" }} />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

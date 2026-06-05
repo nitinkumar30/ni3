@@ -6,30 +6,48 @@ import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { data } from "@/lib/data"
-import { ExternalLink, Code2, Search, ArrowUpDown, Folder, Star } from "lucide-react"
+import { ExternalLink, Code2, Search, ArrowUpDown, Folder, Star, Sparkles } from "lucide-react"
 
 const categories = [
-  "Python",
   "Automation",
-  "Testing",
+  "Development",
   "Cyber Security",
   "Data Science",
-  "Web Development",
-  "AI",
-  "Open Source",
+  "Data",
 ]
+
+type Tab = "featured" | "all"
+
+const tabStyles = (active: boolean) =>
+  active
+    ? {
+        color: "var(--primary)",
+        borderColor: "color-mix(in srgb, var(--primary) 40%, transparent)" as string,
+        background: "color-mix(in srgb, var(--primary) 10%, transparent)" as string,
+      }
+    : {
+        color: "var(--muted)" as string,
+        borderColor: "var(--card-border)" as string,
+        background: "transparent",
+      }
 
 export function ProjectsSection() {
   const allProjects = data.projects
+  const [activeTab, setActiveTab] = useState<Tab>("featured")
   const [searchQuery, setSearchQuery] = useState("")
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<"name-asc" | "name-desc" | "stars">("stars")
+
+  const featured = [...allProjects]
+    .filter((p) => p.featured)
+    .sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0))
+    .slice(0, 6)
 
   const filtered = allProjects.filter((p) => {
     const matchesSearch =
       !searchQuery ||
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchQuery.toLowerCase())
+      (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase()))
     const matchesCategory = !activeCategory || p.category === activeCategory
     return matchesSearch && matchesCategory
   })
@@ -40,6 +58,8 @@ export function ProjectsSection() {
     return (b.stars ?? 0) - (a.stars ?? 0)
   })
 
+  const projects = activeTab === "featured" ? featured : sorted
+
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,77 +69,97 @@ export function ProjectsSection() {
               <Folder className="w-3.5 h-3.5 mr-1.5" />
               Project Vault
             </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              <span className="text-gradient">All Projects</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+              <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-sm mt-2" style={{ color: "var(--muted)" }}>
-              {allProjects.length} projects across automation, security, data science, and development
-            </p>
+
+            <div className="inline-flex items-center gap-1 p-1 rounded-xl" style={{ border: "1px solid var(--card-border)", background: "color-mix(in srgb, var(--foreground) 3%, transparent)" }}>
+              <button
+                onClick={() => setActiveTab("featured")}
+                className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-lg transition-all"
+                style={tabStyles(activeTab === "featured")}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Featured
+              </button>
+              <button
+                onClick={() => setActiveTab("all")}
+                className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-lg transition-all"
+                style={tabStyles(activeTab === "all")}
+              >
+                <Folder className="w-3.5 h-3.5" />
+                All Projects
+              </button>
+            </div>
           </div>
         </ScrollReveal>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
-          <div className="relative flex-1 w-full max-w-md">
-            <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-              style={{ color: "var(--muted)" }}
-            />
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-transparent outline-none transition-colors"
-              style={{
-                color: "var(--foreground)",
-                borderColor: "var(--card-border)",
-              }}
-            />
-          </div>
+        {activeTab === "all" && (
+          <>
+            <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
+              <div className="relative flex-1 w-full max-w-md">
+                <Search
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+                  style={{ color: "var(--muted)" }}
+                />
+                <input
+                  type="text"
+                  placeholder="Search projects..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-transparent outline-none transition-colors"
+                  style={{
+                    color: "var(--foreground)",
+                    borderColor: "var(--card-border)",
+                  }}
+                />
+              </div>
 
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="w-4 h-4" style={{ color: "var(--muted)" }} />
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="text-sm rounded-lg border bg-transparent px-3 py-2 outline-none transition-colors"
-              style={{
-                color: "var(--foreground)",
-                borderColor: "var(--card-border)",
-              }}
-            >
-              <option value="stars">Most Stars</option>
-              <option value="name-asc">Name A-Z</option>
-              <option value="name-desc">Name Z-A</option>
-            </select>
-          </div>
-        </div>
+              <div className="flex items-center gap-2">
+                <ArrowUpDown className="w-4 h-4" style={{ color: "var(--muted)" }} />
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                  className="text-sm rounded-lg border bg-transparent px-3 py-2 outline-none transition-colors"
+                  style={{
+                    color: "var(--foreground)",
+                    borderColor: "var(--card-border)",
+                  }}
+                >
+                  <option value="stars">Most Stars</option>
+                  <option value="name-asc">Name A-Z</option>
+                  <option value="name-desc">Name Z-A</option>
+                </select>
+              </div>
+            </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
-              className="text-xs px-3 py-1.5 rounded-full border transition-all"
-              style={{
-                color: activeCategory === cat ? "var(--primary)" : "var(--muted)",
-                borderColor:
-                  activeCategory === cat
-                    ? "color-mix(in srgb, var(--primary) 40%, transparent)"
-                    : "var(--card-border)",
-                background:
-                  activeCategory === cat
-                    ? "color-mix(in srgb, var(--primary) 10%, transparent)"
-                    : "transparent",
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
+                  className="text-xs px-3 py-1.5 rounded-full border transition-all"
+                  style={{
+                    color: activeCategory === cat ? "var(--primary)" : "var(--muted)",
+                    borderColor:
+                      activeCategory === cat
+                        ? "color-mix(in srgb, var(--primary) 40%, transparent)"
+                        : "var(--card-border)",
+                    background:
+                      activeCategory === cat
+                        ? "color-mix(in srgb, var(--primary) 10%, transparent)"
+                        : "transparent",
+                  }}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sorted.map((project) => (
+          {projects.map((project) => (
             <ScrollReveal key={project.name}>
               <a href={project.url || "#"} target="_blank" rel="noopener noreferrer">
                 <Card hover className="p-4 h-full">
@@ -180,7 +220,7 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {sorted.length === 0 && (
+        {projects.length === 0 && (
           <p className="text-center text-sm py-12" style={{ color: "var(--muted)" }}>
             No projects match your filters.
           </p>

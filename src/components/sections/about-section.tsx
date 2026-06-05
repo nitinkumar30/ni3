@@ -76,8 +76,8 @@ export function AboutSection() {
             <div className="relative">
               <div className="relative w-full aspect-square max-w-md mx-auto">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 animate-gradient-xy">
-                  <div className="absolute inset-1 rounded-2xl bg-[#050816] flex items-center justify-center overflow-hidden">
-                    <div className="text-center p-8">
+                  <div className="absolute inset-1 rounded-2xl bg-[#050816] flex flex-col items-center justify-start overflow-y-auto">
+                      <div className="text-center p-4 sm:p-8">
                       <div className="w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px] mb-6">
                         <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
                           <img src={data.images.about} alt={data.personal_info.name} className="w-full h-full object-cover" />

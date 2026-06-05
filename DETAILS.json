@@ -1,0 +1,378 @@
+{
+  "personal_info": {
+    "name": "Nitin S Kumar",
+    "title": "Senior Automation Engineer",
+    "headline": "Automation Engineer navigating through a digital universe. Building the future with Python, AI, and an unhealthy amount of caffeine.",
+    "current_role": "Senior Automation Engineer",
+    "current_company": "Happiest Minds Technologies",
+    "current_location": "Pune, Maharashtra, India",
+    "email": "nitinkumar30.py@gmail.com",
+    "phone": "+91 9113797199",
+    "resume_url": "https://drive.google.com/drive/u/3/folders/14u3ywzWiFJjtl09JLlJUJc8eXEgJIkiZ"
+  },
+  "social_links": {
+    "linkedin": "https://www.linkedin.com/in/nitin30kumar/",
+    "github": "https://github.com/nitinkumar30",
+    "twitter": "https://twitter.com/nitinkumar30",
+    "instagram": "https://www.instagram.com/nitinkumar30.py/",
+    "devto": "https://dev.to/nitinkumar30",
+    "hackerrank": "https://www.hackerrank.com/nitinkumar30",
+    "stackoverflow": "https://stackoverflow.com/users/10957470/nitin-kumar",
+    "whatsapp": "https://wa.me/919113797199?text=Hi%20Nitin.",
+    "holopin": "https://www.holopin.io/@nitinkumar30#",
+    "pypi": "https://pypi.org/user/nitinkumar30/"
+  },
+  "about": {
+    "summary": "Automation Engineer with a focus on meeting quality goals and customer service. Experienced in using JIRA, GCP, Selenium, and other tools to complete tasks before deadlines. Currently serving as Senior Automation Engineer at Happiest Minds Technologies, Pune in the PDES (Product & Digital Engineering Services) department, developing and maintaining robust automation test scripts using Python and Selenium, leading framework migrations, and delivering sessions on GCP automation.",
+    "roles": [
+      "Senior Automation Engineer",
+      "Python Developer",
+      "Aspiring Data Scientist",
+      "Cyber Security Enthusiast",
+      "Prompt Engineer"
+    ],
+    "interests": [
+      "Python Automation",
+      "Selenium Testing",
+      "Data Science",
+      "AI & LLMs",
+      "Cyber Security",
+      "GCP & Cloud",
+      "Open Source"
+    ],
+    "available_for": ["Full-time", "Contract", "Remote"]
+  },
+  "statistics": {
+    "experience": "5+ Years",
+    "projects_delivered": "200+",
+    "certifications": "30+",
+    "tools_mastered": "11+",
+    "ai_tools": "4+",
+    "languages_known": 4,
+    "publications": 2,
+    "github_repos": 227,
+    "github_stars": "160+"
+  },
+  "skills_by_category": {
+    "Automation": {
+      "proficiency": "90%",
+      "skills": ["Python Automation", "Selenium", "Playwright", "Pytest", "Workflow Automation", "Browser Automation", "API Automation", "Scheduling", "Automation Framework Development", "Process Automation"]
+    },
+    "Testing": {
+      "proficiency": "85%",
+      "skills": ["Manual Testing", "API Testing", "Functional Testing", "Regression Testing", "Smoke Testing", "Integration Testing", "Test Planning", "Defect Tracking", "Postman", "Pytest"]
+    },
+    "Python Development": {
+      "proficiency": "90%",
+      "skills": ["Core Python", "Object Oriented Programming", "Multithreading", "Async Programming", "REST APIs", "CLI Development", "Package Development"]
+    },
+    "Web Development": {
+      "proficiency": "70%",
+      "skills": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Flask", "Responsive Design"]
+    },
+    "Data Science": {
+      "proficiency": "60%",
+      "skills": ["Pandas", "NumPy", "Data Analysis", "Data Cleaning", "Data Visualization", "Machine Learning Fundamentals"]
+    },
+    "Cyber Security": {
+      "proficiency": "50%",
+      "skills": ["OSINT", "Wifi Security", "Network Analysis", "Ethical Hacking Fundamentals", "Security Research"]
+    },
+    "AI & Prompt Engineering": {
+      "proficiency": "70%",
+      "skills": ["Prompt Engineering", "ChatGPT", "Claude", "Gemini", "Cursor", "Windsurf", "AI Workflow Design", "AI-Assisted Development", "Vibe Coding"]
+    }
+  },
+  "education": [
+    {
+      "degree": "MCA (Master of Computer Applications)",
+      "institution": "Arka Jain University",
+      "duration": "2021-2023",
+      "description": "Post Graduation with Computer Software specialization."
+    },
+    {
+      "degree": "BCA (Bachelor of Computer Applications)",
+      "institution": "Arka Jain University",
+      "duration": "2017-2020",
+      "description": "Graduation with IT specialization."
+    },
+    {
+      "degree": "Intermediate (Science)",
+      "institution": "DAV Public School, NIT Campus",
+      "year": "2017",
+      "description": "Schooling with Science stream, 1st division."
+    }
+  ],
+  "work_experience": [
+    {
+      "position": "Senior Automation Engineer",
+      "company": "Happiest Minds Technologies",
+      "duration": "03/2024 - Present",
+      "type": "Full-time",
+      "location": "Pune, India",
+      "description": "Leading automation engineering in the PDES department, developing robust test frameworks and mentoring team members.",
+      "highlights": [
+        "Developed automation test scripts using Python and Selenium",
+        "Led migration of test automation frameworks to modern platforms",
+        "Headed a data science internship program",
+        "Delivered session on GCP automation for data migration"
+      ]
+    },
+    {
+      "position": "System Engineer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2023 - 03/2024",
+      "type": "Full-time",
+      "location": "Kolkata, India"
+    },
+    {
+      "position": "Assistant System Engineer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2022 - 09/2023",
+      "type": "Full-time",
+      "location": "Kolkata, India"
+    },
+    {
+      "position": "Programmer",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2021 - 09/2022",
+      "type": "Full-time",
+      "location": "Kolkata, India"
+    },
+    {
+      "position": "IT Analyst",
+      "company": "Tata Consultancy Services",
+      "duration": "10/2020 - 09/2021",
+      "type": "Full-time",
+      "location": "Kolkata, India"
+    },
+    {
+      "position": "Placement Coordinator",
+      "company": "Arka Jain University",
+      "duration": "09/2019 - 02/2020",
+      "type": "Part-time",
+      "location": "Jamshedpur, India"
+    },
+    {
+      "position": "Freelance Web Developer",
+      "company": "Self-Employed",
+      "duration": "2019 - 2020",
+      "type": "Freelance",
+      "location": "Remote"
+    },
+    {
+      "position": "Internship Trainee",
+      "company": "Integrated Software Enterprises",
+      "duration": "05/2019 - 07/2019",
+      "type": "Internship",
+      "location": "Jamshedpur, India"
+    }
+  ],
+  "certifications": [
+    { "name": "Agile for Practitioners - Delivery", "issuer": "Tata Consultancy Services", "year": "2020" },
+    { "name": "Data Science with Python", "issuer": "Simplilearn", "year": "2021" },
+    { "name": "Automate the Boring Stuff with Python", "issuer": "Udemy", "year": "2021" },
+    { "name": "Programming Foundations: Software Testing/QA", "issuer": "LinkedIn", "year": "2020" },
+    { "name": "Microsoft Technical Associates", "issuer": "Microsoft", "year": "2019" },
+    { "name": "Eduhub Tech Conference", "issuer": "Eduhub", "year": "2024" },
+    { "name": "Digital: Python Foundation", "issuer": "Digital", "year": "2023" },
+    { "name": "Codegoda 2022 Programming Competition", "issuer": "Codegoda", "year": "2022" },
+    { "name": "Wifi Network Hacking", "issuer": "Udemy", "year": "2022" }
+  ],
+  "publications": [
+    {
+      "title": "PyShrink: Python Projects, Minus the Junk",
+      "description": "A Python project sanitizer & packager with POM-style framework architecture.",
+      "type": "Open Source",
+      "url": "https://github.com/nitinkumar30/pyshrink-vscode"
+    },
+    {
+      "title": "PhoneTracer — OSINT Phone Number Metadata Toolkit",
+      "description": "An OSINT toolkit for extracting metadata from phone numbers using Python.",
+      "type": "Open Source",
+      "url": "https://github.com/nitinkumar30/phonetracer"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Auto Edu Mail Generator",
+      "stars": 119,
+      "language": "Python",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/edu-mail-auto-generator",
+      "featured": true
+    },
+    {
+      "name": "n8n Projects",
+      "stars": 12,
+      "language": "TypeScript",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/n8n-projects",
+      "featured": true
+    },
+    {
+      "name": "Naukri Auto Resume Uploader",
+      "stars": 15,
+      "language": "Python",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/naukri-auto-resume-uploader",
+      "featured": true
+    },
+    {
+      "name": "Email Marketing Tool",
+      "stars": 8,
+      "language": "Python",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/email-marketing-tool",
+      "featured": true
+    },
+    {
+      "name": "Automation Framework",
+      "stars": 10,
+      "language": "Python",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/automation-framework-in-python",
+      "featured": true
+    },
+    {
+      "name": "Emoji Encoder",
+      "stars": 7,
+      "language": "Python",
+      "category": "Development",
+      "url": "https://github.com/nitinkumar30/emoji-encoder",
+      "featured": true
+    },
+    {
+      "name": "Ransomware Simulation",
+      "stars": 5,
+      "language": "Python",
+      "category": "Cyber Security",
+      "url": "https://github.com/nitinkumar30/ransomware-using-python",
+      "featured": true
+    },
+    {
+      "name": "Investing Website Automation",
+      "stars": 5,
+      "language": "Python",
+      "category": "Automation",
+      "url": "https://github.com/nitinkumar30/automate-investing-website",
+      "featured": true
+    },
+    {
+      "name": "Data Science Mini Projects",
+      "stars": 6,
+      "language": "Jupyter Notebook",
+      "category": "Data Science",
+      "url": "https://github.com/nitinkumar30/Data-Science-mini-projects",
+      "featured": true
+    },
+    {
+      "name": "Ration Card Automation",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"],
+      "featured": false
+    },
+    {
+      "name": "Slack ChatBot",
+      "category": "Automation",
+      "technologies": ["Python", "Slack API"],
+      "featured": false
+    },
+    {
+      "name": "Meesho Order Automation",
+      "category": "Automation",
+      "technologies": ["Python", "Selenium"],
+      "featured": false
+    },
+    {
+      "name": "Gmail Dictionary Attack",
+      "category": "Cyber Security",
+      "technologies": ["Python"],
+      "featured": false
+    },
+    {
+      "name": "Password Encrypter & Generator",
+      "category": "Cyber Security",
+      "technologies": ["Python", "Cryptography"],
+      "featured": false
+    },
+    {
+      "name": "Live Camera Sketching",
+      "category": "Development",
+      "technologies": ["Python", "OpenCV"],
+      "featured": false
+    },
+    {
+      "name": "Airline Ticket Predictor",
+      "category": "Data Science",
+      "technologies": ["Python", "Machine Learning"],
+      "featured": false
+    },
+    {
+      "name": "Sleep Sort",
+      "category": "Development",
+      "technologies": ["Python"],
+      "featured": false
+    },
+    {
+      "name": "CSV Search Engine",
+      "category": "Data",
+      "technologies": ["Python", "Pandas"],
+      "featured": false
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Zeba Bukhtayar",
+      "designation": "AJU Placement Cell",
+      "text": "You're quite good at your work at this young age. You're doing wonderful job.",
+      "rating": 5
+    },
+    {
+      "name": "Divya Pakairay",
+      "designation": "AJU CS Department Professor",
+      "text": "Nice and humble student with good understanding of Python. Knows better usage of it in almost any field.",
+      "rating": 5
+    },
+    {
+      "name": "Naveen Kumar",
+      "designation": "1st Client",
+      "text": "Best Web Designer at this young age. Even not a graduate and working as a freelance Web Developer.",
+      "rating": 5
+    }
+  ],
+  "recommendations": {
+    "received_count": 8,
+    "given_count": 12,
+    "pending_count": 3,
+    "professional_highlights": [
+      "iAppreciate Q2 '24 — Quarterly recognition at Happiest Minds Technologies",
+      "Open Source Contributor — 160+ GitHub stars across PyShrink and PhoneTracer",
+      "30+ Certifications across automation, data science, cybersecurity, and cloud",
+      "Codegoda 2022 — Programming competition participant"
+    ],
+    "community_impact": [
+      "227+ GitHub repositories with active open source contributions",
+      "Published PyShrink and PhoneTracer — used by developers globally",
+      "Headed a data science internship program",
+      "Delivered sessions on GCP automation and testing best practices"
+    ]
+  },
+  "ai_tools": [
+    "ChatGPT", "Claude", "Claude Code", "Gemini", "GitHub Copilot",
+    "Opencode", "Codex", "Antigravity", "Claude Sonnet 4.5",
+    "DeepSeek V4", "GPT-4o", "o3-mini"
+  ],
+  "automation_tools": [
+    "Selenium", "Playwright", "Python", "APIs", "BeautifulSoup",
+    "Pandas", "Pytest", "Docker", "CI/CD", "Git"
+  ],
+  "honors": [
+    {
+      "title": "iAppreciate Q2 '24",
+      "description": "Quarterly recognition award at Happiest Minds Technologies",
+      "issuer": "Happiest Minds Technologies",
+      "year": "2024"
+    }
+  ]
+}

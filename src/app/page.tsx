@@ -21,6 +21,7 @@ import { CustomCursor } from "@/components/custom-cursor";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { KonamiEasterEgg } from "@/components/easter-egg";
 import { CoinToss } from "@/components/coin-toss";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const Scene3D = dynamic(() => import("@/components/three/Scene3D").then((m) => ({ default: m.Scene3D })), {
   ssr: false,
@@ -38,9 +39,10 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <HeroSection />
+        <PlaygroundSection />
         <AboutSection />
-        <EducationSection />
         <ExperienceSection />
+        <EducationSection />
         <SkillsSection />
         <CertificationsSection />
         <ProjectsSection />
@@ -50,7 +52,6 @@ export default function Home() {
         <TestimonialsSection />
         <RecommendationsSection />
         <AchievementsSection />
-        <PlaygroundSection />
         <ContactSection />
       </main>
       <Footer />
@@ -58,6 +59,7 @@ export default function Home() {
       <CustomCursor />
       <KonamiEasterEgg />
       <CoinToss />
+      <ScrollToTop />
     </>
   );
 }

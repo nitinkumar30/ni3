@@ -557,6 +557,7 @@
   ],
   "navigation": [
     { "id": "hero", "label": "Home", "icon": "home" },
+    { "id": "playground", "label": "Playground", "icon": "zap" },
     { "id": "about", "label": "About", "icon": "user" },
     { "id": "experience", "label": "Experience", "icon": "briefcase" },
     { "id": "education", "label": "Education", "icon": "book" },
@@ -568,6 +569,7 @@
     { "id": "blog", "label": "Blog", "icon": "book-open" },
     { "id": "testimonials", "label": "Testimonials", "icon": "message-square" },
     { "id": "recommendations", "label": "Recommendations", "icon": "thumbs-up" },
+    { "id": "achievements", "label": "Achievements", "icon": "trophy" },
     { "id": "contact", "label": "Contact", "icon": "send" }
   ]
 }
