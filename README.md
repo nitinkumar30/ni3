@@ -41,22 +41,6 @@ This is the **v2.0.0** rewrite from the ground up. Every component rebuilt. Ever
 
 ---
 
-## 📸 Screenshots
-
-| Section | Preview |
-|---|---|
-| **Full Page** | <img src="./public/screenshots/full-page.png" width="640" alt="Full page preview" /> |
-| **Hero & 3D Background** | <img src="./public/screenshots/hero.png" width="640" alt="Hero section" /> |
-| **Skills Groups** | <img src="./public/screenshots/skills.png" width="640" alt="Skills section" /> |
-| **Featured / All Projects Toggle** | <img src="./public/screenshots/projects.png" width="640" alt="Projects toggle" /> |
-| **Blog / Articles Toggle** | <img src="./public/screenshots/blog.png" width="640" alt="Blog section" /> |
-| **GitHub Dashboard** | <img src="./public/screenshots/github-dashboard.png" width="640" alt="GitHub dashboard" /> |
-| **Recommendations** | <img src="./public/screenshots/recommendations.png" width="640" alt="Recommendations" /> |
-| **Testimonials with Person Images** | <img src="./public/screenshots/testimonials.png" width="640" alt="Testimonials" /> |
-| **Contact with Character Illustration** | <img src="./public/screenshots/contact.png" width="640" alt="Contact section" /> |
-
----
-
 ## 🧩 Tech Stack v2.0
 
 | Layer | Technology | Why |
