@@ -34,6 +34,9 @@ export function EducationSection() {
               <img
                 src={data.images.timeline}
                 alt="Timeline"
+                width={112}
+                height={112}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>

@@ -34,6 +34,9 @@ function CharacterIllustration() {
           <motion.img
             src="/images/20260603_220709-IMG_STYLE-removebg.png"
             alt="Character"
+            width={585}
+            height={427}
+            loading="eager"
             className="w-full h-auto block"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -164,9 +167,25 @@ function CharacterIllustration() {
 export function ContactSection() {
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (!form.name.trim()) errs.name = "Name is required"
+    if (!form.email.trim()) {
+      errs.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      errs.email = "Enter a valid email address"
+    }
+    if (!form.message.trim()) errs.message = "Message is required"
+    else if (form.message.trim().length < 10) errs.message = "Message must be at least 10 characters"
+    setErrors(errs)
+    return Object.keys(errs).length === 0
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validate()) return
     setSent(true)
     setTimeout(() => setSent(false), 3000)
   }
@@ -201,6 +220,9 @@ export function ContactSection() {
               <img
                 src={data.images.contact}
                 alt={data.personal_info.name}
+                width={400}
+                height={400}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -257,11 +279,19 @@ export function ContactSection() {
                     type="text"
                     placeholder="Your Name"
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) => {
+                      setForm({ ...form, name: e.target.value })
+                      if (errors.name) setErrors((prev) => ({ ...prev, name: "" }))
+                    }}
                     required
                     aria-required="true"
-                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "contact-name-error" : undefined}
+                    className={`w-full px-4 py-2.5 rounded-lg bg-white/[0.03] text-white text-sm placeholder:text-white/20 focus:outline-none transition-all ${
+                      errors.name ? "border border-red-500/60 focus:border-red-500" : "border border-white/10 focus:border-[#00E5FF]/40"
+                    }`}
                   />
+                  {errors.name && <p id="contact-name-error" className="text-red-400 text-xs mt-1" role="alert">{errors.name}</p>}
                 </div>
                 <div>
                   <label htmlFor="contact-email" className="sr-only">Your Email</label>
@@ -270,11 +300,19 @@ export function ContactSection() {
                     type="email"
                     placeholder="Your Email"
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) => {
+                      setForm({ ...form, email: e.target.value })
+                      if (errors.email) setErrors((prev) => ({ ...prev, email: "" }))
+                    }}
                     required
                     aria-required="true"
-                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                    className={`w-full px-4 py-2.5 rounded-lg bg-white/[0.03] text-white text-sm placeholder:text-white/20 focus:outline-none transition-all ${
+                      errors.email ? "border border-red-500/60 focus:border-red-500" : "border border-white/10 focus:border-[#00E5FF]/40"
+                    }`}
                   />
+                  {errors.email && <p id="contact-email-error" className="text-red-400 text-xs mt-1" role="alert">{errors.email}</p>}
                 </div>
                 <div>
                   <label htmlFor="contact-message" className="sr-only">Your Message</label>
@@ -282,12 +320,20 @@ export function ContactSection() {
                     id="contact-message"
                     placeholder="Your Message"
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onChange={(e) => {
+                      setForm({ ...form, message: e.target.value })
+                      if (errors.message) setErrors((prev) => ({ ...prev, message: "" }))
+                    }}
                     required
                     aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "contact-message-error" : undefined}
                     rows={4}
-                    className="w-full px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/10 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#00E5FF]/40 transition-all resize-none"
+                    className={`w-full px-4 py-2.5 rounded-lg bg-white/[0.03] text-white text-sm placeholder:text-white/20 focus:outline-none transition-all resize-none ${
+                      errors.message ? "border border-red-500/60 focus:border-red-500" : "border border-white/10 focus:border-[#00E5FF]/40"
+                    }`}
                   />
+                  {errors.message && <p id="contact-message-error" className="text-red-400 text-xs mt-1" role="alert">{errors.message}</p>}
                 </div>
                 <motion.button
                   whileHover={{ scale: 1.02 }}

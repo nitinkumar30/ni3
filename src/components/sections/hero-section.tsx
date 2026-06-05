@@ -159,6 +159,9 @@ export function HeroSection() {
                       <img
                         src={data.images.hero}
                         alt={data.personal_info.name}
+                        width={300}
+                        height={300}
+                        fetchPriority="high"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </div>

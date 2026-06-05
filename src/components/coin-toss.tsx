@@ -95,6 +95,9 @@ export function CoinToss() {
             <img
               src={profileImages[imgIndex]}
               alt=""
+              width={64}
+              height={64}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           </div>

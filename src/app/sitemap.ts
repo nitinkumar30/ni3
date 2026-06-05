@@ -19,6 +19,7 @@ const sections = [
   { url: "/#recommendations", priority: 0.6, changeFrequency: "monthly" as const },
   { url: "/#achievements", priority: 0.6, changeFrequency: "monthly" as const },
   { url: "/#contact", priority: 0.8, changeFrequency: "monthly" as const },
+  { url: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

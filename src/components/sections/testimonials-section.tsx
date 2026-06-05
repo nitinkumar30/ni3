@@ -75,6 +75,9 @@ export function TestimonialsSection() {
                     <img
                       src={testimonialImages[current % testimonialImages.length]}
                       alt={testimonials[current].name}
+                      width={48}
+                      height={48}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                   </div>

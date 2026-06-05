@@ -153,6 +153,12 @@ export function Footer() {
           <p className="text-white/30 text-xs">
             &copy; {year} {data.personal_info.name}. MIT License
           </p>
+          <a
+            href="/privacy"
+            className="text-white/20 hover:text-[#00E5FF]/60 text-xs transition-colors"
+          >
+            Privacy
+          </a>
           <p className="text-white/40 text-xs flex items-center gap-1.5">
             Made with{" "}
             <motion.span

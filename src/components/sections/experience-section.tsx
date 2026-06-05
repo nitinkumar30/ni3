@@ -145,12 +145,12 @@ export function ExperienceSection() {
                           />
 
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
-                            <h3
+                            <h4
                               className="text-lg font-semibold transition-colors"
                               style={{ color: "var(--foreground)" }}
                             >
                               {entry.position}
-                            </h3>
+                            </h4>
                             <div
                               className="flex items-center gap-3 text-xs flex-wrap"
                               style={{ color: "var(--muted)" }}

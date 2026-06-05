@@ -80,7 +80,7 @@ export function AboutSection() {
                       <div className="text-center p-4 sm:p-8">
                       <div className="w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px] mb-6">
                         <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
-                          <img src={data.images.about} alt={data.personal_info.name} className="w-full h-full object-cover" />
+                          <img src={data.images.about} alt={data.personal_info.name} width={112} height={112} loading="lazy" className="w-full h-full object-cover" />
                         </div>
                       </div>
                       <p className="text-white/50 text-sm leading-relaxed">{data.about.summary}</p>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -20,6 +20,15 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ni3.dev";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050816" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -82,7 +91,7 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "Portfolio",
   other: {
-    "color-scheme": "dark",
+    "color-scheme": "dark light",
   },
 };
 
@@ -103,8 +112,9 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="alternate" type="application/atom+xml" title="NI3 — Articles by Nitin Kumar" href="/feed.xml" />
         <link rel="alternate" type="text/markdown" title="NI3 — LLMs.txt" href="/llms.txt" />
-        <meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)" />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="preconnect" href="https://media2.dev.to" />
         <JsonLd />
       </head>
       <body className="min-h-screen text-white" style={{ background: "var(--background)" }}>
