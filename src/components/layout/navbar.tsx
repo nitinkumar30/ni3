@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useCallback, useRef } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { cn } from "@/lib/utils"
 import { data } from "@/lib/data"
 import { useAppStore } from "@/lib/store"
@@ -125,7 +125,7 @@ export function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
         scrolled
           ? "bg-[var(--nav-bg)] backdrop-blur-xl border-b border-[var(--card-border)] shadow-lg shadow-black/5"
           : "bg-transparent"
@@ -203,8 +203,9 @@ export function Navbar() {
           {/* Mobile hamburger button (visible below md) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onTouchEnd={(e) => e.preventDefault()}
             className="md:hidden relative w-9 h-9 flex items-center justify-center rounded-lg transition-colors ml-auto"
-            style={{ color: "var(--foreground)" }}
+            style={{ color: "var(--foreground)", touchAction: "manipulation" }}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
           >
@@ -214,46 +215,44 @@ export function Navbar() {
       </div>
 
       {/* Mobile dropdown menu (visible below md) */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="md:hidden border-t"
-            style={{
-              background: "var(--nav-bg)",
-              backdropFilter: "blur(20px)",
-              borderColor: "var(--card-border)",
-            }}
-          >
-            <div className="px-4 py-3 space-y-1 max-h-[70vh] overflow-y-auto">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className={cn(
-                    "w-full text-left px-3.5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200",
-                    activeSection === item.id
-                      ? "text-white"
-                      : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--card-bg)]"
-                  )}
-                  style={
-                    activeSection === item.id
-                      ? { background: "color-mix(in srgb, var(--primary) 15%, transparent)" }
-                      : {}
-                  }
-                  role="menuitem"
-                  aria-current={activeSection === item.id ? "true" : undefined}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="md:hidden border-t"
+          style={{
+            background: "var(--nav-bg)",
+            backdropFilter: "blur(20px)",
+            borderColor: "var(--card-border)",
+          }}
+        >
+          <div className="px-4 py-3 space-y-1 max-h-[70vh] overflow-y-auto">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                onTouchEnd={(e) => { scrollTo(item.id); e.preventDefault() }}
+                className={cn(
+                  "w-full text-left px-3.5 py-2.5 text-sm font-medium rounded-lg transition-all duration-200",
+                  activeSection === item.id
+                    ? "text-white"
+                    : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--card-bg)]"
+                )}
+                style={
+                  activeSection === item.id
+                    ? { background: "color-mix(in srgb, var(--primary) 15%, transparent)", touchAction: "manipulation" }
+                    : { touchAction: "manipulation" }
+                }
+                role="menuitem"
+                aria-current={activeSection === item.id ? "true" : undefined}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   )
 }
