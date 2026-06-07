@@ -221,7 +221,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="md:hidden overflow-hidden border-t"
+            className="md:hidden border-t"
             style={{
               background: "var(--nav-bg)",
               backdropFilter: "blur(20px)",
