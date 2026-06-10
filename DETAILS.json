@@ -268,54 +268,63 @@
     },
     {
       "name": "Ration Card Automation",
+      "description": "Automates ration card request submissions on government portals using Selenium.",
       "category": "Automation",
       "technologies": ["Python", "Selenium"],
       "featured": false
     },
     {
       "name": "Slack ChatBot",
+      "description": "Slack chatbot for automated team notifications and task management.",
       "category": "Automation",
       "technologies": ["Python", "Slack API"],
       "featured": false
     },
     {
       "name": "Meesho Order Automation",
+      "description": "Automates ordering workflow on Meesho e-commerce platform.",
       "category": "Automation",
       "technologies": ["Python", "Selenium"],
       "featured": false
     },
     {
       "name": "Gmail Dictionary Attack",
+      "description": "Dictionary attack simulation for security education and awareness.",
       "category": "Cyber Security",
       "technologies": ["Python"],
       "featured": false
     },
     {
       "name": "Password Encrypter & Generator",
+      "description": "Password generation and encryption tool with multiple algorithms.",
       "category": "Cyber Security",
       "technologies": ["Python", "Cryptography"],
       "featured": false
     },
     {
       "name": "Live Camera Sketching",
+      "description": "Real-time webcam to pencil-sketch art conversion using OpenCV.",
       "category": "Development",
       "technologies": ["Python", "OpenCV"],
       "featured": false
     },
     {
       "name": "Airline Ticket Predictor",
+      "description": "ML model predicting airline ticket prices based on historical data.",
       "category": "Data Science",
       "technologies": ["Python", "Machine Learning"],
       "featured": false
     },
     {
       "name": "Sleep Sort",
+      "description": "Novel sleep sort algorithm implementation with multi-threading.",
       "category": "Development",
       "technologies": ["Python"],
       "featured": false
     },
     {
       "name": "CSV Search Engine",
+      "description": "Search engine capable of indexing and querying CSV data files.",
       "category": "Data",
       "technologies": ["Python", "Pandas"],
       "featured": false
@@ -441,24 +450,58 @@
     { "icon": "TrendingUp", "label": "Technologies", "value": "50+" },
     { "icon": "Target", "label": "Automation Flows", "value": "100+" }
   ],
-  "github_stats": {
-    "public_repos": 227,
-    "total_stars": 160,
-    "total_forks": 45,
-    "followers": 50,
-    "following": 30,
-    "total_commits": 8000,
-    "streak_days": 12,
-    "weekly_commits": 45,
-    "monthly_commits": 180,
-    "yearly_commits": 2100,
-    "top_languages": [
+  "github_dashboard": {
+    "overview": {
+      "public_repos": 227,
+      "total_stars": 160,
+      "total_forks": 45,
+      "followers": 50,
+      "following": 30,
+      "total_commits": 8000,
+      "total_contributions": 8500,
+      "contribution_streak": 12,
+      "streak_days": 12,
+      "current_streak": 5,
+      "longest_streak": 20,
+      "contribution_level": "High"
+    },
+    "contribution_analytics": {
+      "weekly": 45,
+      "monthly": 180,
+      "yearly": 2100,
+      "weekly_commits": 45,
+      "monthly_commits": 180,
+      "yearly_commits": 2100,
+      "average_per_day": 6.4,
+      "busiest_day": "Friday",
+      "busiest_hour": "10:00 - 14:00",
+      "consistency_score": 75,
+      "frequency": "High"
+    },
+    "repository_insights": {
+      "most_starred": { "name": "Auto Edu Mail Generator", "stars": 119, "language": "Python", "category": "Automation", "url": "https://github.com/nitinkumar30/edu-mail-auto-generator" },
+      "most_forked": { "name": "Auto Edu Mail Generator", "forks": 12, "language": "Python", "url": "https://github.com/nitinkumar30/edu-mail-auto-generator" },
+      "recently_updated": { "name": "CSV Search Engine", "language": "Python", "category": "Data" },
+      "fastest_growing": { "name": "Auto Edu Mail Generator", "stars": 119, "language": "Python", "url": "https://github.com/nitinkumar30/edu-mail-auto-generator" }
+    },
+    "technology_breakdown": [
       { "name": "Python", "percentage": 40, "color": "#3572a5" },
       { "name": "JavaScript", "percentage": 20, "color": "#f7df1e" },
       { "name": "TypeScript", "percentage": 20, "color": "#3178c6" },
       { "name": "HTML", "percentage": 10, "color": "#e34c26" },
       { "name": "CSS", "percentage": 5, "color": "#563d7c" },
       { "name": "Others", "percentage": 5, "color": "#6e7681" }
+    ],
+    "language_universe": [
+      { "name": "Python", "percentage": 40, "color": "#3572a5" },
+      { "name": "JavaScript", "percentage": 20, "color": "#f7df1e" },
+      { "name": "TypeScript", "percentage": 20, "color": "#3178c6" },
+      { "name": "HTML", "percentage": 10, "color": "#e34c26" },
+      { "name": "CSS", "percentage": 5, "color": "#563d7c" },
+      { "name": "Swift", "percentage": 2, "color": "#f05138" },
+      { "name": "Go", "percentage": 1.5, "color": "#00add8" },
+      { "name": "Rust", "percentage": 1, "color": "#dea584" },
+      { "name": "Java", "percentage": 0.5, "color": "#b07219" }
     ],
     "weekly_activity": [
       { "day": "Mon", "commits": 8 },
@@ -468,7 +511,28 @@
       { "day": "Fri", "commits": 14 },
       { "day": "Sat", "commits": 4 },
       { "day": "Sun", "commits": 3 }
-    ]
+    ],
+    "open_source_impact": {
+      "stars_received": "160+",
+      "forks_received": "45+",
+      "community_engagement": "50+",
+      "repository_reach": 227,
+      "top_contributions": [
+        { "repo": "Auto Edu Mail Generator", "impact": "119 stars — highest starred automation project" },
+        { "repo": "Naukri Auto Resume Uploader", "impact": "15 stars — solves real-world job portal automation" },
+        { "repo": "n8n Projects", "impact": "12 stars — workflow automation showcase" },
+        { "repo": "Automation Framework", "impact": "10 stars — modular test automation framework" },
+        { "repo": "Email Marketing Tool", "impact": "8 stars — automated campaign management" }
+      ]
+    },
+    "activity_summary": {
+      "total_weeks_active": 48,
+      "total_days_contributed": 210,
+      "most_active_month": "March 2026",
+      "total_repositories_contributed": 227,
+      "organizations": 1,
+      "contribution_calendar_year": 2026
+    }
   },
   "articles": [
     { "id": 1, "title": "Built with Google Gemini: AI Essay Generator with Gemini", "category": "AI", "tags": ["gemini", "python", "ai", "writing"], "reactions": 3, "views": 144, "readTime": 8, "featured": true, "date": "2026-03-03", "url": "https://dev.to/nitinkumar30/ai-essay-generator-with-gemini-34pc" },
