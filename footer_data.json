@@ -1,0 +1,79 @@
+{
+  "terminal": {
+    "title": "terminal — ni3@portfolio:~/",
+    "welcome_message": "Welcome to NI3 Terminal. Type 'help' for commands.",
+    "prompt_prefix": "visitor@ni3:~$",
+    "commands": [
+      { "cmd": "help", "output": "Available: about, skills, projects, github, contact, cyber" },
+      { "cmd": "about", "output": "Automation Engineer | Python | AI | Cyber Security" },
+      { "cmd": "skills", "output": "Python 90% | Selenium 90% | Automation 90% | AI 70%" },
+      { "cmd": "projects", "output": "227 repos | 160+ stars | Top: edu-mail-auto-generator ★119" },
+      { "cmd": "github", "output": "github.com/nitinkumar30 — 227 public repositories" },
+      { "cmd": "contact", "output": "nitinkumar30.py@gmail.com | Pune, India" },
+      { "cmd": "cyber", "output": "⚠️ CYBER MODE ACTIVATED — System breach detected" }
+    ],
+    "styles": {
+      "prompt": "#00E5FF",
+      "command": "#ffffff",
+      "output": "rgba(255,255,255,0.6)",
+      "success": "#4ade80",
+      "error": "#ef4444"
+    }
+  },
+  "datetime": {
+    "implementation": "Live clock using setInterval(1000ms) in React useState. Updates time state every second via new Date().",
+    "time_format": { "hour": "2-digit", "minute": "2-digit" },
+    "date_format": { "weekday": "long", "month": "long", "day": "numeric" },
+    "font": "font-mono tabular-nums",
+    "live_update_interval_ms": 1000,
+    "use_effect_cleanup": "clearInterval on component unmount"
+  },
+  "social_links": [
+    { "label": "GitHub", "icon": "GitHubIcon", "href_key": "github", "href": "https://github.com/nitinkumar30" },
+    { "label": "LinkedIn", "icon": "LinkedInIcon", "href_key": "linkedin", "href": "https://www.linkedin.com/in/nitin30kumar/" },
+    { "label": "X (Twitter)", "icon": "XIcon", "href_key": "twitter", "href": "https://twitter.com/nitinkumar30" },
+    { "label": "Instagram", "icon": "InstagramIcon", "href_key": "instagram", "href": "https://www.instagram.com/nitinkumar30.py/" },
+    { "label": "Stack Overflow", "icon": "StackOverflowIcon", "href_key": "stackoverflow", "href": "https://stackoverflow.com/users/10957470/nitin-kumar" },
+    { "label": "WhatsApp", "icon": "WhatsAppIcon", "href_key": "whatsapp", "href": "https://wa.me/919113797199?text=Hi%20Nitin." },
+    { "label": "Dev.to", "icon": "DevToIcon", "href_key": "devto", "href": "https://dev.to/nitinkumar30" },
+    { "label": "Holopin", "icon": "HolopinIcon", "href_key": "holopin", "href": "https://www.holopin.io/@nitinkumar30#" },
+    { "label": "PyPI", "icon": "PyPIIcon", "href_key": "pypi", "href": "https://pypi.org/user/nitinkumar30/" },
+    { "label": "HackerRank", "icon": "HackerRankIcon", "href_key": "hackerrank", "href": "https://www.hackerrank.com/nitinkumar30" },
+    { "label": "Email", "icon": "Mail", "href_key": "email", "href": "mailto:nitinkumar30.py@gmail.com" }
+  ],
+  "background": {
+    "aurora": {
+      "enabled": true,
+      "blobs": [
+        { "position": "top-0 left-1/4", "color": "#00E5FF", "opacity": 0.1, "size": "w-96 h-96", "blur": "blur-[100px]", "animation": { "scale": [1, 1.2, 1], "opacity": [0.3, 0.6, 0.3], "duration": 4, "repeat": "Infinity" } },
+        { "position": "bottom-0 right-1/4", "color": "#7B61FF", "opacity": 0.1, "size": "w-96 h-96", "blur": "blur-[100px]", "animation": { "scale": [1.2, 1, 1.2], "opacity": [0.2, 0.5, 0.2], "duration": 5, "repeat": "Infinity", "delay": 1 } }
+      ]
+    },
+    "floating_particles": {
+      "count": 8,
+      "size": "w-1 h-1",
+      "color": "#00E5FF",
+      "opacity": 0.3,
+      "shape": "rounded-full",
+      "animation": { "y": [0, -25, 0], "opacity": [0, 0.8, 0], "base_duration": 3, "per_particle_variance": 0.5, "delay_per_particle": 0.3, "ease": "easeInOut" }
+    }
+  },
+  "bottom_bar": {
+    "copyright": { "template": "© {year} {name}. MIT License", "year_source": "new Date().getFullYear()", "name_source": "data.personal_info.name" },
+    "privacy_link": { "text": "Privacy", "href": "/privacy" },
+    "made_with": {
+      "text_before": "Made with",
+      "heart": { "symbol": "♥", "color": "text-red-400", "animation": { "scale": [1, 1.3, 1], "duration": 1.5, "repeat": "Infinity" } },
+      "text_middle": "and",
+      "sparkle": { "icon": "Sparkles", "color": "text-yellow-400", "size": "w-3 h-3" },
+      "text_after": "by",
+      "author_link": { "label": "Nitin", "href_key": "linkedin", "color": "#00E5FF", "hover_color": "#7B61FF" }
+    },
+    "scroll_to_top": {
+      "icon": "ArrowUp",
+      "size": 16,
+      "behavior": "smooth",
+      "button_styles": { "default": "border-white/10 text-white/30", "hover": "text-white border-white/20" }
+    }
+  }
+}
