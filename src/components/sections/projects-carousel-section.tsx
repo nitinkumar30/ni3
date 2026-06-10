@@ -8,20 +8,14 @@ import { ArrowLeft, ArrowRight, Star, Sparkles } from "lucide-react"
 import { data } from "@/lib/data"
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Automation: "#00E5FF",
-  "Cyber Security": "#FF4D4D",
-  "Data Science": "#6BCB77",
-  Development: "#FFD93D",
+  Automation: "#F4845F",
+  "Cyber Security": "#E882B4",
+  "Data Science": "#6BBF7A",
+  Development: "#6EB5FF",
   Data: "#A66CFF",
 }
 
-const CATEGORY_PANELS: Record<string, string> = {
-  Automation: "#00E5FF20",
-  "Cyber Security": "#FF4D4D20",
-  "Data Science": "#6BCB7720",
-  Development: "#FFD93D20",
-  Data: "#A66CFF20",
-}
+const GRAIN_SVG = `data:image/svg+xml,%3Csvg viewBox='0 0%20200%20200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E`
 
 export function ProjectsCarouselSection() {
   const featured = data.projects.filter((p) => p.featured)
@@ -30,7 +24,7 @@ export function ProjectsCarouselSection() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
+    const check = () => setIsMobile(window.innerWidth < 640)
     check()
     window.addEventListener("resize", check)
     return () => window.removeEventListener("resize", check)
@@ -50,66 +44,33 @@ export function ProjectsCarouselSection() {
     [isAnimating, featured.length]
   )
 
-  const getIndices = (center: number) => {
-    const len = featured.length
-    if (len <= 1) return { left: center, right: center, farLeft: center, farRight: center }
-    return {
-      left: (center - 1 + len) % len,
-      right: (center + 1) % len,
-      farLeft: (center - 2 + len) % len,
-      farRight: (center + 2) % len,
-    }
+  const center = activeIndex
+  const left = (activeIndex - 1 + featured.length) % featured.length
+  const right = (activeIndex + 1) % featured.length
+  const back = (activeIndex + 2) % featured.length
+
+  const getRole = (i: number): "center" | "left" | "right" | "back" | "hidden" => {
+    if (i === center) return "center"
+    if (i === left) return "left"
+    if (i === right) return "right"
+    if (i === back) return "back"
+    return "hidden"
   }
 
-  const { left, right, farLeft, farRight } = getIndices(activeIndex)
-
-  const getCardStyle = (i: number) => {
-    const isCenter = i === activeIndex
-    const isLeft = i === left
-    const isRight = i === right
-    const isFar = i === farLeft || i === farRight
-
-    if (isCenter) {
-      return {
-        zIndex: 20,
-        opacity: 1,
-        scale: isMobile ? 0.9 : 1,
-        translateX: "0%",
-        translateY: "0px",
-        filter: "blur(0px)",
-      }
+  const getCardStyle = (role: string) => {
+    const base = { transition: "all 650ms cubic-bezier(0.4,0,0.2,1)", willChange: "transform, filter, opacity" as const }
+    switch (role) {
+      case "center":
+        return { ...base, left: "50%", top: isMobile ? "10%" : "5%", width: isMobile ? "85%" : "55%", transform: "translateX(-50%) scale(1)", filter: "blur(0px)", opacity: 1, zIndex: 20 }
+      case "left":
+        return { ...base, left: isMobile ? "5%" : "8%", top: isMobile ? "15%" : "12%", width: isMobile ? "40%" : "28%", transform: "translateX(0) scale(0.8)", filter: "blur(2px)", opacity: 0.7, zIndex: 10 }
+      case "right":
+        return { ...base, left: isMobile ? "55%" : "64%", top: isMobile ? "15%" : "12%", width: isMobile ? "40%" : "28%", transform: "translateX(0) scale(0.8)", filter: "blur(2px)", opacity: 0.7, zIndex: 10 }
+      case "back":
+        return { ...base, left: "50%", top: isMobile ? "20%" : "18%", width: isMobile ? "55%" : "35%", transform: "translateX(-50%) scale(0.6)", filter: "blur(4px)", opacity: 0.4, zIndex: 5 }
+      default:
+        return { ...base, left: "50%", top: "25%", width: "40%", transform: "translateX(-50%) scale(0.4)", filter: "blur(6px)", opacity: 0, zIndex: 1 }
     }
-    if (isLeft) {
-      return {
-        zIndex: 15,
-        opacity: isMobile ? 0 : 0.6,
-        scale: isMobile ? 0.7 : 0.75,
-        translateX: isMobile ? "-120%" : "-100%",
-        translateY: isMobile ? "40px" : "20px",
-        filter: "blur(2px)",
-      }
-    }
-    if (isRight) {
-      return {
-        zIndex: 15,
-        opacity: isMobile ? 0 : 0.6,
-        scale: isMobile ? 0.7 : 0.75,
-        translateX: isMobile ? "120%" : "100%",
-        translateY: isMobile ? "40px" : "20px",
-        filter: "blur(2px)",
-      }
-    }
-    if (isFar) {
-      return {
-        zIndex: 10,
-        opacity: 0,
-        scale: 0.5,
-        translateX: "0%",
-        translateY: "60px",
-        filter: "blur(4px)",
-      }
-    }
-    return { zIndex: 5, opacity: 0, scale: 0.3, translateX: "0%", translateY: "80px", filter: "blur(6px)" }
   }
 
   if (featured.length === 0) return null
@@ -118,164 +79,192 @@ export function ProjectsCarouselSection() {
   const bgColor = CATEGORY_COLORS[activeProject.category] || "#4488ff"
 
   return (
-    <section id="projects-carousel" className="relative py-24 sm:py-32 overflow-hidden">
+    <section
+      id="projects-carousel"
+      className="relative h-screen w-full overflow-hidden"
+      style={{ backgroundColor: bgColor, transition: "background-color 650ms cubic-bezier(0.4,0,0.2,1)" }}
+    >
+      {/* Grain overlay */}
       <div
-        className="absolute inset-0 transition-colors duration-700 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse at 50% 50%, ${bgColor}08, transparent 70%)` }}
+        className="absolute inset-0 pointer-events-none"
+        style={{ zIndex: 50, opacity: 0.3, backgroundImage: `url("${GRAIN_SVG}")`, backgroundSize: "200px 200px" }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <Badge variant="premium" className="mb-4">
-              <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-              Featured Projects
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="text-gradient">Projects That Matter</span>
-            </h2>
-            <p className="text-white/40 text-sm max-w-xl mx-auto">
-              Swipe through my featured open-source work
-            </p>
-          </div>
-        </ScrollReveal>
+      {/* Ghost text */}
+      <div className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none" style={{ zIndex: 2, top: "12%" }}>
+        <span
+          className="font-anton font-black uppercase leading-none whitespace-nowrap text-white/10"
+          style={{ fontSize: "clamp(70px, 22vw, 300px)", letterSpacing: "-0.02em" }}
+        >
+          PROJECTS
+        </span>
+      </div>
 
-        <div className="relative h-[420px] sm:h-[480px] lg:h-[520px]">
-          <AnimatePresence mode="popLayout">
-            {featured.map((project, i) => {
-              const style = getCardStyle(i)
-              const color = CATEGORY_COLORS[project.category] || "#4488ff"
-              const panel = CATEGORY_PANELS[project.category] || "#4488ff20"
+      {/* Top-left label */}
+      <div className="absolute top-6 left-4 sm:left-8" style={{ zIndex: 60 }}>
+        <Badge variant="premium" className="text-[10px]">
+          <Sparkles className="w-3 h-3 mr-1" />
+          Featured Work
+        </Badge>
+      </div>
 
-              if (style.opacity === 0) return null
+      {/* Carousel items */}
+      <div className="absolute inset-0" style={{ zIndex: 3 }}>
+        <AnimatePresence mode="popLayout">
+          {featured.map((project, i) => {
+            const role = getRole(i)
+            if (role === "hidden") return null
+            const style = getCardStyle(role)
+            const isCenter = role === "center"
+            const color = CATEGORY_COLORS[project.category] || "#4488ff"
 
-              return (
-                <motion.div
-                  key={project.name}
-                  layout
-                  initial={false}
-                  animate={{
-                    zIndex: style.zIndex,
-                    opacity: style.opacity,
-                    scale: style.scale,
-                    x: style.translateX,
-                    y: style.translateY,
-                    filter: style.filter,
+            return (
+              <motion.div
+                key={project.name}
+                layout
+                initial={false}
+                animate={{
+                  left: style.left,
+                  top: style.top,
+                  width: style.width,
+                  opacity: style.opacity,
+                  scale: parseFloat(style.transform.match(/scale\(([\d.]+)\)/)?.[1] || "1"),
+                  filter: style.filter,
+                  zIndex: style.zIndex,
+                }}
+                transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
+                className="absolute"
+                style={{
+                  transform: style.transform,
+                  willChange: style.willChange,
+                  pointerEvents: isCenter ? "auto" : "none",
+                } as React.CSSProperties}
+              >
+                <div
+                  className="rounded-2xl border backdrop-blur-xl overflow-hidden"
+                  style={{
+                    backgroundColor: `${color}20`,
+                    borderColor: `${color}40`,
+                    boxShadow: role === "center" ? `0 20px 60px ${color}30` : "none",
                   }}
-                  transition={{
-                    duration: 0.65,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                  className="absolute inset-x-0 top-0 flex justify-center"
-                  style={{ pointerEvents: i === activeIndex ? "auto" : "none" }}
                 >
-                  <div
-                    className="w-full max-w-lg rounded-2xl border p-6 sm:p-8 backdrop-blur-xl"
-                    style={{
-                      backgroundColor: panel,
-                      borderColor: `${color}30`,
-                    }}
-                  >
-                    <div className="flex items-start justify-between mb-4">
+                  <div className="p-5 sm:p-7">
+                    <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
+                        <h3 className="text-base sm:text-lg font-bold text-white mb-1 leading-tight">
                           {project.name}
                         </h3>
                         <span
-                          className="inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
-                          style={{ color, backgroundColor: `${color}20` }}
+                          className="inline-block text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full"
+                          style={{ color, backgroundColor: `${color}30` }}
                         >
                           {project.category}
                         </span>
                       </div>
-                      {project.stars != null && project.stars > 0 && (
-                        <div className="flex items-center gap-1 text-white/50">
-                          <Star className="w-3.5 h-3.5 fill-current text-yellow-400" />
-                          <span className="text-xs font-medium">{project.stars}</span>
-                        </div>
+                      {project.language && (
+                        <div
+                          className="w-2.5 h-2.5 rounded-full shrink-0 mt-1"
+                          style={{ backgroundColor: color }}
+                        />
                       )}
                     </div>
 
-                    <p className="text-sm text-white/60 leading-relaxed mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies?.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-white/40 border border-white/10"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {project.language && (
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: color }}
-                        />
-                        <span className="text-xs text-white/40">{project.language}</span>
-                      </div>
-                    )}
-
-                    {project.url && i === activeIndex && (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider transition-colors"
-                        style={{ color }}
-                      >
-                        View Project
-                        <ArrowRight className="w-3 h-3" />
-                      </a>
+                    {role === "center" && (
+                      <>
+                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-3 line-clamp-2">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {project.technologies?.slice(0, 3).map((tech) => (
+                            <span
+                              key={tech}
+                              className="text-[9px] px-2 py-0.5 rounded-md bg-white/10 text-white/50 border border-white/10"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        {project.stars != null && project.stars > 0 && (
+                          <div className="flex items-center gap-1 mb-3">
+                            <Star className="w-3 h-3 fill-current text-yellow-400" />
+                            <span className="text-[10px] text-white/50">{project.stars}</span>
+                          </div>
+                        )}
+                        {project.url && (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider transition-colors hover:underline"
+                            style={{ color }}
+                          >
+                            View on GitHub
+                            <ArrowRight className="w-3 h-3" />
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
-                </motion.div>
-              )
-            })}
-          </AnimatePresence>
-        </div>
+                </div>
+              </motion.div>
+            )
+          })}
+        </AnimatePresence>
+      </div>
 
-        <div className="flex items-center justify-center gap-4 mt-8">
+      {/* Navigation */}
+      <div className="absolute bottom-6 sm:bottom-12 left-4 sm:left-12 flex items-center gap-3 sm:gap-4" style={{ zIndex: 60 }}>
+        <button
+          onClick={() => navigate("prev")}
+          className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 border-2 border-white/60 text-white/80 transition-all rounded-full"
+          style={{ background: "transparent" }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; e.currentTarget.style.transform = "scale(1.08)" }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.transform = "scale(1)" }}
+          aria-label="Previous"
+        >
+          <ArrowLeft size={20} strokeWidth={2.25} />
+        </button>
+        <button
+          onClick={() => navigate("next")}
+          className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 border-2 border-white/60 text-white/80 transition-all rounded-full"
+          style={{ background: "transparent" }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; e.currentTarget.style.transform = "scale(1.08)" }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.transform = "scale(1)" }}
+          aria-label="Next"
+        >
+          <ArrowRight size={20} strokeWidth={2.25} />
+        </button>
+      </div>
+
+      {/* Bottom-right link */}
+      <a
+        href={activeProject.url || "#"}
+        target={activeProject.url ? "_blank" : undefined}
+        rel={activeProject.url ? "noopener noreferrer" : undefined}
+        className="absolute bottom-6 sm:bottom-12 right-4 sm:right-10 flex items-center gap-2 uppercase no-underline"
+        style={{ zIndex: 60, fontFamily: "'Anton', sans-serif", fontSize: "clamp(16px, 3vw, 40px)", lineHeight: 1, letterSpacing: "-0.02em", color: "white", opacity: 0.9 }}
+        onMouseEnter={(e) => { e.currentTarget.style.opacity = "1" }}
+        onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.9" }}
+      >
+        {activeProject.category}
+        <ArrowRight size={24} strokeWidth={2.25} className="w-4 h-4 sm:w-6 sm:h-6" />
+      </a>
+
+      {/* Dots */}
+      <div className="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-2" style={{ zIndex: 60 }}>
+        {featured.map((_, i) => (
           <button
-            onClick={() => navigate("prev")}
-            className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 transition-all hover:bg-white/10 hover:text-white hover:border-white/40"
-            aria-label="Previous project"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-
-          <div className="flex items-center gap-2">
-            {featured.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { if (!isAnimating) { setActiveIndex(i); setIsAnimating(true); setTimeout(() => setIsAnimating(false), 650) } }}
-                className="w-1.5 h-1.5 rounded-full transition-all duration-300"
-                style={{
-                  backgroundColor: i === activeIndex ? bgColor : "rgba(255,255,255,0.2)",
-                  width: i === activeIndex ? "20px" : "6px",
-                }}
-                aria-label={`Go to project ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => navigate("next")}
-            className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 text-white/60 transition-all hover:bg-white/10 hover:text-white hover:border-white/40"
-            aria-label="Next project"
-          >
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-
-        <p className="text-center text-[10px] text-white/20 mt-4 tracking-wider">
-          {activeIndex + 1} / {featured.length}
-        </p>
+            key={i}
+            onClick={() => { if (!isAnimating) { setActiveIndex(i); setIsAnimating(true); setTimeout(() => setIsAnimating(false), 650) } }}
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: i === activeIndex ? "24px" : "6px",
+              height: "6px",
+              backgroundColor: i === activeIndex ? "white" : "rgba(255,255,255,0.3)",
+            }}
+            aria-label={`Go to project ${i + 1}`}
+          />
+        ))}
       </div>
     </section>
   )

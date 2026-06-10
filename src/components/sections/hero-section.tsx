@@ -1,14 +1,15 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { motion } from "motion/react"
 import { data } from "@/lib/data"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Download, Mail, ChevronDown, Sparkles, Terminal } from "lucide-react"
+import { Sparkles, ChevronDown, ArrowUpRight, Crown } from "lucide-react"
 
-const roles = [
-  "Python Developer", "Automation Engineer", "Cyber Security Enthusiast",
-  "Data Science Learner", "Prompt Engineer", "Web Developer",
+const stats = [
+  { value: data.statistics.experience, label: "Experience" },
+  { value: data.statistics.projects, label: "Projects Delivered" },
+  { value: data.statistics.certifications, label: "Certifications" },
 ]
 
 export function HeroSection() {
@@ -16,216 +17,118 @@ export function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const stats = [
-    { value: data.statistics.experience, label: "Experience" },
-    { value: data.statistics.projects, label: "Projects Delivered" },
-    { value: data.statistics.certifications, label: "Certifications" },
-  ]
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen w-full overflow-hidden">
+      {/* Fullscreen video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260606_154941_df1a96e1-a06f-450c-bd02-d863414cc1a0.mp4"
+      />
+      <div className="absolute inset-0 bg-black/50" />
+
       {/* Aurora overlays */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#00E5FF]/5 rounded-full blur-[150px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7B61FF]/8 rounded-full blur-[130px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00FF9D]/3 rounded-full blur-[200px]" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#00E5FF]/8 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7B61FF]/10 rounded-full blur-[130px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          <div className="flex-1 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0 }}
-                className="mb-6"
-              >
-                <Badge variant="default" className="animate-fade-in">
-                  <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                  {data.personal_info.current_role} @ {data.personal_info.current_company}
-                </Badge>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight"
-              >
-                <span className="text-white/90">Hi, I&apos;m </span>
-                <span className="text-gradient">{data.personal_info.name}</span>
-              </motion.h1>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.4 }}
-                className="h-12 mb-4"
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03]">
-                  <Terminal className="w-4 h-4 text-[#00E5FF]" />
-                  <AnimatedRoleRotator roles={roles} />
-                </div>
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.6 }}
-                className="text-base sm:text-lg text-white/50 max-w-xl mb-8 leading-relaxed"
-              >
-                {data.personal_info.headline}
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
-              >
-                <a href={data.personal_info.resume_url} target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="group w-full sm:w-auto">
-                    <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                    Download Resume
-                  </Button>
-                </a>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => scrollTo("contact")}
-                  className="group w-full sm:w-auto"
-                >
-                  <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                  Contact Me
-                </Button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 1.0 }}
-                className="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start"
-              >
-                {data.about.interests.slice(0, 6).map((interest, i) => (
-                  <motion.div
-                    key={interest}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.0 + i * 0.1 }}
-                  >
-                    <Badge variant="outline" className="text-xs">{interest}</Badge>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </div>
-
+      {/* Hero content — vertically centered */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-center px-6 sm:px-10 lg:px-16">
+        <div className="max-w-4xl">
+          {/* Tagline */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="flex-1 flex justify-center items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0 }}
+            className="mb-6 lg:mb-8 flex items-center gap-2"
           >
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96 group">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-dashed border-[#00E5FF]/20 group-hover:border-[#00E5FF]/40 transition-all duration-700"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-3 rounded-full border border-dashed border-[#7B61FF]/15 group-hover:border-[#7B61FF]/30 transition-all duration-700"
-              />
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-6 rounded-full border border-dashed border-[#00FF9D]/10 group-hover:border-[#00FF9D]/25 transition-all duration-700"
-              />
+            <Crown className="h-4 w-4 text-white/70" />
+            <Badge variant="default" className="text-[10px] sm:text-xs tracking-[0.3em] uppercase font-inter">
+              <Sparkles className="w-3 h-3 mr-1.5" />
+              {data.personal_info.current_role} @ {data.personal_info.current_company}
+            </Badge>
+          </motion.div>
 
-              {Array.from({ length: 6 }).map((_, i) => {
-                const angle = (i / 6) * Math.PI * 2
-                const radius = 160
-                return (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 rounded-full bg-[#00E5FF] shadow-[0_0_6px_rgba(0,229,255,0.6)]"
-                    style={{
-                      left: `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
-                      top: `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
-                    }}
-                    animate={{
-                      left: [
-                        `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
-                        `calc(50% + ${Math.cos(angle + Math.PI) * radius}px - 4px)`,
-                        `calc(50% + ${Math.cos(angle) * radius}px - 4px)`,
-                      ],
-                      top: [
-                        `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
-                        `calc(50% + ${Math.sin(angle + Math.PI) * radius}px - 4px)`,
-                        `calc(50% + ${Math.sin(angle) * radius}px - 4px)`,
-                      ],
-                    }}
-                    transition={{
-                      duration: 6 + i * 0.5,
-                      repeat: Infinity,
-                      ease: "linear",
-                      delay: i * 0.3,
-                    }}
-                  />
-                )
-              })}
+          {/* Main heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+            className="font-podium uppercase leading-[0.92] tracking-tight text-white"
+          >
+            <div className="text-[clamp(2.8rem,8vw,7rem)]">{data.personal_info.name.split(" ")[0]}.</div>
+            <div className="text-[clamp(2.8rem,8vw,7rem)]">Build.</div>
+            <div className="text-[clamp(2.8rem,8vw,7rem)]">Automate.</div>
+          </motion.h1>
 
-              <div className="absolute inset-[10%] rounded-full bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 p-[3px] group-hover:shadow-[0_0_40px_rgba(0,229,255,0.15)] transition-all duration-700">
-                <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center overflow-hidden border border-white/5">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px]">
-                    <div className="w-full h-full rounded-full bg-[#050816] overflow-hidden">
-                      <img
-                        src={data.images.hero}
-                        alt={data.personal_info.name}
-                        width={300}
-                        height={300}
-                        fetchPriority="high"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
-                  </div>
-                </div>
+          {/* Subtext */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.4 }}
+            className="mt-6 lg:mt-8 max-w-md"
+          >
+            <p className="font-inter text-sm sm:text-base leading-relaxed text-white/70">
+              {data.personal_info.headline}
+            </p>
+          </motion.div>
+
+          {/* CTA row */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.6 }}
+            className="mt-8 lg:mt-10 flex flex-wrap items-center gap-4 sm:gap-6"
+          >
+            <a
+              href={data.personal_info.resume_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 bg-black px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-colors hover:bg-neutral-900"
+            >
+              Download Resume
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <button
+              onClick={() => scrollTo("contact")}
+              className="group flex items-center gap-2 border border-white/30 px-5 sm:px-7 py-3 sm:py-4 text-[11px] sm:text-xs tracking-widest uppercase text-white transition-all hover:border-white/60 hover:bg-white/10"
+            >
+              Contact Me
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.8 }}
+            className="mt-10 sm:mt-14 lg:mt-16 flex flex-wrap gap-6 sm:gap-12 lg:gap-16"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="font-inter text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                  {stat.value}
+                </p>
+                <p className="mt-1 text-[9px] sm:text-xs tracking-widest uppercase text-white/50">
+                  {stat.label}
+                </p>
               </div>
-            </div>
+            ))}
           </motion.div>
         </div>
-
-        {/* Stats row — VANGUARD style */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 1.2 }}
-          className="mt-12 sm:mt-16 lg:mt-20 flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 lg:gap-16"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <p className="font-inter text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-[10px] sm:text-xs tracking-widest uppercase text-white/40">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
       </div>
 
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
@@ -237,20 +140,5 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  )
-}
-
-function AnimatedRoleRotator({ roles }: { roles: string[] }) {
-  return (
-    <span className="text-sm text-[#00E5FF] font-mono inline-block min-w-[180px]">
-      <motion.span
-        key={roles[0]}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        {roles[0]}
-      </motion.span>
-    </span>
   )
 }
