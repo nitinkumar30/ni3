@@ -284,27 +284,27 @@ export function Scene3D() {
 
     function createInteractiveObjects(): InteractiveObjData[] {
       const configs = [
-        { geo: () => new THREE.TorusKnotGeometry(0.45, 0.15, 100, 16), color: 0x4488ff, emissive: 0x4488ff, x: -3.2, y: 0.8, z: 2.5, influence: 0.6, wireframe: false },
-        { geo: () => new THREE.DodecahedronGeometry(0.5), color: 0xaa44ff, emissive: 0xaa44ff, x: 3.5, y: -1.2, z: 1.8, influence: 0.7, wireframe: false },
-        { geo: () => new THREE.IcosahedronGeometry(0.55, 0), color: 0x44ffaa, emissive: 0x44ffaa, x: -1.5, y: 3.0, z: 0.5, influence: 0.5, wireframe: true },
-        { geo: () => new THREE.OctahedronGeometry(0.5), color: 0xff66cc, emissive: 0xff66cc, x: 2.0, y: -2.5, z: 3.0, influence: 0.8, wireframe: false },
-        { geo: () => new THREE.TorusGeometry(0.5, 0.08, 16, 48), color: 0xffaa44, emissive: 0xffaa44, x: -2.8, y: -1.8, z: -1.0, influence: 0.4, wireframe: true },
-        { geo: () => new THREE.TetrahedronGeometry(0.45), color: 0x66ddff, emissive: 0x4488ff, x: 3.0, y: 2.5, z: -2.0, influence: 0.3, wireframe: false },
+        { geo: () => new THREE.TorusKnotGeometry(0.9, 0.3, 100, 16), color: 0x00e5ff, emissive: 0x00e5ff, x: -4.5, y: 1.2, z: 6, influence: 0.7, wireframe: false },
+        { geo: () => new THREE.DodecahedronGeometry(1.1), color: 0xaa44ff, emissive: 0xaa44ff, x: 5.0, y: -1.5, z: 5, influence: 0.8, wireframe: false },
+        { geo: () => new THREE.IcosahedronGeometry(1.2, 0), color: 0x44ffaa, emissive: 0x44ffaa, x: -2.0, y: 4.0, z: 3, influence: 0.6, wireframe: true },
+        { geo: () => new THREE.OctahedronGeometry(1.0), color: 0xff66cc, emissive: 0xff66cc, x: 3.0, y: -3.5, z: 7, influence: 0.9, wireframe: false },
+        { geo: () => new THREE.TorusGeometry(1.0, 0.12, 20, 64), color: 0xffaa44, emissive: 0xffaa44, x: -4.0, y: -2.8, z: 2, influence: 0.5, wireframe: true },
+        { geo: () => new THREE.TetrahedronGeometry(0.9), color: 0x66ddff, emissive: 0x4488ff, x: 4.5, y: 3.5, z: 1, influence: 0.4, wireframe: false },
       ]
       return configs.map((cfg) => {
         const geo = cfg.geo()
         const mat = new THREE.MeshPhysicalMaterial({
           color: cfg.color,
           emissive: cfg.emissive,
-          emissiveIntensity: 0.3,
-          metalness: 0.4,
-          roughness: 0.2,
+          emissiveIntensity: 0.5,
+          metalness: 0.3,
+          roughness: 0.15,
           transparent: true,
-          opacity: cfg.wireframe ? 0.2 : 0.7,
+          opacity: cfg.wireframe ? 0.35 : 0.85,
           wireframe: cfg.wireframe,
           side: cfg.wireframe ? THREE.DoubleSide : THREE.FrontSide,
-          clearcoat: cfg.wireframe ? 0 : 0.3,
-          clearcoatRoughness: 0.4,
+          clearcoat: cfg.wireframe ? 0 : 0.5,
+          clearcoatRoughness: 0.2,
         })
         const mesh = new THREE.Mesh(geo, mat)
         mesh.position.set(cfg.x, cfg.y, cfg.z)
@@ -317,7 +317,7 @@ export function Scene3D() {
             color: cfg.emissive,
             wireframe: true,
             transparent: true,
-            opacity: 0.15,
+            opacity: 0.3,
           })
           const wireMesh = new THREE.Mesh(wireGeo, wireMat)
           wireMesh.position.copy(mesh.position)
@@ -543,8 +543,8 @@ export function Scene3D() {
         data.mesh.position.x = data.baseX + Math.sin(scrollY * Math.PI + data.floatPhase) * 0.3
 
         // Material pulse
-        data.material.emissiveIntensity = 0.25 + Math.sin(time * data.pulseSpeed + data.floatPhase) * 0.15
-        data.material.opacity = 0.55 + Math.sin(time * data.pulseSpeed * 0.7 + data.floatPhase) * 0.15
+        data.material.emissiveIntensity = 0.4 + Math.sin(time * data.pulseSpeed + data.floatPhase) * 0.25
+        data.material.opacity = 0.7 + Math.sin(time * data.pulseSpeed * 0.7 + data.floatPhase) * 0.2
 
         // Scale pulse
         const s = 1 + Math.sin(time * data.pulseSpeed * 0.6 + data.floatPhase) * 0.05

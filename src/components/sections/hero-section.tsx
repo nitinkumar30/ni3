@@ -16,6 +16,12 @@ export function HeroSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
+  const stats = [
+    { value: data.statistics.experience, label: "Experience" },
+    { value: data.statistics.projects, label: "Projects Delivered" },
+    { value: data.statistics.certifications, label: "Certifications" },
+  ]
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Aurora overlays */}
@@ -33,33 +39,55 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
             >
-              <Badge variant="default" className="mb-6 animate-fade-in">
-                <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                {data.personal_info.current_role} @ {data.personal_info.current_company}
-              </Badge>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0 }}
+                className="mb-6"
+              >
+                <Badge variant="default" className="animate-fade-in">
+                  <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+                  {data.personal_info.current_role} @ {data.personal_info.current_company}
+                </Badge>
+              </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight"
+              >
                 <span className="text-white/90">Hi, I&apos;m </span>
                 <span className="text-gradient">{data.personal_info.name}</span>
-              </h1>
+              </motion.h1>
 
-              <div className="h-12 mb-4">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03]"
-                >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.4 }}
+                className="h-12 mb-4"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03]">
                   <Terminal className="w-4 h-4 text-[#00E5FF]" />
                   <AnimatedRoleRotator roles={roles} />
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
 
-              <p className="text-base sm:text-lg text-white/50 max-w-xl mb-8 leading-relaxed">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.6 }}
+                className="text-base sm:text-lg text-white/50 max-w-xl mb-8 leading-relaxed"
+              >
                 {data.personal_info.headline}
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              >
                 <a href={data.personal_info.resume_url} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="group w-full sm:w-auto">
                     <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
@@ -75,24 +103,28 @@ export function HeroSection() {
                   <Mail className="w-4 h-4 mr-2 group-hover:animate-pulse" />
                   Contact Me
                 </Button>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 1.0 }}
+                className="flex flex-wrap gap-2 mt-8 justify-center lg:justify-start"
+              >
                 {data.about.interests.slice(0, 6).map((interest, i) => (
                   <motion.div
                     key={interest}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 + i * 0.1 }}
+                    transition={{ delay: 1.0 + i * 0.1 }}
                   >
                     <Badge variant="outline" className="text-xs">{interest}</Badge>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
 
-          {/* Interactive revolving avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -100,7 +132,6 @@ export function HeroSection() {
             className="flex-1 flex justify-center items-center"
           >
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96 group">
-              {/* Orbiting rings */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -117,7 +148,6 @@ export function HeroSection() {
                 className="absolute inset-6 rounded-full border border-dashed border-[#00FF9D]/10 group-hover:border-[#00FF9D]/25 transition-all duration-700"
               />
 
-              {/* Orbiting dots */}
               {Array.from({ length: 6 }).map((_, i) => {
                 const angle = (i / 6) * Math.PI * 2
                 const radius = 160
@@ -151,7 +181,6 @@ export function HeroSection() {
                 )
               })}
 
-              {/* Avatar */}
               <div className="absolute inset-[10%] rounded-full bg-gradient-to-br from-[#00E5FF]/20 via-[#7B61FF]/10 to-[#00FF9D]/20 p-[3px] group-hover:shadow-[0_0_40px_rgba(0,229,255,0.15)] transition-all duration-700">
                 <div className="w-full h-full rounded-full bg-[#050816] flex items-center justify-center overflow-hidden border border-white/5">
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-[#00E5FF] to-[#7B61FF] p-[2px]">
@@ -171,13 +200,31 @@ export function HeroSection() {
             </div>
           </motion.div>
         </div>
+
+        {/* Stats row — VANGUARD style */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 1.2 }}
+          className="mt-12 sm:mt-16 lg:mt-20 flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 lg:gap-16"
+        >
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <p className="font-inter text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-[10px] sm:text-xs tracking-widest uppercase text-white/40">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

@@ -15,6 +15,7 @@ import { BlogSection } from "@/components/sections/blog-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { RecommendationsSection } from "@/components/sections/recommendations-section";
 import { AchievementsSection } from "@/components/sections/achievements-section";
+import { ProjectsCarouselSection } from "@/components/sections/projects-carousel-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { Footer } from "@/components/layout/footer";
 import { CustomCursor } from "@/components/custom-cursor";
@@ -52,6 +53,7 @@ export default function Home() {
         <TestimonialsSection />
         <RecommendationsSection />
         <AchievementsSection />
+        <ProjectsCarouselSection />
         <ContactSection />
       </main>
       <Footer />
