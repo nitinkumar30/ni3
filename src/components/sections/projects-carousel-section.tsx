@@ -15,8 +15,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   Data: "#A66CFF",
 }
 
-const GRAIN_SVG = `data:image/svg+xml,%3Csvg viewBox='0 0%20200%20200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E`
-
 export function ProjectsCarouselSection() {
   const featured = data.projects.filter((p) => p.featured)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -76,20 +74,13 @@ export function ProjectsCarouselSection() {
   if (featured.length === 0) return null
 
   const activeProject = featured[activeIndex]
-  const bgColor = CATEGORY_COLORS[activeProject.category] || "#4488ff"
 
   return (
     <section
       id="projects-carousel"
       className="relative h-screen w-full overflow-hidden"
-      style={{ backgroundColor: bgColor, transition: "background-color 650ms cubic-bezier(0.4,0,0.2,1)" }}
+      style={{ backgroundColor: "#0a0a1a" }}
     >
-      {/* Grain overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 50, opacity: 0.3, backgroundImage: `url("${GRAIN_SVG}")`, backgroundSize: "200px 200px" }}
-      />
-
       {/* Ghost text */}
       <div className="absolute inset-x-0 flex items-center justify-center pointer-events-none select-none" style={{ zIndex: 2, top: "12%" }}>
         <span
