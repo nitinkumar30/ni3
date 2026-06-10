@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "FSP DEMO - PODIUM Sharp 4.11";
+  src: url("https://db.onlinewebfonts.com/c/8b75d9dcff6a48c35a46656192adf019?family=FSP+DEMO+-+PODIUM+Sharp+4.11") format("woff2");
+  font-display: swap;
+}
+
 :root, [data-theme="blue"] {
   --background: #050816;
   --foreground: #ffffff;
@@ -113,10 +119,16 @@
   --color-success: var(--success);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: 'Inter', sans-serif;
+  --font-anton: 'Anton', sans-serif;
+  --font-podium: 'FSP DEMO - PODIUM Sharp 4.11', sans-serif;
   --animate-spin-slow: spin-slow 8s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-drift: drift 20s linear infinite;
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-scale-in: scale-in 0.6s ease-out forwards;
 }
 
 @keyframes spin-slow { to { transform: rotate(360deg); } }
@@ -125,6 +137,19 @@
 @keyframes aurora { from { opacity: 0.3; transform: translateY(0) scale(1); } to { opacity: 0.6; transform: translateY(-20px) scale(1.1); } }
 @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 @keyframes breathe { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+.animate-fade-up { animation: fade-up 0.8s ease-out forwards; opacity: 0; }
+.animate-fade-up-delay-1 { animation: fade-up 0.8s ease-out 0.2s forwards; opacity: 0; }
+.animate-fade-up-delay-2 { animation: fade-up 0.8s ease-out 0.4s forwards; opacity: 0; }
+.animate-fade-up-delay-3 { animation: fade-up 0.8s ease-out 0.6s forwards; opacity: 0; }
+.animate-fade-up-delay-4 { animation: fade-up 0.8s ease-out 0.8s forwards; opacity: 0; }
+.animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
+.animate-fade-in-delay { animation: fade-in 0.8s ease-out 0.3s forwards; }
+.font-podium { font-family: 'FSP DEMO - PODIUM Sharp 4.11', sans-serif; }
+.font-anton { font-family: 'Anton', sans-serif; }
 
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 
