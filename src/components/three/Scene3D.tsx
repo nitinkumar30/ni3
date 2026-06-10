@@ -270,6 +270,78 @@ export function Scene3D() {
       artifacts.push(mesh)
     }
 
+    // ---- Interactive 3D objects (large, cursor-aware) ----
+    interface InteractiveObjData {
+      mesh: THREE.Mesh
+      baseX: number; baseY: number; baseZ: number
+      floatPhase: number; floatSpeed: number; floatAmp: number
+      rotSpeed: { x: number; y: number; z: number }
+      mouseInfluence: number
+      tiltX: number; tiltY: number
+      material: THREE.MeshPhysicalMaterial
+      pulseSpeed: number
+    }
+
+    function createInteractiveObjects(): InteractiveObjData[] {
+      const configs = [
+        { geo: () => new THREE.TorusKnotGeometry(0.45, 0.15, 100, 16), color: 0x4488ff, emissive: 0x4488ff, x: -3.2, y: 0.8, z: 2.5, influence: 0.6, wireframe: false },
+        { geo: () => new THREE.DodecahedronGeometry(0.5), color: 0xaa44ff, emissive: 0xaa44ff, x: 3.5, y: -1.2, z: 1.8, influence: 0.7, wireframe: false },
+        { geo: () => new THREE.IcosahedronGeometry(0.55, 0), color: 0x44ffaa, emissive: 0x44ffaa, x: -1.5, y: 3.0, z: 0.5, influence: 0.5, wireframe: true },
+        { geo: () => new THREE.OctahedronGeometry(0.5), color: 0xff66cc, emissive: 0xff66cc, x: 2.0, y: -2.5, z: 3.0, influence: 0.8, wireframe: false },
+        { geo: () => new THREE.TorusGeometry(0.5, 0.08, 16, 48), color: 0xffaa44, emissive: 0xffaa44, x: -2.8, y: -1.8, z: -1.0, influence: 0.4, wireframe: true },
+        { geo: () => new THREE.TetrahedronGeometry(0.45), color: 0x66ddff, emissive: 0x4488ff, x: 3.0, y: 2.5, z: -2.0, influence: 0.3, wireframe: false },
+      ]
+      return configs.map((cfg) => {
+        const geo = cfg.geo()
+        const mat = new THREE.MeshPhysicalMaterial({
+          color: cfg.color,
+          emissive: cfg.emissive,
+          emissiveIntensity: 0.3,
+          metalness: 0.4,
+          roughness: 0.2,
+          transparent: true,
+          opacity: cfg.wireframe ? 0.2 : 0.7,
+          wireframe: cfg.wireframe,
+          side: cfg.wireframe ? THREE.DoubleSide : THREE.FrontSide,
+          clearcoat: cfg.wireframe ? 0 : 0.3,
+          clearcoatRoughness: 0.4,
+        })
+        const mesh = new THREE.Mesh(geo, mat)
+        mesh.position.set(cfg.x, cfg.y, cfg.z)
+        mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0)
+        scene.add(mesh)
+
+        if (!cfg.wireframe) {
+          const wireGeo = geo.clone()
+          const wireMat = new THREE.MeshBasicMaterial({
+            color: cfg.emissive,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15,
+          })
+          const wireMesh = new THREE.Mesh(wireGeo, wireMat)
+          wireMesh.position.copy(mesh.position)
+          wireMesh.rotation.copy(mesh.rotation)
+          mesh.add(wireMesh)
+        }
+
+        return {
+          mesh,
+          baseX: cfg.x, baseY: cfg.y, baseZ: cfg.z,
+          floatPhase: Math.random() * Math.PI * 2,
+          floatSpeed: 0.2 + Math.random() * 0.3,
+          floatAmp: 0.15 + Math.random() * 0.2,
+          rotSpeed: { x: (Math.random() - 0.5) * 0.01, y: 0.005 + Math.random() * 0.008, z: (Math.random() - 0.5) * 0.005 },
+          mouseInfluence: cfg.influence,
+          tiltX: 0, tiltY: 0,
+          material: mat,
+          pulseSpeed: 0.5 + Math.random() * 0.5,
+        } as InteractiveObjData
+      })
+    }
+
+    const interactiveObjs = createInteractiveObjects()
+
     // ---- Mouse tracking ----
     let mouseX = 0
     let mouseY = 0
@@ -443,6 +515,40 @@ export function Scene3D() {
         m.position.y = d.yBase + Math.sin(time * d.ySpeed + d.angle) * d.yAmp
         m.rotation.x += d.rotSpeed.x
         m.rotation.y += d.rotSpeed.y
+      })
+
+      // ---- Interactive objects: cursor tracking, scroll parallax, float ----
+      interactiveObjs.forEach((obj) => {
+        const data = obj as InteractiveObjData
+
+        // Mouse-driven tilt (smooth follow)
+        const targetTiltX = -mouseY * 0.6 * data.mouseInfluence
+        const targetTiltY = mouseX * 0.8 * data.mouseInfluence
+        data.tiltX += (targetTiltX - data.tiltX) * 0.025
+        data.tiltY += (targetTiltY - data.tiltY) * 0.025
+
+        // Self rotation + tilt
+        data.mesh.rotation.x += data.rotSpeed.x + data.tiltX * 0.003
+        data.mesh.rotation.y += data.rotSpeed.y + data.tiltY * 0.003
+        data.mesh.rotation.z += data.rotSpeed.z
+
+        // Bobbing
+        data.mesh.position.y = data.baseY + Math.sin(time * data.floatSpeed + data.floatPhase) * data.floatAmp
+
+        // Scroll parallax (z-depth dependent — closer objects move more)
+        const scrollParallax = scrollY * 8 * (1 + data.baseZ * 0.15)
+        data.mesh.position.z = data.baseZ - scrollParallax * 0.2
+
+        // Slight horizontal drift with scroll
+        data.mesh.position.x = data.baseX + Math.sin(scrollY * Math.PI + data.floatPhase) * 0.3
+
+        // Material pulse
+        data.material.emissiveIntensity = 0.25 + Math.sin(time * data.pulseSpeed + data.floatPhase) * 0.15
+        data.material.opacity = 0.55 + Math.sin(time * data.pulseSpeed * 0.7 + data.floatPhase) * 0.15
+
+        // Scale pulse
+        const s = 1 + Math.sin(time * data.pulseSpeed * 0.6 + data.floatPhase) * 0.05
+        data.mesh.scale.setScalar(s)
       })
 
       // ---- Glow light intensity oscillation ----

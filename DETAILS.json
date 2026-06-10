@@ -356,6 +356,64 @@
       "Published PyShrink and PhoneTracer — used by developers globally",
       "Headed a data science internship program",
       "Delivered sessions on GCP automation and testing best practices"
+    ],
+    "list": [
+      {
+        "name": "Tanmoy Bhattacharya",
+        "role": "Solution Architect | Enabling Scalable Data Warehouse Solutions in Retail | Databricks | Data Analytics | TOGAF Certified",
+        "date": "July 8, 2025",
+        "relationship": "Tanmoy managed Nitin directly",
+        "text": "I had the pleasure of working with Nitin on Morrisons Ordering Automation Project where their expertise in Test Automation proved invaluable. He has consistently demonstrated a deep understanding of both functional and automated testing frameworks, along with an exceptional ability to translate complex business requirements into effective, reliable test cases. What sets Nitin apart is not just technical skill, but also his proactive approach to problem-solving, attention to detail, and commitment to quality. Whether it was building robust automation scripts, optimizing existing frameworks, or mentoring junior team members, Nitin brought clarity, efficiency, and a calm professionalism to every task. If you're looking for someone who can elevate your Automation Testing Framework and be a strong team player, I highly recommend Nitin."
+      },
+      {
+        "name": "Sonali Sneh",
+        "role": "Information Technology Manager at Tata Steel Limited",
+        "date": "April 2, 2025",
+        "relationship": "Sonali was Nitin's teacher",
+        "text": "Nitin was always a very bright student. He is a quick learner and has a very good understanding of web applications. He has worked on latest technologies like Python and Rest APIs. He is very versatile and is not afraid to take up new challenges and roles. He has a good work exposure in data analysis and automation as well. I wish him good luck in IT industry."
+      },
+      {
+        "name": "Mayuri Kolhe",
+        "role": "SDET at Bridgenext | TCS Alumni",
+        "date": "July 20, 2024",
+        "relationship": "Mayuri worked with Nitin but on different teams",
+        "text": "I recommend Nitin for his exceptional skills in Automation, his dedication to learn new technologies and his ability. Nitin's strong work ethic and collaborative nature make him a valuable asset to any team. Nitin consistently demonstrates a keen analytical mindset, effectively solving complex problems. His proactive approach and excellent communication skills greatly contribute to successful project outcomes. I have confidence in Nitin's ability to excel in any role requiring a combination of technical expertise and interpersonal finesse. Nitin's innovative thinking and adaptability shine through in challenging situations, showcasing his resilience and ability to thrive under pressure. His commitment to continuous learning and staying updated with industry trends positions him as a forward-thinking professional. Nitin's positive attitude and collaborative spirit make him a pleasure to work with, fostering a productive and enjoyable work environment."
+      },
+      {
+        "name": "Vasudha Agarwal",
+        "role": "Global Change and Communications Graduate Trainee at Boston Consulting Group",
+        "date": "June 29, 2024",
+        "relationship": "Vasudha reported to Nitin directly",
+        "text": "I had the pleasure of working under Nitin Kumar during my internship at Happiest Minds Technologies. He assigned me a diverse range of data science projects that covered various topics, helping me understand the real-life applications of data analysis. His guidance and support were invaluable in enhancing my practical knowledge and skills."
+      },
+      {
+        "name": "Lalitha Pasumarthi",
+        "role": "Test Automation test engineer at Capgemini",
+        "date": "February 12, 2024",
+        "relationship": "Lalitha worked with Nitin on the same team",
+        "text": "I have had the privilege of collaborating with Nitin on a data-intensive project for the past several months, and I am delighted to provide this recommendation based on his exceptional performance. As an Automation Engineer specializing in GCP automation testing and Java Selenium, Nitin has demonstrated a profound understanding of our project's complexities, particularly in managing and validating large volumes of data. His meticulous attention to detail and methodical approach have been instrumental in ensuring the accuracy and reliability of our automation processes. Despite the challenges of virtual collaboration, Nitin's professionalism and commitment to excellence have consistently stood out."
+      },
+      {
+        "name": "Pakhi",
+        "role": "System Engineer at TCS",
+        "date": "October 16, 2023",
+        "relationship": "Pakhi worked with Nitin but on different teams",
+        "text": "I had the pleasure of working with Nitin Kumar during his tenure as an Assistant System Engineer at Tata Consultancy Services (TCS). Nitin's dedication and commitment to his work were truly impressive. He consistently demonstrated a strong aptitude for automation and a deep understanding of various tools such as JIRA, GCP, Selenium, and others. Nitin's problem-solving skills, attention to detail, and the ability to work collaboratively with engineers and software developers were instrumental in ensuring the compatibility and performance of system components. His work ethic and passion for quality and customer service have had a positive impact on our projects. Nitin consistently delivered tasks ahead of schedule, which greatly contributed to the success of our team."
+      },
+      {
+        "name": "Saurabh Sanap",
+        "role": "Software Developer at Infosys | reactjs, AEM, Sitecore",
+        "date": "September 17, 2022",
+        "relationship": "Nitin was senior to Saurabh",
+        "text": "He was really good at learning technical topics rapidly especially related to Python Languages like Data Science, Automation, etc. He was also a great Web Developer and worked as a freelancer for some months during his college time to pursue his side hustle. He's interested in the Cyber Security field too in addition to which he has some projects related to it. We helped each other in learning different topics based on our theoretical & practical knowledge. He's now diving into the Automation field which is helping him to add many more projects some of which are solutions to the common problems we're facing in the real world. Hoping for great success ahead. Good Luck!"
+      },
+      {
+        "name": "Hanish Kataria",
+        "role": "Senior Associate at PwC",
+        "date": "February 6, 2022",
+        "relationship": "Hanish worked with Nitin on the same team",
+        "text": "I have closely worked with Nitin in TCS. I highly recommend his expertise in python. He takes full ownership of his work and is willing to put that extra help whenever you need it. Would definitely like to work with him again."
+      }
     ]
   },
   "ai_tools": [
@@ -374,5 +432,66 @@
       "issuer": "Happiest Minds Technologies",
       "year": "2024"
     }
-  ]
+  ],
+  "achievements": [
+    { "icon": "Flame", "label": "Years Active", "value": "5+" },
+    { "icon": "Zap", "label": "Projects Delivered", "value": "200+" },
+    { "icon": "Medal", "label": "Certifications", "value": "30+" },
+    { "icon": "Trophy", "label": "Awards", "value": "5+" },
+    { "icon": "TrendingUp", "label": "Technologies", "value": "50+" },
+    { "icon": "Target", "label": "Automation Flows", "value": "100+" }
+  ],
+  "github_stats": {
+    "public_repos": 227,
+    "total_stars": 160,
+    "total_forks": 45,
+    "followers": 50,
+    "following": 30,
+    "total_commits": 8000,
+    "streak_days": 12,
+    "weekly_commits": 45,
+    "monthly_commits": 180,
+    "yearly_commits": 2100,
+    "top_languages": [
+      { "name": "Python", "percentage": 40, "color": "#3572a5" },
+      { "name": "JavaScript", "percentage": 20, "color": "#f7df1e" },
+      { "name": "TypeScript", "percentage": 20, "color": "#3178c6" },
+      { "name": "HTML", "percentage": 10, "color": "#e34c26" },
+      { "name": "CSS", "percentage": 5, "color": "#563d7c" },
+      { "name": "Others", "percentage": 5, "color": "#6e7681" }
+    ],
+    "weekly_activity": [
+      { "day": "Mon", "commits": 8 },
+      { "day": "Tue", "commits": 12 },
+      { "day": "Wed", "commits": 6 },
+      { "day": "Thu", "commits": 10 },
+      { "day": "Fri", "commits": 14 },
+      { "day": "Sat", "commits": 4 },
+      { "day": "Sun", "commits": 3 }
+    ]
+  },
+  "articles": [
+    { "id": 1, "title": "Built with Google Gemini: AI Essay Generator with Gemini", "category": "AI", "tags": ["gemini", "python", "ai", "writing"], "reactions": 3, "views": 144, "readTime": 8, "featured": true, "date": "2026-03-03", "url": "https://dev.to/nitinkumar30/ai-essay-generator-with-gemini-34pc" },
+    { "id": 2, "title": "Transition from pip to uv package manager", "category": "Python", "tags": ["python", "uv", "package-manager", "productivity"], "reactions": 0, "views": 38, "readTime": 6, "featured": false, "date": "2026-03-03", "url": "https://dev.to/nitinkumar30/transition-from-pip-to-uv-package-manager-3ike" },
+    { "id": 3, "title": "Guide to publish your first PyPI library", "category": "Python", "tags": ["python", "pypi", "tutorial", "packaging"], "reactions": 1, "views": 25, "readTime": 10, "featured": false, "date": "2026-02-08", "url": "https://dev.to/nitinkumar30/guide-to-publish-your-first-pypi-library-1bnh" },
+    { "id": 4, "title": "Guide to Publishing a Python Project as a VS Code Extension", "category": "Open Source", "tags": ["vscode", "python", "tutorial", "extension"], "reactions": 0, "views": 151, "readTime": 12, "featured": false, "date": "2026-02-07", "url": "https://dev.to/nitinkumar30/guide-to-publishing-a-python-project-as-a-vs-code-extension-4emf" },
+    { "id": 5, "title": "How to Build India's Cheapest Penetration Testing Tool", "category": "Cybersecurity", "tags": ["cybersecurity", "arduino", "badusb", "pentesting"], "reactions": 0, "views": 88, "readTime": 15, "featured": false, "date": "2025-12-21", "url": "https://dev.to/nitinkumar30/how-to-build-indias-cheapest-yet-most-effective-penetration-testing-tool-4m5h" },
+    { "id": 6, "title": "Quick Fix for Git's 'Error Setting Certificate File' Issue", "category": "Git", "tags": ["git", "github", "troubleshooting", "certificate"], "reactions": 3, "views": 2343, "readTime": 5, "featured": true, "date": "2025-04-09", "url": "https://dev.to/nitinkumar30/git-certificate-error-eradication-1jkj" },
+    { "id": 7, "title": "Implement BDD in python using behave & allure", "category": "Testing", "tags": ["python", "bdd", "behave", "allure"], "reactions": 0, "views": 343, "readTime": 10, "featured": true, "date": "2025-04-08", "url": "https://dev.to/nitinkumar30/implement-bdd-in-python-using-behave-allure-56c3" },
+    { "id": 8, "title": "Add SSH key in GitLab account", "category": "Git", "tags": ["gitlab", "git", "ssh", "tutorial"], "reactions": 0, "views": 80, "readTime": 4, "featured": false, "date": "2025-01-22", "url": "https://dev.to/nitinkumar30/add-ssh-key-in-gitlab-account-45j9" },
+    { "id": 9, "title": "My VAPT Learning Journey", "category": "Cybersecurity", "tags": ["cybersecurity", "vapt", "learning", "infosec"], "reactions": 0, "views": 160, "readTime": 8, "featured": true, "date": "2024-12-15", "url": "https://dev.to/nitinkumar30/journey-in-vapt-self-training-58k3" },
+    { "id": 10, "title": "Erasing evidence after attacking a host", "category": "Cybersecurity", "tags": ["cybersecurity", "forensics", "ethical-hacking", "education"], "reactions": 0, "views": 25, "readTime": 7, "featured": false, "date": "2024-09-06", "url": "https://dev.to/nitinkumar30/erasing-evidence-after-attacking-a-host-2lg0" },
+    { "id": 11, "title": "Slack chatGPT AI bot", "category": "AI", "tags": ["slack", "chatgpt", "ai", "bot"], "reactions": 1, "views": 35, "readTime": 6, "featured": false, "date": "2024-07-10", "url": "https://dev.to/nitinkumar30/slack-chatgpt-ai-bot-2aoc" },
+    { "id": 12, "title": "Challenges for a perfect resume", "category": "Career", "tags": ["career", "resume", "job-search", "advice"], "reactions": 1, "views": 368, "readTime": 5, "featured": true, "date": "2024-03-20", "url": "https://dev.to/nitinkumar30/challenges-for-a-perfect-resume-4ac9" },
+    { "id": 13, "title": "How to create ransomware script in python", "category": "Cybersecurity", "tags": ["python", "cybersecurity", "ransomware", "education"], "reactions": 0, "views": 283, "readTime": 10, "featured": true, "date": "2023-11-04", "url": "https://dev.to/nitinkumar30/how-to-create-ransomware-script-in-python-test-28i0" },
+    { "id": 14, "title": "Use & Search files created using Ubuntu on Windows", "category": "Tutorial", "tags": ["ubuntu", "wsl", "windows", "tutorial"], "reactions": 0, "views": 27, "readTime": 4, "featured": false, "date": "2023-11-04", "url": "https://dev.to/nitinkumar30/use-search-files-created-using-ubuntu-on-windows-1jid" },
+    { "id": 15, "title": "My TestVagrant Interview Experience", "category": "Career", "tags": ["career", "interview", "testing", "experience"], "reactions": 0, "views": 110, "readTime": 7, "featured": false, "date": "2023-08-30", "url": "https://dev.to/nitinkumar30/my-testvagrant-interview-experience-4265" },
+    { "id": 16, "title": "Harnessing GitHub Actions for Seamless Workflow Automation", "category": "DevOps", "tags": ["github-actions", "devops", "automation", "cicd"], "reactions": 1, "views": 66, "readTime": 9, "featured": false, "date": "2023-08-19", "url": "https://dev.to/nitinkumar30/harnessing-github-actions-for-seamless-workflow-automation-40kp" },
+    { "id": 17, "title": "The Art and Science of API Testing Automation", "category": "Testing", "tags": ["api-testing", "automation", "testing", "python"], "reactions": 1, "views": 73, "readTime": 8, "featured": false, "date": "2023-08-19", "url": "https://dev.to/nitinkumar30/the-art-and-science-of-api-testing-automation-1mlg" }
+  ],
+  "footer": {
+    "copyright": "Nitin S Kumar",
+    "license": "MIT License",
+    "privacy_page": "/privacy"
+  }
 }
