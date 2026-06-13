@@ -1,521 +1,270 @@
-# NI3 — Developer Operating System: Complete Build Prompt
+# NI3 — Complete Build Prompt: The Cyber Explorer Portfolio
 
-> Use this prompt to regenerate the entire portfolio. It captures every feature, component, animation, 3D element, theme, and constraint discussed across all sessions.
-
----
-
-## 🎯 Core Concept
-
-Build a futuristic single-page portfolio/"Developer Operating System" for **Nitin S Kumar** (Senior Automation Engineer). It should not feel like a portfolio — it should feel like booting into a developer's OS. ATMOS-inspired living 3D background, 5 themeable modes, cinematic loading sequence, interactive 3D playground, expandable GitHub analytics dashboard, categorized skill groups, Featured/All projects toggle with category filters, a coin-toss animated profile image that flips between sections on scroll, person-mapped testimonial images, and a Konami Code easter egg.
-
-**Live URL:** https://ni3-chi.vercel.app
+> Use this single prompt to regenerate the entire portfolio. It combines all 9 design prompts, portfolio data, loader code, footer specs, and tech stack into one unified system prompt.
 
 ---
 
-## 🧱 Tech Stack
+## META INSTRUCTION
 
-| Layer | Choice | Reason |
-|---|---|---|
-| Framework | Next.js 16+ (App Router) | Cutting edge, static export |
-| Language | TypeScript strict | Type-safe everything |
-| UI Library | React 19 | Latest |
-| Styling | Tailwind CSS v4 with `@theme inline` | Utility-first, CSS variable-driven theming |
-| Animation | Motion 12.x (successor to Framer Motion) | Same API, smaller bundle |
-| 3D | Three.js + React Three Fiber + Drei | WebGL for atmospheric effects |
-| Icons | Lucide React + custom SVG brand icons | Lucide has zero brand icons — hand-craft SVGs |
-| State | Zustand | ~3 actions, minimal boilerplate |
-| Data | Single `portfolio.json` (schema-validated) | Single source of truth |
-| Analytics | `@vercel/analytics/next` | Vercel platform integration |
-| Fonts | Geist Sans + Geist Mono | Vercel's typeface family |
+This document is a **complete system prompt** for building a cinematic 3D portfolio website for **Nitin S Kumar** (Senior Automation Engineer). Execute all 9 prompt domains below as a coordinated multi-agent pipeline. The result must be a single continuous scroll-driven 3D world where a character walks through 16 sections, environments evolve from digital cyber universe to peaceful grassland, and every interaction feels premium and intentional.
+
+**Output target:** `https://ni3-chi.vercel.app`  
+**Source:** `https://github.com/nitinkumar30/ni3` (branch: staging)
 
 ---
 
-## 🏗️ Project Structure
+## PROMPT 1: 3D Avatar Character Generation
 
-```
-ni3/
-├── data/
-│   └── portfolio.json           # Central data (~575 lines): projects, skills, images, highlights
-├── public/
-│   ├── favicon.svg              # Ni3 custom favicon (snake-3 between letters)
-│   ├── screenshots/             # README preview images
-│   └── images/                  # 5 style-transferred profile photos + 3 person-mapped testimonial images
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx           # SEO metadata, JSON-LD, Geist fonts, skip-to-content, favicon
-│   │   ├── page.tsx             # All sections wired in order + CoinToss + overlays
-│   │   ├── globals.css          # Design system: 5 themes, glass, holographic, aurora, color-mix()
-│   │   ├── providers.tsx        # Query client provider
-│   │   ├── robots.ts            # SEO robots config
-│   │   ├── sitemap.ts           # Dynamic sitemap
-│   │   └── manifest.ts          # PWA manifest
-│   ├── components/
-│   │   ├── animations/
-│   │   │   └── scroll-reveal.tsx    # Reusable scroll-triggered entrance (left/right/up/down/fade)
-│   │   ├── layout/
-│   │   │   ├── navbar.tsx           # Sticky top nav with active section dot tracking
-│   │   │   └── footer.tsx           # Terminal emulator (7 commands) + live clock + 12 social links
-│   │   ├── sections/                # 12+ section components (see sections list below)
-│   │   ├── three/
-│   │   │   ├── Scene3D.tsx          # ATMOS-style living background aurora/particles/core
-│   │   │   └── PlaygroundScene.tsx  # Interactive 3D buildings + crystal + data nodes
-│   │   ├── ui/
-│   │   │   ├── button.tsx           # 4 variants: primary, secondary, ghost, premium
-│   │   │   ├── badge.tsx            # 4 variants: default, premium, outline, dot
-│   │   │   └── card.tsx             # Glassmorphism card with optional hover/glow/tilt
-│   │   ├── coin-toss.tsx            # Fixed right-side profile image — flips 360° between sections
-│   │   ├── easter-egg.tsx           # Konami Code detector → sets cyber theme
-│   │   ├── loading-screen.tsx       # 6-step cinematic boot sequence
-│   │   ├── theme-switcher.tsx        # 5-pill bottom-center theme selector
-│   │   └── theme-init.tsx           # Hydrates theme from localStorage on mount
-│   └── lib/
-│       ├── types.ts              # All TypeScript interfaces (PortfolioData, SkillGroup, etc.)
-│       ├── data.ts               # Typed JSON loader (imports portfolio.json, exports typed `data`)
-│       ├── store.ts              # Zustand store: activeSection, cyberMode, theme
-│       ├── utils.ts              # cn() classname merger, formatDate(), slugify()
-│       └── icons.tsx             # 11 custom SVG brand icons (GitHub, LinkedIn, X, etc.)
-```
+Generate a fully rigged 3D animated avatar from image `20260603_214824-IMG_STYLE.jpg`. The avatar is the central character of a cinematic scroll-driven portfolio.
+
+- **Style:** Realistic-but-stylized (Pixar x premium game), mid-20s male, Indian, smart casual attire
+- **Rig:** Humanoid with IK/FK, blend shapes for expressions
+- **Animations (10 clips):** idle (blink, breathe, head turn, eye track cursor), walk, sit down, stand up, reach/touch, point, wave, study hologram, manipulate panels, receive signal
+- **Per-section actions:** Hero=looking at user, About=walking, Education=studying holograms, Experience=activating portals, Skills=touching cores, Projects=pointing at buildings, Dashboard=manipulating panels, Blog=reading, Testimonials=receiving signals, Contact/Footer=sitting on grass
+- **Pipeline:** Blender modeling, Mixamo + custom Blender animation, Substance Painter texturing
+- **Export:** GLTF/GLB with Draco compression, 2K PBR textures, LOD 3 levels (<50K triangles full)
+- **Runtime:** R3F + drei useAnimations + THREE.AnimationMixer
 
 ---
 
-## 🎨 Design System
+## PROMPT 2: Core Concept & World Narrative — "The Cyber Explorer"
 
-### 5 Theme Modes
+Theme: Automation Engineering + Cyber Security + AI Systems. Aesthetic: Modern Cyberpunk + Futuristic Engineer + Ethical Hacker + Builder. NOT anonymous-mask hacker or Matrix rain.
 
-All themes use CSS custom properties defined on `[data-theme="name"]`. Every component references these variables — never hardcoded colors.
+**Narrative arc:** Digital awakening -> exploration -> mastery -> creation -> reflection -> human connection. The world evolves from digital/abstract through technical/industrial to organic/natural.
 
-| Theme | data-theme | Primary | Background | Vibe |
-|---|---|---|---|---|
-| Blue (default) | `blue` | `#00E5FF` | `#050816` | Tech, futuristic |
-| Cyber | `cyber` | `#00FF41` | `#0a0a0a` | Hacker terminal |
-| AI | `ai` | `#A855F7` | `#0a0015` | Purple, mystical |
-| Data | `data` | `#FF8C00` | `#0a0d1a` | Orange, analytical |
-| Minimal | `minimal` | `#2563EB` | `#ffffff` | Clean, light |
+**Character progression table:**
+| Section | Action | Section | Action |
+|---------|--------|---------|--------|
+| Hero | Looking at user | Projects | Building structures |
+| About | Walking forward | Dashboard | Manipulating code streams |
+| Education | Studying holograms | Blog | Reading floating articles |
+| Experience | Activating portals | Testimonials | Receiving signals |
+| Skills | Touching energy cores | Contact/Footer | Sitting on grass |
 
-**Theme CSS variables:**
-```
---background, --foreground, --primary, --secondary, --accent, --success, --muted, --danger
---card-bg, --card-border, --nav-bg
---scrollbar-track, --scrollbar-thumb
---aurora-1, --aurora-2, --aurora-3
---theme-gradient (linear-gradient for text gradients)
-```
-
-**Minimal theme fix:** Set `--color-white: #111111` and `--color-black: #eeeeee` so Tailwind's `text-white`/`border-white` classes render dark-on-light correctly.
-
-### Glassmorphism
-```css
-.glass {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--card-border);
-}
-```
-
-### Key Animations
-```css
-@keyframes spin-slow { to { transform: rotate(360deg); } }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@keyframes drift { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
-@keyframes aurora { from { opacity: 0.3; transform: translateY(0) scale(1); } to { opacity: 0.6; transform: translateY(-20px) scale(1.1); } }
-```
-
-### Utility Classes
-- `.text-gradient` — applies `--theme-gradient` as background-clip text
-- `.aurora-bg` — pseudo-element with 3 radial gradients for atmospheric glow
-- `.holographic` — shimmer sweep overlay animation
-- `.glass-strong` — more opaque glass variant
+**Security theme (subtle):** packet streams, network nodes, security shields, encrypted data cubes, scanning effects. Firewall opening to reveal technologies in Skills section.
 
 ---
 
-## 🧩 ALL SECTIONS (Ordered as in page.tsx)
+## PROMPT 3: UI/UX Design System — Cyber Automation Visual Identity
 
-### 1. Hero Section (`#hero`)
-- Animated gradient text headline with role rotator (cycles through roles: Senior Automation Engineer, Python Developer, Aspiring Data Scientist, Cyber Security Enthusiast, Prompt Engineer)
-- Aurora overlays from 3D background
-- Primary profile image (`data.images.hero`)
-- CTA buttons (Resume, Contact)
-- Scroll indicator at bottom
+**Design tokens:**
+- Primary: #00E5FF, Secondary: #7B61FF, Accent: #00FF9D
+- Background: #050816, Surface: rgba(255,255,255,0.05), Border: rgba(255,255,255,0.12)
+- Text Primary: #FFFFFF, Text Secondary: #A1A1AA
+- Success: #00FF9D, Warning: #FFB800, Error: #FF4D6D
+- Theme gradient: linear-gradient(135deg, #00E5FF, #4488FF, #7B61FF)
 
-### 2. About Section (`#about`)
-- Two-column layout (image left, content right on desktop; stacked on mobile)
-- **Left column:** Circular profile image (`data.images.about`) inside a gradient-bordered card with `aspect-square` container, scrollable text summary below
-- **Right column:** Professional summary text, Roles & Specializations list (5 roles with matching icons), Interests as tag badges
-- **Stats row:** 6 animated counters (Experience 5+ Years, Projects 200+, Certifications 30+, Tools 11+, AI Tools 4+, Languages 4+) using IntersectionObserver-triggered count-up animation with cubic ease-out
+**Typography:** Inter (primary, loaded via next/font/google), PODIUM Sharp (display, loaded via @font-face). Scale: Display XL 72px/700, Display LG 56px/700, H1 48px/700, H2 36px/700, H3 28px/600, H4 22px/600, Body 16px/400, Caption 14px/400.
 
-### 3. Education Section (`#education`)
-- Timeline layout with degree cards
-- Gradient dots connecting entries
-- Institution badges, degree names, duration
-- Timeline profile image (`data.images.timeline`)
+**Spacing:** 8pt grid. Container widths: Mobile 100%, Tablet 768px, Laptop 1200px, Desktop 1440px, Ultra-wide 1600px.
 
-### 4. Experience Section (`#experience`)
-- 8 work roles in strict descending chronological order (by start date)
-- Grouped by company (companies with multiple roles show all entries together)
-- Timeline layout with a vertical line on the left
-- Each entry: position, company, duration, type, location, description paragraph, highlights list
-- Company grouping header with `Building2` icon
+**Components:** Glass buttons (primary/secondary/ghost with magnetic hover, min 44px height), glass cards (blur + border + hover tilt/glow), inputs (16px radius, glass, focus ring), navbar (scroll-aware transparent glass, animated indicator spring), terminal (7 commands, green/cyan prompt, history).
 
-### 5. Skills Section (`#skills`)
-- 7 categorized skill groups stored in `data.skill_groups`:
-  1. **Automation** (icon: Zap) — Selenium, Playwright, Python, APIs, BeautifulSoup, Pandas, Docker, CI/CD, Git
-  2. **Testing** (icon: Shield) — Pytest, Manual Testing, API Testing, JIRA
-  3. **Python Development** (icon: Code2) — Python, SQL, Git, APIs
-  4. **Web Development** (icon: Globe) — Web Development, Bootstrap
-  5. **Data Science** (icon: Database) — Data Science, SQL, Pandas
-  6. **Cyber Security** (icon: ShieldCheck) — Cyber Security, Cryptography
-  7. **AI & Prompt Engineering** (icon: Brain) — Prompt Engineering, Vibe Coding, AI Tools
-- Each group rendered as a glassmorphism card with:
-  - Category icon (mapped from name → Lucide icon)
-  - Category title
-  - Description text
-  - Skills as pill-shaped tags
-- Individual skill proficiency rings are NOT used — replaced by grouped skill tags
+**CSS variables (already in globals.css):** `--background`, `--foreground`, `--primary`, `--secondary`, `--accent`, `--success`, `--muted`, `--danger`, `--card-bg`, `--card-border`, `--nav-bg`, `--scrollbar-*`, `--aurora-*`, `--theme-gradient`. Also 3 theme variants: `[data-theme="cyber"]` (green), `[data-theme="ai"]` (purple), `[data-theme="data"]` (orange).
 
-### 6. Certifications Section (`#certifications`)
-- Split layout: certifications (left) + awards/honors (right) + publications
-- Expandable cards for certifications
-- Award entries with trophy icons
-- Publication entries with external links
-
-### 7. Projects Section (`#projects`) — Featured/All Toggle
-- **Toggle UI:** Inline pill-style toggle between "Featured" and "All Projects"
-  - Featured tab (default): Shows Sparkles icon, filters `data.projects` where `featured === true`, sorts by stars descending, takes top 6
-  - All Projects tab: Shows Folder icon, displays all 18 projects with search bar + category filters + sort dropdown
-- **Filters (All Projects only):** Category filter pills: `["Automation", "Development", "Cyber Security", "Data Science", "Data"]` — must exactly match the `category` field values in data
-- **Sort (All Projects only):** Most Stars (default), Name A-Z, Name Z-A
-- **Search (All Projects only):** Filters by name or description (case-insensitive)
-- **Card content (no images):** Project name, description, language badge, star count, up to 3 technology tags, category badge
-- Empty state: "No projects match your filters" message
-- Grid: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4`
-
-### 8. GitHub Dashboard (`#dashboard`)
-- 8 analytics panels in a responsive grid:
-  1. **Overview** — 6 stat cards (repos, stars, forks, followers, following, commits)
-  2. **Contribution Analytics** — Streak days, weekly/monthly/yearly commit counts
-  3. **Repository Insights** — Top repos listed with star/fork counts
-  4. **Technology Breakdown** — 6 languages with percentage bars and color coding
-  5. **Coding Activity** — 7-day activity chart (bar chart visualization)
-  6. **Open Source Impact** — Contribution highlights and open source metrics
-  7. **Repository Explorer** — Searchable, sortable repo list
-  8. **Language Universe** — Language distribution visualization
-- Data sourced from `data.statistics` with fallback defaults
-- Uses custom GitHubIcon from `@/lib/icons`
-
-### 9. AI & Automation Lab (`#ai-lab`)
-- Split view: AI tools (left) + Automation tools (right)
-- AI tools listed from `data.ai_tools` with category and description
-- Automation tools from `data.automation_tools` with icon mapping
-
-### 10. Blog Section (`#blog`)
-- dev.to-style article cards
-- Tags, reaction counts, reading time
-- Links to external blog posts
-
-### 11. Testimonials Section (`#testimonials`)
-- Animated carousel with auto-rotate (6s interval)
-- Each testimonial card: person name, designation, testimonial text, 5-star rating
-- **Person-mapped profile images:** Each testimonial's profile image uses person-named files:
-  - `Zeba Bukhtayar → /images/Zeba Bukhtayar.jpg`
-  - `Divya Pakairay → /images/Divya Pakairay.jpg`
-  - `Naveen Kumar → /images/Naveen Kumar.jpg`
-- Images displayed as circular avatars with border
-- `data.testimonial_images` is a `string[]` with exactly 3 entries
-- Manual navigation controls (prev/next arrows)
-
-### 12. Recommendations Section (`#recommendations`)
-- Three subsections:
-  1. **Received Recommendations** — 8-item carousel showing name, role, date, relationship, and testimonial text
-  2. **Professional Highlights** — 4 cards (iAppreciate Q2 '24, Open Source Contributor, 30+ Certifications, Codegoda 2022)
-  3. **Community Impact** — 4 cards (Open Source Contributions, Technical Publications, Internship Mentorship, Knowledge Sharing)
-- Clickable stat modals for Given (12) and Pending (3) counts
-- `data.recommendations` includes `received_count`, `given_count`, `pending_count`, `professional_highlights`, `community_impact`, and `list` array
-
-### 13. Digital Playground (`#playground`)
-- Interactive 3D section (client-side only, dynamic import with `ssr: false`)
-- 5 emissive buildings on a grid floor
-- Central crystal octahedron
-- 7 floating data nodes
-- Clickable tech facts tooltips
-- Built with Three.js + R3F + Drei
-
-### 14. Contact Section (`#contact`)
-- Split layout: info cards (left) + contact form (right)
-- Info cards: email, phone, location, social links
-- Form with send animation (Motion-powered)
-- Contact portrait image (`data.images.contact`)
-
-### 15. Footer
-- Terminal emulator with 7 commands: `help`, `about`, `skills`, `projects`, `github`, `contact`, `cyber`
-- Real-time live clock with date
-- 12 social links in orbit-style grid with SVG brand icons
-- Aurora background effect
+**Accessibility:** WCAG AA, keyboard nav, reduced motion, semantic HTML, ARIA labels.
 
 ---
 
-## 🎬 Special Components
+## PROMPT 4: Motion Design System — Cinematic Animation Choreography
 
-### CoinToss (`coin-toss.tsx`)
-- Fixed-position (`fixed right-4 top-1/2 -translate-y-1/2 z-50`) circular profile image
-- **Hidden on mobile/tablet** (`hidden xl:block pointer-events-none`)
-- **Scroll-driven flip animation:**
-  - Uses IntersectionObserver watching all section IDs
-  - When a new section enters the viewport (threshold 0.3, rootMargin "-80px 0px 0px 0px"):
-    1. Triggers `rotateY: [0, 180, 360]` (full flip)
-    2. `scale: [1, 1.35, 1]` (bounce)
-    3. `y: [0, -40, 0]` (upward bounce)
-    4. `filter: brightness(1) → brightness(1.3) + blur(1px) → brightness(1)` (flash effect)
-  - Between flips: gentle continuous bob animation (`y: [0, -3, 0]` with 3s repeat)
-- Cycles through 5 profile images: `[data.images.hero, about, experience, contact, timeline]`
-- Uses `AnimatePresence mode="wait"` with unique keys for seamless transitions
-- Border and shadow use theme's `--primary` via `color-mix()`
+**Global tokens:** Durations (instant 120ms, fast 200ms, normal 350ms, medium 600ms, slow 900ms, cinematic 1400ms). Easings (standard power2.out, emphasized power3.out, decelerate expo.out, overshoot back.out(1.7), gentle sine.inOut).
 
-### Loading Screen (`loading-screen.tsx`)
-- 6-step cinematic sequence:
-  1. "Initializing Developer OS"
-  2. "Loading Projects"
-  3. "Loading Automation Engine"
-  4. "Loading AI Toolkit"
-  5. "Loading GitHub Universe"
-  6. "Welcome"
-- Gradient progress bar filling incrementally
-- Animated text transitions between steps
+**Scroll system:** One master GSAP timeline + ScrollTrigger + Lenis 1.3.23 smooth scrolling. Camera spline path. Character spline path. Environment blends. Content reveals tied to world progression.
 
-### Konami Code Easter Egg (`easter-egg.tsx`)
-- Listens for `↑↑↓↓←→←→BA` key sequence
-- Activates Cyber Mode (sets theme to `cyber`)
-- Deactivating returns to Blue theme
-- Visual feedback: theme pill switcher updates
+**Section choreography (11 sections):**
+- Hero: face emerges from darkness, typing effect, CTA float up
+- About: particles -> structured nodes, stat counters, orbit cards
+- Education: timeline draws, holographic cards unfold, certificates glow
+- Experience: memory portals scan, cards expand, lights pulse
+- Skills: energy cores ignite stagger 80ms, progress rings, character touches
+- Projects: buildings rise power4.out, hover expands, filter morphs
+- Dashboard: contribution graph grows, satellites orbit, data streams
+- Blog: parallax articles drift, hover unfolds, warmth shift
+- Testimonials: carousel glide, soft pulse, character receives signals
+- Contact: particles -> fireflies, network -> organic, form rises
+- Footer: character sits, sunset warms, stars fade, terminal types
 
-### Theme Switcher (`theme-switcher.tsx`)
-- Fixed bottom-center pill
-- 5 theme buttons: Blue, AI, Data, Minimal, Cyber
-- Stores preference in localStorage
-- Sets `data-theme` attribute on `<html>`
+**Microinteractions:** Buttons scale 1.03 hover/0.98 press/spring ease. Cards translate 4-8px up + 4deg rotate. Inputs 180ms focus ring. All 200-300ms ease-out.
+
+**Ambient:** Floating particles (200 desktop/500 mobile), data streams, rotating nodes, breathing gradients, drifting holograms. Slow, calming, additive blending. Pause on tab hidden. Respect prefers-reduced-motion.
+
+**Performance:** 60 FPS desktop, 30+ FPS mobile. CSS transforms + opacity. RAF throttled mousemove. Reduce density 50-70% mobile.
 
 ---
 
-## 🖼️ Image System
+## PROMPT 5: SEO, GEO, Security & Performance
 
-### 5 Profile Photos (Style-Transferred)
-Exactly 5 specific images used across the site — no more, no less:
+**Keywords:** Nitin Kumar, Python Developer, Automation Engineer, Cyber Security Enthusiast, Data Science Learner, AI Automation Engineer, Cloud and Security Engineer.
 
-| Field | Image | Used In |
-|---|---|---|
-| `hero` | `20260603_221130-IMG_STYLE.jpg` | Hero section, CoinToss |
-| `about` | `20260603_220746-IMG_STYLE.jpg` | About section card, CoinToss |
-| `experience` | `20260603_214745-IMG_STYLE.jpg` | Experience sidebar (removed, now CoinToss), CoinToss |
-| `contact` | `20260603_214824-IMG_STYLE.jpg` | Contact portrait, CoinToss |
-| `timeline` | `20260603_220709-IMG_STYLE.jpg` | Education timeline, CoinToss |
+**Structured data:** Person schema (name Nitin S Kumar, jobTitle Senior Automation Engineer, location Pune India, sameAs all social profiles), Website, Breadcrumb, Article, FAQ, ItemList schemas. Already has JSON-LD in layout.tsx.
 
-`data.images` shape:
-```typescript
-interface PortfolioImages {
-  hero: string
-  about: string
-  experience: string
-  contact: string
-  timeline: string
-  cards: string[]  // same 5 images
-}
-```
+**Routes (13 static):** `/`, `/feed.xml`, `/llms.txt`, `/llms-full.txt`, `/manifest.webmanifest`, `/privacy`, `/robots.txt`, `/sitemap.xml`, `/toonhub`, `/vanguard`.
 
-### 3 Testimonial Images (Person-Mapped)
-Files must be named to exactly match the person's name:
-- `/images/Zeba Bukhtayar.jpg`
-- `/images/Divya Pakairay.jpg`
-- `/images/Naveen Kumar.jpg`
+**Security headers:** CSP, HSTS (max-age 63072000), X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (camera/microphone/geolocation=()). Already in next.config.ts.
 
-`data.testimonial_images` is a `string[]` with exactly those 3 paths.
+**Form protection:** Zod validation (in deps), honeypot, Cloudflare Turnstile, rate limiting, XSS sanitization.
+
+**Lighthouse targets:** Performance >95, Accessibility >95, Best Practices >95, SEO >95. LCP <2.5s, CLS <0.1, INP <200ms.
+
+**Optimizations:** next/image AVIF/WebP, dynamic imports for 3D (next/dynamic), GLTF Draco compression, preload Inter + PODIUM Sharp fonts, bundle analysis, stale-while-revalidate caching, server components where possible.
+
+**AI search targets:** Google AI Overviews, Bing Copilot, ChatGPT Search, Gemini, Perplexity, Claude.
 
 ---
 
-## 🎨 Favicon (`/favicon.svg`)
+## PROMPT 6: World Environment Design — Background Evolution
 
-Custom SVG favicon:
-- Dark rounded rectangle background (`#06061a`, rx=24)
-- **"N"** in bold white stroke (7.5px) — two vertical strokes at x=8, x=28 with diagonal
-- **"3" as a snake** in gradient (`#00E5FF → #A855F7 → #00FF9D`):
-  - Diamond-shaped filled head at top (centered ~x=48, y=12)
-  - Body winds through classic 3 shape: curves right, back left, then right again to tapered tail
-  - Small eye dot on the head
-- **"i"** in bold white stroke — vertical stroke at x=78, dot circle at top (r=5)
-- Foreground elements ("N" and "i") in `#F0F0F0`, snake in gradient
-- Referenced in `layout.tsx` `<head>` and `portfolio.json` meta.favicon
+**ONE continuous world** transforming per section:
 
----
+1. **HERO (Digital Awakening):** Deep-space digital void. Dark blue/black (#050816). Floating particles 3 depth layers. Geometric shapes (icosahedron, octahedron, dodecahedron). Neural connection lines. Volumetric fog. Face emerges center.
+2. **ABOUT (Reality Forming):** Digital terrain grid materializes. Ground plane beneath character. Floating memory orbs with holographic objects (laptop, drone, terminal, books, AI orb). Blues shifting to cyan-teal.
+3. **EDUCATION (Knowledge Archive):** Futuristic library. Holographic timeline panels. Glowing certificate glass panels. Digital monuments. Timeline portals with glow edges. Deep blues + gold/amber accents.
+4. **EXPERIENCE (Memory Corridor):** Advanced futuristic architecture. Each job = distinct portal with unique color. Scan-line edge glow. Floating achievement metrics. Pulsing infrastructure lights. Steel blues + cyan + warm amber.
+5. **SKILLS (Cyber Laboratory):** Energy core pedestals circle. Each core unique color (frontend=blue, backend=green, cloud=purple, security=red, AI=cyan, DevOps=orange). Firewall entry with hex grid. Progress rings orbit. Code columns background.
+6. **PROJECTS (Innovation District):** Cityscape. Buildings rise procedurally. Each project = unique building style. Glowing street lanes. Drone traffic between buildings. Neon blues, purples, warm windows.
+7. **DASHBOARD (Living Code Network):** Data landscape terrain. Contribution graph = rolling hills. Repository satellites elliptical. Code stream rivers. Language energy streams. Commit particles. Green, blue, amber.
+8. **BLOG (Knowledge Nebula):** Cosmic calm. Digital paper orbits. Holographic scroll articles. Warm color transition. Reading light around character. Warm whites, soft ambers.
+9. **TESTIMONIALS (Trust Network):** Bright open space. Circular card carousel. Avatar orbit float. Connection line particles. Gold/white/gradient.
+10. **CONTACT->FOOTER (Nature Rising):** Digital particles -> fireflies. Grid -> organic grass. Wireframe -> full trees. Network nodes -> flowers. Sunset warming. Campfire embers + smoke. Stars fade in. Night sky. Sunset magenta/orange/purple -> deep blue/white stars.
 
-## 📊 Portfolio JSON Structure
-
-Single file at `data/portfolio.json` (~575 lines) containing ALL content:
-
-```typescript
-interface PortfolioData {
-  meta: { title, description, author, siteUrl, language, keywords, favicon }
-  personal_info: { name, title, headline, current_role, current_company, current_location, profile_image, resume_url, email, phone, linkedin, github, twitter, instagram, blog, hackerrank, stackoverflow, whatsapp, holopin, devto, pypi }
-  about: { summary, roles[], interests[], available_for[] }
-  statistics: { experience, projects, certifications, tools, ai_tools, languages, publications, github_repos, github_stars }
-  skills: { name, proficiency, category }[]
-  skill_groups: { category, icon, description, skills[] }[]
-  tech_stack_nodes: string[]
-  education: { degree, institution, duration?, year?, description, highlights[] }[]
-  work_experience: { position, company, duration, type, location, description?, highlights[] }[]
-  certifications: { name, issuer, year, credential_id? }[]
-  honors: { title, description, issuer, year }[]
-  publications: { title, description, type, url }[]
-  projects: { name, description, category, technologies[], stars?, language?, url?, topics[], featured? }[]  // 18 projects, 9 featured
-  testimonials: { name, designation, testimonial, rating }[]
-  recommendations: { received_count, given_count, pending_count, given_details?, pending_details?, professional_highlights?: { title, items[] }, community_impact?: { title, items[] }, list: { name, role, date, relationship, text }[] }
-  images: PortfolioImages
-  testimonial_images: string[]
-  ai_tools: { name, category, description }[]
-  automation_tools: { name, category, icon }[]
-  navigation: { id, label, icon }[]
-}
-```
+**Environmental effects:** Max 2000 particles (500 mobile), instanced rendering. 2-3 real-time lights max. Baked lighting priority. Depth fog per section color. Subtle bloom + chromatic aberration. Frustum culling + LOD all objects. 15-20% scroll range for each transition. Crossfade particle systems + geometry morphs.
 
 ---
 
-## 🧪 Testing & Build Commands
+## PROMPT 7: Interactive Companion Objects
 
+**1. Drone Companion:** Small quadcopter with cyan core. Spring-based follow at shoulder height with 0.5s delay. Pulses 2x near interactables. Emits light beam on first visit. Gentle hover bob idle. Particle trail (50-100 particles, #00E5FF, 0.02 size). THREE.PointLight dynamic intensity.
+
+**2. Floating Terminal:** Holographic panel near GitHub/Skills. CRT scan-line overlay. Typewriter text effect. Section-specific commands: Skills=skill core scan, GitHub=git log, Experience=process status, Security=firewall logs. Hover expands for full history. Monospace font with glow. GSAP TextPlugin or 30-50ms per character typewriter. PlaneGeometry with custom shader.
+
+**3. Security Scanner:** Sweeping light plane every 10-15s inactivity or scroll-velocity tied. Hex-grid pattern overlay. Reveals Easter eggs (data cubes, hidden percentages, shield visualizations). 1.5s per sweep. #00E5FF at 30% opacity. Custom post-processing pass or overlay sprite with animated UV.
+
+**4. Hidden Terminal (Cyber Lab Mode):** Konami code (up up down down left right left right b a) or logo click 5x or typing 'cyberlab'. Unlocks: full certification list with verification, CTF completions, bug bounty history, security projects highlighted, shield icons on security items, 'CLEARANCE LEVEL: 5' badge. Visual: color grading darkens, character gets holographic visor, persistent terminal with security scans, grid overlay, denser particles, scan lines. Zustand cyberMode flag. sessionStorage persistence.
+
+---
+
+## PROMPT 8: Scroll Storytelling System — Camera Spline & Master Timeline
+
+**Tech:** GSAP ScrollTrigger + Lenis 1.3.23 + R3F 3D world + Framer Motion UI reveals.
+
+**Master timeline scroll ranges:**
+| Section | Range | Section | Range |
+|---------|-------|---------|-------|
+| Hero | 0-8% | Certifications | 50-55% |
+| About | 8-18% | Projects | 55-68% |
+| Education | 18-28% | Dashboard | 68-75% |
+| Experience | 28-40% | Blog | 75-82% |
+| Skills | 40-50% | Testimonials | 82-87% |
+| | | Contact | 87-94% |
+| | | Footer | 94-100% |
+
+2-3% transition overlap zones. power2.inOut easing.
+
+**Camera CatmullRom spline** with 11 control points (Hero through Footer). Camera position + lookTarget per point. Subtle sine wave sway on look target.
+
+**Character spline** offset from camera. Always visible. Faces movement direction + idle rotations toward interactive objects.
+
+**Content reveals:** Framer Motion useInView or GSAP markers. Stagger 40-80ms. Fade + translateY 30px. First reveal at section start + 1%, full reveal at section end - 1%.
+
+**Environment transitions:** Background color GSAP .to(), particle system crossfade, light interpolation, fog lerp, asset scale 0->1 for in, 1->0 for out. All power2.inOut over transition zone.
+
+**Mobile:** Lenis smoothTouch:false below 768px. Condensed scroll ranges. Simplified camera spline. Faster reveals. Hide 3D on very small screens.
+
+**Reduced motion:** Disable Lenis, disable GSAP animations, CSS fade-only reveals. aria-hidden on 3D canvas. Skip to content button.
+
+---
+
+## PROMPT 9: Agent Orchestration — Multi-Agent Execution Pipeline
+
+Execute all 8 prompts as a coordinated swarm. The Lead Agent dispatches sub-agents in dependency order, collects outputs, resolves conflicts, and verifies the build.
+
+**Execution order:**
+1. Prompt 1 (3D Character) + Prompt 2 (Narrative) + Prompt 3 (UI/UX) — parallel, no deps
+2. Prompt 4 (Motion) — depends on Prompt 3 tokens
+3. Prompt 5 (SEO/Security) — depends on Prompt 3 structure
+4. Prompt 6 (World Environment) — depends on Prompts 1+2
+5. Prompt 7 (Companion Objects) — depends on Prompts 1+6
+6. Prompt 8 (Scroll System) — depends on ALL previous
+
+**Shared context for ALL agents:**
+
+### Portfolio Data (Nitin S Kumar)
+- Role: Senior Automation Engineer at Happiest Minds Technologies, Pune
+- 5+ years experience (TCS 5 roles 2020-2024, Happiest Minds 2024-present)
+- Education: MCA + BCA from Arka Jain University
+- Skills: Automation 90%, Python 90%, Testing 85%, Web Dev 70%, AI 70%, Data Science 60%, Cyber Security 50%
+- GitHub: 227 repos, 160+ stars (top: edu-mail-auto-generator 119★)
+- Projects: 18 total (9 featured), 17 articles on dev.to
+- Certifications: 30+ across automation, data science, cybersecurity, cloud
+- Social: GitHub, LinkedIn, X, Instagram, Stack Overflow, WhatsApp, Dev.to, Holopin, PyPI, HackerRank, Email
+
+### Loading Screen Spec
+- requestAnimationFrame-driven 3s cubic ease-out progress bar
+- "Nitin Kumar" 11 character reveal (rotateX + y transform per char)
+- Theme gradient on name + progress bar
+- Blinking cursor at 0.8s interval
+- AnimatePresence fade-out exit 0.8s
+- Code: `src/components/loading-screen.tsx` (150 lines)
+
+### Footer Spec
+- Terminal with 7 commands: help, about, skills, projects, github, contact, cyber
+- Prompts: visitor@ni3:~$ in #00E5FF, output in rgba(255,255,255,0.6)
+- Live clock via setInterval 1000ms + toLocaleTimeString
+- Date via toLocaleDateString(weekday/month/day)
+- 11 social links in hover-scale grid
+- Aurora: 2 animated blobs (#00E5FF + #7B61FF) with blur-[100px] + scale keyframes
+- 8 floating particles with y bounce + opacity fade
+- Copyright: new Date().getFullYear() with name + MIT License
+
+### Tech Stack (Exact Versions)
+- Next.js 16.2.7 (App Router), React 19.2.0, TypeScript 5.7 strict
+- Tailwind CSS v4 (PostCSS plugin, @theme inline, CSS variables)
+- Three.js 0.184.0, @react-three/fiber 9.6.1, @react-three/drei 10.7.7
+- Framer Motion 12.40.0 / motion 12.40.0, GSAP 3.15.0, Lenis 1.3.23
+- @radix-ui/react-slot 1.2.4, lucide-react 1.17.0
+- clsx + tailwind-merge + class-variance-authority
+- Zustand (store: activeSection, cyberMode, theme, mobileMenuOpen)
+- @vercel/analytics, @vercel/speed-insights
+- Inter (next/font/google), PODIUM Sharp (@font-face)
+- Critical bundle ~180KB gzipped (3D code-split separately)
+- Security headers: HSTS, CSP, X-Frame-Options, Permissions-Policy in next.config.ts
+
+### Themes (CSS Custom Properties)
+Base: --background=#050816, --primary=#00E5FF, --secondary=#4488FF, --accent=#7B61FF
+Cyber: --background=#0a0a0a, --primary=#00FF41
+AI: --background=#0a0015, --primary=#A855F7
+Data: --background=#0a0d1a, --primary=#FF8C00
+
+### 16 Sections (in order)
+hero -> playground -> about -> experience -> education -> skills -> certifications -> projects -> dashboard -> ai-lab -> blog -> testimonials -> recommendations -> achievements -> contact -> footer
+
+### Build Commands
 ```bash
 npm install
-npm run dev          # development (localhost:3000)
-npx next build --webpack    # production build (--webpack required on Windows)
+npm run dev          # dev at localhost:3000
+npx next build --webpack  # production (Windows)
+npm run build        # production (macOS/Linux/Vercel)
 npm start            # production server
-npx vercel deploy --prod --token <token>  # Vercel deploy
 ```
 
----
-
-## 🌐 Social Links (All 12)
-
-GitHub · LinkedIn · X (Twitter) · Instagram · Stack Overflow · WhatsApp · Dev.to · Holopin · PyPI · HackerRank · Email · Phone
-
----
-
-## 🔥 Easter Eggs
-
-1. **Konami Code:** `↑↑↓↓←→←→BA` → activates Cyber Mode (neon green theme)
-2. **Terminal Commands:** 7 commands in the footer terminal: `help`, `about`, `skills`, `projects`, `github`, `contact`, `cyber`
+### Integration Rules
+- Every component matches UI Design System tokens exactly
+- Every animation follows Motion Design System tokens exactly
+- SEO metadata + security headers + accessibility verified before commit
+- Lighthouse >95 all categories, LCP <2.5s, CLS <0.1
+- All code uses motion/react, Tailwind v4 @theme inline, TypeScript strict
+- Build passes with zero errors
 
 ---
 
-## 📱 Responsive Design Constraints
+## FINAL OUTPUT
 
-- All sections use `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` container (except testimonials which uses `max-w-4xl`)
-- Grid layouts follow `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` pattern
-- Image containers use `aspect-square` with `overflow-y-auto` to handle long text on mobile
-- CoinToss is `hidden xl:block` — only visible on desktop
-- Touch-friendly: `font-size: 16px` on mobile inputs/buttons, `touch-action: manipulation`
-- `prefers-reduced-motion: reduce` disables all animations
-- Section padding: `py-24 sm:py-32`
+The completed portfolio must feel like:
+- A single continuous cinematic world, not stitched sections
+- A polished interactive film with intentional motion
+- A premium Awwwards-level experience
+- Futuristic automation meets cybersecurity meets AI storytelling
 
----
-
-## 💡 Key Implementation Details
-
-1. **Theme system:** CSS custom properties on `[data-theme]` selectors, referenced everywhere via `var(--name)`. Tailwind v4 `@theme inline` directive maps them to utility classes.
-2. **color-mix()** used extensively for opacity variants: `color-mix(in srgb, var(--primary) 10%, transparent)` instead of hardcoded alpha hex values.
-3. **No images inside project cards** — all project cards are text-only (name, description, tags, category badge).
-4. **Featured flag** (`featured: true/false` in project data) controls the Featured tab — top 6 by stars from featured projects.
-5. **Filter categories** must exactly match the `category` field values in each project object: `["Automation", "Development", "Cyber Security", "Data Science", "Data"]`.
-6. **Experience section** sorts 8 roles by start date descending, groups by company, shows full descriptions and highlights.
-7. **Zustand store** manages: `activeSection`, `cyberMode`, `theme`.
-8. **ScrollReveal** component provides 4 entrance directions (left, right, up, down, fade) triggered by IntersectionObserver.
-9. **Card component** supports optional `hover` (glow on hover), `glow` (persistent glow), and `tilt` (mouse-follow 3D perspective rotation).
-10. **Build on Windows** requires `--webpack` flag: `npx next build --webpack`.
-
----
-
-## 🏆 Awards (Joke Section, Keep in README)
-
-- ❌ Awwwards Site of the Month (maybe next rewrite)
-- ❌ CSS Design Awards (they wanted more gradients)
-- ❌ FWA Site of the Day
-- ✅ Most Times a Portfolio Referenced "Atmos" in 2026
-- ✅ Best Use of a Coin Toss Animation in a Professional Portfolio
-
----
-
-## 📋 Complete File Checklist
-
-All components listed below — every file must be created:
-
-### App Layer
-- `src/app/layout.tsx`
-- `src/app/page.tsx`
-- `src/app/globals.css`
-- `src/app/providers.tsx`
-- `src/app/robots.ts`
-- `src/app/sitemap.ts`
-- `src/app/manifest.ts`
-
-### Sections (12+)
-- `src/components/sections/hero-section.tsx`
-- `src/components/sections/about-section.tsx`
-- `src/components/sections/education-section.tsx`
-- `src/components/sections/experience-section.tsx`
-- `src/components/sections/skills-section.tsx`
-- `src/components/sections/certifications-section.tsx`
-- `src/components/sections/projects-section.tsx`
-- `src/components/sections/github-section.tsx`
-- `src/components/sections/ai-lab-section.tsx`
-- `src/components/sections/blog-section.tsx`
-- `src/components/sections/testimonials-section.tsx`
-- `src/components/sections/recommendations-section.tsx`
-- `src/components/sections/achievements-section.tsx`
-- `src/components/sections/contact-section.tsx`
-- `src/components/sections/playground-section.tsx` (dynamic import, ssr: false)
-
-### Special Components
-- `src/components/coin-toss.tsx`
-- `src/components/easter-egg.tsx`
-- `src/components/loading-screen.tsx`
-- `src/components/theme-switcher.tsx`
-- `src/components/theme-init.tsx`
-- `src/components/custom-cursor.tsx`
-
-### UI Components
-- `src/components/ui/button.tsx`
-- `src/components/ui/badge.tsx`
-- `src/components/ui/card.tsx`
-- `src/components/ui/expandable-card.tsx`
-
-### Layout
-- `src/components/layout/navbar.tsx`
-- `src/components/layout/footer.tsx`
-
-### 3D
-- `src/components/three/Scene3D.tsx`
-- `src/components/three/PlaygroundScene.tsx`
-
-### Libraries
-- `src/lib/types.ts`
-- `src/lib/data.ts`
-- `src/lib/store.ts`
-- `src/lib/utils.ts`
-- `src/lib/icons.tsx`
-
-### Animations
-- `src/components/animations/scroll-reveal.tsx`
-
-### Data & Public
-- `data/portfolio.json`
-- `public/favicon.svg`
-- `public/images/20260603_221130-IMG_STYLE.jpg`
-- `public/images/20260603_220746-IMG_STYLE.jpg`
-- `public/images/20260603_214745-IMG_STYLE.jpg`
-- `public/images/20260603_214824-IMG_STYLE.jpg`
-- `public/images/20260603_220709-IMG_STYLE.jpg`
-- `public/images/Zeba Bukhtayar.jpg`
-- `public/images/Divya Pakairay.jpg`
-- `public/images/Naveen Kumar.jpg`
-
-### Root Config
-- `package.json`
-- `tsconfig.json`
-- `next.config.ts`
-- `postcss.config.mjs`
-- `README.md`
-- `PROMPT.md` (this file)
+**All 9 prompts must be executed. All shared context must be respected. The build must pass. The result deploys to Vercel.**
