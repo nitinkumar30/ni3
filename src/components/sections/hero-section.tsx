@@ -61,8 +61,8 @@ export function HeroSection() {
             className="font-podium uppercase leading-[0.92] tracking-tight text-white"
           >
             <div className="text-[clamp(2.8rem,8vw,7rem)]">{data.personal_info.name.split(" ")[0]}.</div>
-            <div className="text-[clamp(2.8rem,8vw,7rem)]">Build.</div>
-            <div className="text-[clamp(2.8rem,8vw,7rem)]">Automate.</div>
+            <div className="text-[clamp(2.8rem,8vw,7rem)]">S</div>
+            <div className="text-[clamp(2.8rem,8vw,7rem)]">Kumar</div>
           </motion.h1>
 
           {/* Subtext */}
